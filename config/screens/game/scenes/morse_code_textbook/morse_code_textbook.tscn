@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmg8hnkti5r18"]
+
+[ext_resource type="Script" uid="uid://qrfb463lls7k" path="res://config/screens/game/scenes/morse_code_textbook/morse_code_textbook.gd" id="1_2nsya"]
+
+[node name="morse_code_textbook" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2nsya")
