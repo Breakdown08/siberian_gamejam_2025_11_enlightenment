@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh2ouu1kk3ij5"]
+
+[ext_resource type="Script" uid="uid://b0rv81ljwbl51" path="res://config/screens/game/interactive_item/interactive_item.gd" id="1_7tuuu"]
+
+[node name="interactive_item" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7tuuu")
+
+[node name="sprite" type="Sprite2D" parent="."]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

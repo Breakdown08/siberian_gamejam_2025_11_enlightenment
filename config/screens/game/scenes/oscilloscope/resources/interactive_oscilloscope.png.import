@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc5ii70ik7bnu"
-path="res://.godot/imported/нестатичное_1.png-026cdcbae2fb5cf42e84ace72f7c19d0.ctex"
+uid="uid://7rj2vklpjdtt"
+path="res://.godot/imported/interactive_oscilloscope.png-901ae1aac4d60b5f6b10d96c7a341d37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/resources/references/нестатичное_1.png"
-dest_files=["res://.godot/imported/нестатичное_1.png-026cdcbae2fb5cf42e84ace72f7c19d0.ctex"]
+source_file="res://config/screens/game/scenes/oscilloscope/resources/interactive_oscilloscope.png"
+dest_files=["res://.godot/imported/interactive_oscilloscope.png-901ae1aac4d60b5f6b10d96c7a341d37.ctex"]
 
 [params]
 

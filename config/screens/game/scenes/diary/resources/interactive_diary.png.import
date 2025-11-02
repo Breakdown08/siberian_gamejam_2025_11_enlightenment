@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcfnfd7unmunm"
-path="res://.godot/imported/морзе_1.png-8e33e5780f44addea973b9dba6e439d9.ctex"
+uid="uid://bj1mmt8n6ohcg"
+path="res://.godot/imported/interactive_diary.png-8a65b9caaee93eba4551d8970a572489.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/resources/references/морзе_1.png"
-dest_files=["res://.godot/imported/морзе_1.png-8e33e5780f44addea973b9dba6e439d9.ctex"]
+source_file="res://config/screens/game/scenes/diary/resources/interactive_diary.png"
+dest_files=["res://.godot/imported/interactive_diary.png-8a65b9caaee93eba4551d8970a572489.ctex"]
 
 [params]
 

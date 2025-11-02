@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxpgtbkj1d4kv"
-path="res://.godot/imported/дневник_1.png-6736722cee1b27d934cb66934e8af6d5.ctex"
+uid="uid://b85px23e46g8r"
+path="res://.godot/imported/reference_room.png-6e9690ceab02d0f971d94b1d1aa247dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/resources/references/дневник_1.png"
-dest_files=["res://.godot/imported/дневник_1.png-6736722cee1b27d934cb66934e8af6d5.ctex"]
+source_file="res://config/resources/references/reference_room.png"
+dest_files=["res://.godot/imported/reference_room.png-6e9690ceab02d0f971d94b1d1aa247dc.ctex"]
 
 [params]
 

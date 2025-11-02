@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm8qccbum44i3"
-path="res://.godot/imported/очки_1.png-b9ef1c089b967a41e0a550d36736de1d.ctex"
+uid="uid://unse73prbvt"
+path="res://.godot/imported/interactive_morse_code_textbook.png-b811a7464acf2e3c9604bcd14f63367f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/resources/references/очки_1.png"
-dest_files=["res://.godot/imported/очки_1.png-b9ef1c089b967a41e0a550d36736de1d.ctex"]
+source_file="res://config/screens/game/scenes/morse_code_textbook/resources/interactive_morse_code_textbook.png"
+dest_files=["res://.godot/imported/interactive_morse_code_textbook.png-b811a7464acf2e3c9604bcd14f63367f.ctex"]
 
 [params]
 

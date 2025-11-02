@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpuij7yqaq5xk"
-path="res://.godot/imported/комп_1.png-36cac235585ce8cd8d7a1d8a0fed3ad1.ctex"
+uid="uid://b6lqqolaplto4"
+path="res://.godot/imported/interactive_encryption_machine.png-081331240ddbd3aa0272ad984480cea0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/resources/references/комп_1.png"
-dest_files=["res://.godot/imported/комп_1.png-36cac235585ce8cd8d7a1d8a0fed3ad1.ctex"]
+source_file="res://config/screens/game/scenes/encryption_machine/resources/interactive_encryption_machine.png"
+dest_files=["res://.godot/imported/interactive_encryption_machine.png-081331240ddbd3aa0272ad984480cea0.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf8h2bwcaayub"
-path="res://.godot/imported/осциллограф_1.png-f6c30286131c6832358cbfed9fa3fb2a.ctex"
+uid="uid://c7dq1souy88lf"
+path="res://.godot/imported/interactive_photo.png-9c88d688b9272c05f1e2f49fb77fa468.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/resources/references/осциллограф_1.png"
-dest_files=["res://.godot/imported/осциллограф_1.png-f6c30286131c6832358cbfed9fa3fb2a.ctex"]
+source_file="res://config/screens/game/scenes/photo/resources/interactive_photo.png"
+dest_files=["res://.godot/imported/interactive_photo.png-9c88d688b9272c05f1e2f49fb77fa468.ctex"]
 
 [params]
 

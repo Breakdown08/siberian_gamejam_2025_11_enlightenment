@@ -17,7 +17,9 @@ config/icon="res://config/resources/icon.svg"
 
 [autoload]
 
+Scenario="*res://config/global/scenario.gd"
 EventBus="*res://config/global/event_bus.gd"
+GameManager="*res://config/global/game_manager.gd"
 
 [debug]
 
