@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://unse73prbvt"
-path="res://.godot/imported/interactive_morse_code_textbook.png-b811a7464acf2e3c9604bcd14f63367f.ctex"
+uid="uid://c7dq1souy88lf"
+path="res://.godot/imported/interactive_photo.png-082368b3ef87274840d813587284ab58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/screens/game/scenes/morse_code_textbook/resources/interactive_morse_code_textbook.png"
-dest_files=["res://.godot/imported/interactive_morse_code_textbook.png-b811a7464acf2e3c9604bcd14f63367f.ctex"]
+source_file="res://config/screens/game/interactive_item/variants/photo/resources/interactive_photo.png"
+dest_files=["res://.godot/imported/interactive_photo.png-082368b3ef87274840d813587284ab58.ctex"]
 
 [params]
 

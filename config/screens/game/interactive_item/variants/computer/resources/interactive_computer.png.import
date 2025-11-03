@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7dq1souy88lf"
-path="res://.godot/imported/interactive_photo.png-9c88d688b9272c05f1e2f49fb77fa468.ctex"
+uid="uid://dxvjfdi1xti25"
+path="res://.godot/imported/interactive_computer.png-df802f58022ee01a189a5e674c587047.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/screens/game/scenes/photo/resources/interactive_photo.png"
-dest_files=["res://.godot/imported/interactive_photo.png-9c88d688b9272c05f1e2f49fb77fa468.ctex"]
+source_file="res://config/screens/game/interactive_item/variants/computer/resources/interactive_computer.png"
+dest_files=["res://.godot/imported/interactive_computer.png-df802f58022ee01a189a5e674c587047.ctex"]
 
 [params]
 

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnffu67hk4hwy"]
+
+[ext_resource type="PackedScene" uid="uid://bh2ouu1kk3ij5" path="res://config/screens/game/interactive_item/interactive_item.tscn" id="1_uvva7"]
+[ext_resource type="Script" uid="uid://b4thu1jhi6cao" path="res://config/screens/game/interactive_item/variants/glasses/glasses.gd" id="2_fs15j"]
+[ext_resource type="Texture2D" uid="uid://b575qpv8cl3ph" path="res://config/screens/game/interactive_item/variants/glasses/resources/interactive_glasses.png" id="3_hv62r"]
+[ext_resource type="AudioStream" uid="uid://cjd3p1om8fqg6" path="res://sound_fx/bookshelf/take_1.mp3" id="3_k8ond"]
+[ext_resource type="AudioStream" uid="uid://dunvbhhoeic4b" path="res://sound_fx/bookshelf/take_2.mp3" id="4_hv62r"]
+
+[node name="glasses" instance=ExtResource("1_uvva7")]
+custom_minimum_size = Vector2(80, 30)
+anchors_preset = -1
+anchor_right = 0.041666668
+anchor_bottom = 0.027777778
+offset_right = -80.0
+offset_bottom = -30.0
+script = ExtResource("2_fs15j")
+scene = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="sprite" parent="." index="0"]
+position = Vector2(40, 15)
+texture = ExtResource("3_hv62r")
+
+[node name="audio_focused" parent="." index="2"]
+stream = ExtResource("3_k8ond")
+
+[node name="audio_pressed" parent="." index="3"]
+stream = ExtResource("4_hv62r")

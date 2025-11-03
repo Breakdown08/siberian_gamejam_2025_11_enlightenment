@@ -1,6 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bh2ouu1kk3ij5"]
-
-[ext_resource type="Script" uid="uid://b0rv81ljwbl51" path="res://config/screens/game/interactive_item/interactive_item.gd" id="1_7tuuu"]
+[gd_scene load_steps=6 format=3 uid="uid://bh2ouu1kk3ij5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7tuuu"]
 
@@ -16,8 +14,6 @@
 clip_contents = true
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_7tuuu")
-color_focused = Color(0.25363666, 0.59453434, 0.61483204, 1)
 
 [node name="sprite" type="Sprite2D" parent="."]
 
@@ -38,7 +34,3 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_sd4ih")
 [node name="audio_focused" type="AudioStreamPlayer" parent="."]
 
 [node name="audio_pressed" type="AudioStreamPlayer" parent="."]
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="button" to="." method="_on_button_pressed"]

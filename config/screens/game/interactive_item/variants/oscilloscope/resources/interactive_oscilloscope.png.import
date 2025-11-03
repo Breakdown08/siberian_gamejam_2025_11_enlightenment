@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b575qpv8cl3ph"
-path="res://.godot/imported/interactive_glasses.png-9bd542247f9a4d4c3b5a40f40935e9cb.ctex"
+uid="uid://7rj2vklpjdtt"
+path="res://.godot/imported/interactive_oscilloscope.png-a75fbb18b8e1744c8ecaded71688b461.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/screens/game/scenes/glasses/resources/interactive_glasses.png"
-dest_files=["res://.godot/imported/interactive_glasses.png-9bd542247f9a4d4c3b5a40f40935e9cb.ctex"]
+source_file="res://config/screens/game/interactive_item/variants/oscilloscope/resources/interactive_oscilloscope.png"
+dest_files=["res://.godot/imported/interactive_oscilloscope.png-a75fbb18b8e1744c8ecaded71688b461.ctex"]
 
 [params]
 

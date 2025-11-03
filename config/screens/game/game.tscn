@@ -1,35 +1,21 @@
-[gd_scene load_steps=31 format=3 uid="uid://fbupj5u7t7od"]
+[gd_scene load_steps=17 format=3 uid="uid://fbupj5u7t7od"]
 
 [ext_resource type="Script" uid="uid://d3556b3fldogt" path="res://config/screens/game/game.gd" id="1_rm2kr"]
 [ext_resource type="Texture2D" uid="uid://br0npawvifefd" path="res://config/resources/static_background.png" id="2_4xw68"]
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="3_bea4q"]
 [ext_resource type="PackedScene" uid="uid://cgyox8l1wd4nb" path="res://config/screens/game/scenes/window/window.tscn" id="3_kl8j2"]
-[ext_resource type="Texture2D" uid="uid://bj1mmt8n6ohcg" path="res://config/screens/game/scenes/diary/resources/interactive_diary.png" id="4_5ekn6"]
-[ext_resource type="Texture2D" uid="uid://dxvjfdi1xti25" path="res://config/screens/game/scenes/computer/resources/interactive_computer.png" id="5_e7eys"]
-[ext_resource type="AudioStream" uid="uid://cqpul4k1fs4aa" path="res://sound_fx/desktop/mouse_5.mp3" id="6_g7kpl"]
-[ext_resource type="Texture2D" uid="uid://b575qpv8cl3ph" path="res://config/screens/game/scenes/glasses/resources/interactive_glasses.png" id="6_vp8ek"]
-[ext_resource type="AudioStream" uid="uid://cowkievma70c" path="res://sound_fx/desktop/keyboard_6.mp3" id="7_hmvvq"]
-[ext_resource type="Texture2D" uid="uid://unse73prbvt" path="res://config/screens/game/scenes/morse_code_textbook/resources/interactive_morse_code_textbook.png" id="7_ngw88"]
-[ext_resource type="Texture2D" uid="uid://c7dq1souy88lf" path="res://config/screens/game/scenes/photo/resources/interactive_photo.png" id="7_vp8ek"]
-[ext_resource type="Texture2D" uid="uid://b6lqqolaplto4" path="res://config/screens/game/scenes/encryption_machine/resources/interactive_encryption_machine.png" id="8_2h0s6"]
-[ext_resource type="AudioStream" uid="uid://cjd3p1om8fqg6" path="res://sound_fx/bookshelf/take_1.mp3" id="9_enq3h"]
-[ext_resource type="Texture2D" uid="uid://7rj2vklpjdtt" path="res://config/screens/game/scenes/oscilloscope/resources/interactive_oscilloscope.png" id="10_2h0s6"]
-[ext_resource type="PackedScene" uid="uid://bh2ouu1kk3ij5" path="res://config/screens/game/interactive_item/interactive_item.tscn" id="11_2h0s6"]
-[ext_resource type="AudioStream" uid="uid://clgc0cimvg41h" path="res://sound_fx/bookshelf/put_1.mp3" id="11_dd2lb"]
+[ext_resource type="PackedScene" uid="uid://b34hevgxbyfql" path="res://config/screens/game/interactive_item/variants/morse_code_textbook/morse_code_textbook.tscn" id="10_kl8j2"]
 [ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="12_che8u"]
-[ext_resource type="AudioStream" uid="uid://dupx8d4ppihi" path="res://sound_fx/photo/up_4.mp3" id="12_qvqh1"]
-[ext_resource type="AudioStream" uid="uid://dunvbhhoeic4b" path="res://sound_fx/bookshelf/take_2.mp3" id="12_uw6nc"]
 [ext_resource type="PackedScene" uid="uid://cr4j1dhnjms4f" path="res://config/ui/actor_speech_panel/actor_speech_panel.tscn" id="12_v58cl"]
-[ext_resource type="AudioStream" uid="uid://bbosmyqvpp17h" path="res://sound_fx/photo/up_5.mp3" id="13_53n4f"]
 [ext_resource type="PackedScene" uid="uid://bve1ca5g20od6" path="res://config/screens/game/actors/friend/friend.tscn" id="13_che8u"]
-[ext_resource type="AudioStream" uid="uid://c45nxn0lntrur" path="res://sound_fx/mini-game3/jack_out3.mp3" id="14_7bsug"]
-[ext_resource type="AudioStream" uid="uid://jxpdl43lit61" path="res://sound_fx/pencil/fx_6.mp3" id="14_hmvvq"]
-[ext_resource type="AudioStream" uid="uid://csrfxbaxv6kq0" path="res://sound_fx/minigame1/encoder_4.mp3" id="15_2h4oq"]
-[ext_resource type="AudioStream" uid="uid://dw5vwe8ia8h4a" path="res://sound_fx/mini-game3/jack_in3.mp3" id="15_enq3h"]
 [ext_resource type="PackedScene" uid="uid://n2la2f336s84" path="res://config/screens/game/actors/hero/hero.tscn" id="15_mwajf"]
-[ext_resource type="AudioStream" uid="uid://d14k0ov1nqy4j" path="res://sound_fx/journal/leaf_1.mp3" id="15_p46bx"]
-[ext_resource type="AudioStream" uid="uid://b2fw78i70xcv6" path="res://sound_fx/minigame1/encoder_8.mp3" id="16_5mj60"]
 [ext_resource type="Texture2D" uid="uid://dupbapb23iudf" path="res://config/resources/room.png" id="16_mwajf"]
+[ext_resource type="PackedScene" uid="uid://did6276qugi8o" path="res://config/screens/game/interactive_item/variants/computer/computer.tscn" id="25_657kl"]
+[ext_resource type="PackedScene" uid="uid://cy305tkklbguq" path="res://config/screens/game/interactive_item/variants/diary/diary.tscn" id="26_lwjy1"]
+[ext_resource type="PackedScene" uid="uid://bnffu67hk4hwy" path="res://config/screens/game/interactive_item/variants/glasses/glasses.tscn" id="27_8ekm0"]
+[ext_resource type="PackedScene" uid="uid://mqso644axs22" path="res://config/screens/game/interactive_item/variants/oscilloscope/oscilloscope.tscn" id="28_alk2l"]
+[ext_resource type="PackedScene" uid="uid://hf7fwd8uxsga" path="res://config/screens/game/interactive_item/variants/photo/photo.tscn" id="29_tnrtu"]
+[ext_resource type="PackedScene" uid="uid://cn51hyjk3hel0" path="res://config/screens/game/interactive_item/variants/encryption_machine/encryption_machine.tscn" id="30_1my6b"]
 
 [node name="game" type="Control"]
 layout_mode = 3
@@ -67,157 +53,64 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="computer" parent="interactive_items" instance=ExtResource("11_2h0s6")]
+[node name="morse_code_textbook" parent="interactive_items" instance=ExtResource("10_kl8j2")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.29270834
-anchor_top = 0.20185184
-anchor_right = 0.45260417
-anchor_bottom = 0.39629626
-scene = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="sprite" parent="interactive_items/computer" index="0"]
-position = Vector2(157, 103)
-texture = ExtResource("5_e7eys")
-
-[node name="audio_focused" parent="interactive_items/computer" index="2"]
-stream = ExtResource("6_g7kpl")
-
-[node name="audio_pressed" parent="interactive_items/computer" index="3"]
-stream = ExtResource("7_hmvvq")
-
-[node name="glasses" parent="interactive_items" instance=ExtResource("11_2h0s6")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.77916664
-anchor_top = 0.16203703
-anchor_right = 0.8265625
-anchor_bottom = 0.19629629
-offset_top = 1.5258789e-05
-grow_horizontal = 2
-grow_vertical = 2
-scene = 5
-metadata/_edit_use_anchors_ = true
-
-[node name="sprite" parent="interactive_items/glasses" index="0"]
-position = Vector2(44, 20)
-texture = ExtResource("6_vp8ek")
-
-[node name="audio_focused" parent="interactive_items/glasses" index="2"]
-stream = ExtResource("9_enq3h")
-
-[node name="audio_pressed" parent="interactive_items/glasses" index="3"]
-stream = ExtResource("12_uw6nc")
-
-[node name="photo" parent="interactive_items" instance=ExtResource("11_2h0s6")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.10364583
-anchor_top = 0.16296296
-anchor_right = 0.15520833
-anchor_bottom = 0.22870371
-grow_horizontal = 2
-grow_vertical = 2
-scene = 8
-metadata/_edit_use_anchors_ = true
-
-[node name="sprite" parent="interactive_items/photo" index="0"]
-position = Vector2(51, 34)
-texture = ExtResource("7_vp8ek")
-
-[node name="audio_focused" parent="interactive_items/photo" index="2"]
-stream = ExtResource("12_qvqh1")
-
-[node name="audio_pressed" parent="interactive_items/photo" index="3"]
-stream = ExtResource("13_53n4f")
-
-[node name="morse_code_textbook" parent="interactive_items" instance=ExtResource("11_2h0s6")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.15572916
+anchor_left = 0.15625
 anchor_top = 0.1388889
-anchor_right = 0.17552084
+anchor_right = 0.19791667
+anchor_bottom = 0.32407406
+
+[node name="photo" parent="interactive_items" instance=ExtResource("29_tnrtu")]
+layout_mode = 1
+anchor_left = 0.104166664
+anchor_top = 0.16481481
+anchor_right = 0.15625
 anchor_bottom = 0.22685185
-grow_horizontal = 2
-grow_vertical = 2
-scene = 6
-metadata/_edit_use_anchors_ = true
+offset_right = 0.0
+offset_bottom = 0.0
 
-[node name="sprite" parent="interactive_items/morse_code_textbook" index="0"]
-position = Vector2(21, 47)
-texture = ExtResource("7_ngw88")
-
-[node name="audio_focused" parent="interactive_items/morse_code_textbook" index="2"]
-stream = ExtResource("11_dd2lb")
-
-[node name="audio_pressed" parent="interactive_items/morse_code_textbook" index="3"]
-stream = ExtResource("12_uw6nc")
-
-[node name="encryption_machine" parent="interactive_items" instance=ExtResource("11_2h0s6")]
+[node name="glasses" parent="interactive_items" instance=ExtResource("27_8ekm0")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.4640625
-anchor_top = 0.26759258
-anchor_right = 0.56302077
-anchor_bottom = 0.34814814
-grow_horizontal = 0
-grow_vertical = 0
-scene = 4
-metadata/_edit_use_anchors_ = true
+anchor_left = 0.78125
+anchor_top = 0.16666667
+anchor_right = 0.8229167
+anchor_bottom = 0.19444445
+offset_right = 0.0
+offset_bottom = 0.0
 
-[node name="sprite" parent="interactive_items/encryption_machine" index="0"]
-position = Vector2(96, 49)
-texture = ExtResource("8_2h0s6")
-
-[node name="audio_focused" parent="interactive_items/encryption_machine" index="2"]
-stream = ExtResource("14_7bsug")
-
-[node name="audio_pressed" parent="interactive_items/encryption_machine" index="3"]
-stream = ExtResource("15_enq3h")
-
-[node name="oscilloscope" parent="interactive_items" instance=ExtResource("11_2h0s6")]
+[node name="computer" parent="interactive_items" instance=ExtResource("25_657kl")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.14583333
-anchor_top = 0.26944444
-anchor_right = 0.24479167
-anchor_bottom = 0.36666667
-scene = 7
-metadata/_edit_use_anchors_ = true
+anchor_left = 0.29270834
+anchor_top = 0.20092593
+anchor_right = 0.45260417
+anchor_bottom = 0.39537033
+offset_right = 0.0
+offset_bottom = 0.0
 
-[node name="sprite" parent="interactive_items/oscilloscope" index="0"]
-position = Vector2(96, 53)
-texture = ExtResource("10_2h0s6")
-
-[node name="audio_focused" parent="interactive_items/oscilloscope" index="2"]
-stream = ExtResource("15_2h4oq")
-
-[node name="audio_pressed" parent="interactive_items/oscilloscope" index="3"]
-stream = ExtResource("16_5mj60")
-
-[node name="diary" parent="interactive_items" instance=ExtResource("11_2h0s6")]
+[node name="encryption_machine" parent="interactive_items" instance=ExtResource("30_1my6b")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.453125
-anchor_top = 0.32592592
-anchor_right = 0.57708335
-anchor_bottom = 0.40185183
-offset_bottom = 3.0517578e-05
-grow_horizontal = 2
-grow_vertical = 2
-scene = 3
-metadata/_edit_use_anchors_ = true
+anchor_left = 0.46927083
+anchor_top = 0.27685186
+anchor_right = 0.5578125
+anchor_bottom = 0.35092592
+offset_right = 0.0
+offset_bottom = 0.0
 
-[node name="sprite" parent="interactive_items/diary" index="0"]
-position = Vector2(117, 38)
-texture = ExtResource("4_5ekn6")
+[node name="diary" parent="interactive_items" instance=ExtResource("26_lwjy1")]
+layout_mode = 1
+anchor_left = 0.45208332
+anchor_top = 0.32037038
+anchor_right = 0.57447916
+anchor_bottom = 0.39906943
 
-[node name="audio_focused" parent="interactive_items/diary" index="2"]
-stream = ExtResource("14_hmvvq")
-
-[node name="audio_pressed" parent="interactive_items/diary" index="3"]
-stream = ExtResource("15_p46bx")
+[node name="oscilloscope" parent="interactive_items" instance=ExtResource("28_alk2l")]
+layout_mode = 1
+anchor_left = 0.14947917
+anchor_top = 0.275
+anchor_right = 0.24322917
+anchor_bottom = 0.36296296
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="system_panel" parent="." instance=ExtResource("3_bea4q")]
 layout_mode = 1
@@ -230,9 +123,11 @@ size_flags_vertical = 4
 text = "МЕНЮ"
 
 [node name="friend" parent="." instance=ExtResource("13_che8u")]
+visible = false
 position = Vector2(1779, 502)
 
 [node name="hero" parent="." instance=ExtResource("15_mwajf")]
+visible = false
 position = Vector2(702.00006, 528.00006)
 scale = Vector2(0.665, 0.665)
 
@@ -269,11 +164,4 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("16_mwajf")
 
-[editable path="interactive_items/computer"]
-[editable path="interactive_items/glasses"]
-[editable path="interactive_items/photo"]
-[editable path="interactive_items/morse_code_textbook"]
-[editable path="interactive_items/encryption_machine"]
-[editable path="interactive_items/oscilloscope"]
-[editable path="interactive_items/diary"]
 [editable path="system_panel"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6lqqolaplto4"
-path="res://.godot/imported/interactive_encryption_machine.png-081331240ddbd3aa0272ad984480cea0.ctex"
+uid="uid://unse73prbvt"
+path="res://.godot/imported/interactive_morse_code_textbook.png-24b5c2e0968ca045f2a1affb9b11a90d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/screens/game/scenes/encryption_machine/resources/interactive_encryption_machine.png"
-dest_files=["res://.godot/imported/interactive_encryption_machine.png-081331240ddbd3aa0272ad984480cea0.ctex"]
+source_file="res://config/screens/game/interactive_item/variants/morse_code_textbook/resources/interactive_morse_code_textbook.png"
+dest_files=["res://.godot/imported/interactive_morse_code_textbook.png-24b5c2e0968ca045f2a1affb9b11a90d.ctex"]
 
 [params]
 

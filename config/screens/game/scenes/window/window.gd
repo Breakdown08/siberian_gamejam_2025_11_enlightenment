@@ -5,22 +5,23 @@ extends Control
 @onready var evening:TextureRect = $evening
 @onready var night:TextureRect = $night
 
-var INTERVAL:float = 3.0
+var INTERVAL:float = 15.0
 var ANIMATION_DURATION:float = 1.0
 
 
 func _ready() -> void:
 	reset_modulate()
-	EventBus.speech_started.connect(stop_animation)
-	EventBus.speech_finished.connect(animate)
-	animate() # for debug
+	Scenario.cutscene_on.connect(stop_animation)
+	Scenario.cutscene_off.connect(animate)
+	#animate() # for debug
 	
 	
 func reset_modulate():
-	morning.modulate = Color.WHITE
-	day.modulate = Color.TRANSPARENT
-	evening.modulate = Color.TRANSPARENT
-	night.modulate = Color.TRANSPARENT
+	var tween:Tween = Utils.tween(self).set_parallel(true)
+	tween.tween_property(morning, "modulate", Color.WHITE, ANIMATION_DURATION)
+	tween.tween_property(day, "modulate", Color.TRANSPARENT, ANIMATION_DURATION)
+	tween.tween_property(evening, "modulate", Color.TRANSPARENT, ANIMATION_DURATION)
+	tween.tween_property(night, "modulate", Color.TRANSPARENT, ANIMATION_DURATION)
 
 
 func animate():
@@ -44,5 +45,3 @@ func animate():
 
 func stop_animation():
 	reset_modulate()
-	var tween:Tween = Utils.tween(self)
-	tween.tween_interval(0.0)
