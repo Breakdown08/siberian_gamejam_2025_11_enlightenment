@@ -14,6 +14,8 @@ func _ready() -> void:
 
 
 func _on_mouse_entered() -> void:
+	if GameManager.is_cutscene:
+		return
 	modulate = color_focused
 
 
@@ -22,6 +24,8 @@ func _on_mouse_exited() -> void:
 
 
 func _on_button_pressed() -> void:
+	if GameManager.is_cutscene:
+		return
 	if is_locked:
 		think_about()
 		return
