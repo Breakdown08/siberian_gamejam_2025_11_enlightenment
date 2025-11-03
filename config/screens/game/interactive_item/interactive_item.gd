@@ -1,5 +1,8 @@
 extends Control
 
+@onready var audio_focused:AudioStreamPlayer = $audio_focused
+@onready var audio_pressed:AudioStreamPlayer = $audio_pressed
+
 @export var color_focused:Color = Color.RED
 @export var scene:Game.SCENE
 
@@ -17,15 +20,18 @@ func _on_mouse_entered() -> void:
 	if GameManager.is_cutscene:
 		return
 	modulate = color_focused
+	audio_focused.play()
 
 
 func _on_mouse_exited() -> void:
 	modulate = Color.WHITE
+	audio_focused.stop()
 
 
 func _on_button_pressed() -> void:
 	if GameManager.is_cutscene:
 		return
+	audio_pressed.play()
 	if is_locked:
 		think_about()
 		return

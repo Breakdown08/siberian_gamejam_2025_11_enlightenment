@@ -20,20 +20,23 @@ func _ready() -> void:
 
 
 func animation_update_text(actor_speech:String, hide_on_finished:bool=false):
-	EventBus.speech_started.emit()
+	if !hide_on_finished:
+		EventBus.speech_started.emit()
 	speech.text = actor_speech
 	speech.visible_ratio = 0.0
 	var tween:Tween = Utils.tween(self, "dialog_speech")
 	tween.tween_property(speech, "visible_ratio", 1.0, Utils.get_visible_ratio_time(actor_speech) / 3)
 	tween.tween_callback(func():
-		EventBus.speech_finished.emit()
 		if hide_on_finished:
 			animation_hide_dialog()
+			return
+		EventBus.speech_finished.emit()
 	)
 
 
 func animation_show_dialog(actor:String, actor_speech:String, hide_on_finished:bool=false):
-	EventBus.speech_started.emit()
+	if !hide_on_finished:
+		EventBus.speech_started.emit()
 	match_actor(actor)
 	show()
 	speech.text = ""

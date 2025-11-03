@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://tobbaooxwyv0"]
+[gd_scene load_steps=4 format=3 uid="uid://tobbaooxwyv0"]
 
 [ext_resource type="Script" uid="uid://83dut20x2mu" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dh56eo3q3xvwn" path="res://config/ui/debug/scenario/scenario.tscn" id="2_0xm2m"]
+[ext_resource type="AudioStream" uid="uid://dr1qskhj4f34i" path="res://sound_fx/main_theme.mp3" id="3_h2yge"]
 
 [node name="main" type="Control"]
 layout_mode = 3
@@ -26,3 +27,8 @@ anchor_left = 0.478125
 anchor_right = 0.521875
 offset_right = -6.1035156e-05
 grow_horizontal = 2
+
+[node name="audio_stream_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_h2yge")
+autoplay = true
+parameters/looping = false

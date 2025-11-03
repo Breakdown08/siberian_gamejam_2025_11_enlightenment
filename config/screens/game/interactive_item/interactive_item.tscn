@@ -35,6 +35,10 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_hvsc2")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_uk35x")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_sd4ih")
 
+[node name="audio_focused" type="AudioStreamPlayer" parent="."]
+
+[node name="audio_pressed" type="AudioStreamPlayer" parent="."]
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="button" to="." method="_on_button_pressed"]
