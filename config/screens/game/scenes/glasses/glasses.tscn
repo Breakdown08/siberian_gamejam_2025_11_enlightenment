@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://cxbk1ewq51c8d"]
+[gd_scene load_steps=5 format=3 uid="uid://cxbk1ewq51c8d"]
+
+[ext_resource type="Script" uid="uid://djgs4l15galmo" path="res://config/screens/game/scenes/glasses/glasses.gd" id="1_bf501"]
+[ext_resource type="Texture2D" uid="uid://c50ebxyl0t170" path="res://config/screens/game/scenes/glasses/resources/glasses.png" id="2_m1quy"]
+[ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_y7bg1"]
+[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="3_m1quy"]
 
 [node name="glasses" type="Control"]
 layout_mode = 3
@@ -7,3 +12,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bf501")
+
+[node name="static_background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_m1quy")
+
+[node name="system_panel" parent="." instance=ExtResource("2_y7bg1")]
+layout_mode = 1
+
+[node name="room" parent="system_panel/margin" index="0" instance=ExtResource("3_m1quy")]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "В КОМНАТУ"
+
+[editable path="system_panel"]

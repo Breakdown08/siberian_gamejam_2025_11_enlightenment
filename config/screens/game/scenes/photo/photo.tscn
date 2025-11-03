@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://d1uw0iuwrvde"]
+[gd_scene load_steps=5 format=3 uid="uid://d1uw0iuwrvde"]
+
+[ext_resource type="Script" uid="uid://c3w8j7hq1bwwj" path="res://config/screens/game/scenes/photo/photo.gd" id="1_glqho"]
+[ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_erndg"]
+[ext_resource type="Texture2D" uid="uid://ynrmfc65tdec" path="res://config/screens/game/scenes/photo/resources/photo_hide.png" id="2_i3sf4"]
+[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="3_i3sf4"]
 
 [node name="photo" type="Control"]
 layout_mode = 3
@@ -7,3 +12,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_glqho")
+
+[node name="static_background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_i3sf4")
+
+[node name="system_panel" parent="." instance=ExtResource("2_erndg")]
+layout_mode = 1
+
+[node name="room" parent="system_panel/margin" index="0" instance=ExtResource("3_i3sf4")]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "В КОМНАТУ"
+
+[editable path="system_panel"]

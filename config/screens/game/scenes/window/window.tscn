@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgyox8l1wd4nb"]
+
+[ext_resource type="Texture2D" uid="uid://dttnso0e7q8qv" path="res://config/screens/game/scenes/window/resources/window_morning.png" id="1_n6his"]
+[ext_resource type="Texture2D" uid="uid://1wqxr2xdvpd" path="res://config/screens/game/scenes/window/resources/window_day.png" id="2_8iuqd"]
+[ext_resource type="Texture2D" uid="uid://d0mox1gjphru5" path="res://config/screens/game/scenes/window/resources/window_evening.png" id="3_ost8e"]
+[ext_resource type="Texture2D" uid="uid://3htlvec0b51t" path="res://config/screens/game/scenes/window/resources/window_night.png" id="4_7drn2"]
+
+[node name="window" type="Control"]
+custom_minimum_size = Vector2(578, 338)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="morning" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n6his")
+
+[node name="day" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8iuqd")
+metadata/_edit_use_anchors_ = true
+
+[node name="evening" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ost8e")
+metadata/_edit_use_anchors_ = true
+
+[node name="night" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_7drn2")
+metadata/_edit_use_anchors_ = true

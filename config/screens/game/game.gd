@@ -3,6 +3,9 @@ class_name Game extends Control
 @onready var system_panel:Panel = $system_panel
 @onready var button_menu:Button = $system_panel/margin/menu
 @onready var scene:Node = $scene
+@onready var notifications:Control = $notifications
+
+const NOTIFICATION:PackedScene = preload("res://config/ui/popup/notification/notification.tscn")
 
 enum SCENE {
 	MAIN, 
@@ -17,7 +20,7 @@ enum SCENE {
 }
 
 var SCENES:Dictionary[SCENE, PackedScene] = {
-	SCENE.MENU_PAUSE : preload("res://config/screens/game/config/menu_pause/menu_pause.tscn"),
+	SCENE.MENU_PAUSE : preload("res://config/screens/game/scenes/menu_pause/menu_pause.tscn"),
 	SCENE.COMPUTER : preload("res://config/screens/game/scenes/computer/computer.tscn"),
 	SCENE.DIARY : preload("res://config/screens/game/scenes/diary/diary.tscn"),
 	SCENE.ENCRYPTION_MACHINE : preload("res://config/screens/game/scenes/encryption_machine/encryption_machine.tscn"),
@@ -31,6 +34,8 @@ var SCENES:Dictionary[SCENE, PackedScene] = {
 func _ready() -> void:
 	button_menu.pressed.connect(on_button_menu_pressed)
 	EventBus.scene_switched.connect(on_scene_switched)
+	EventBus.notification.connect(on_notification)
+	EventBus.game_started.emit()
 
 
 func on_button_menu_pressed():
@@ -43,3 +48,9 @@ func on_scene_switched(next_scene:SCENE):
 	if next_scene == SCENE.MAIN:
 		return
 	scene.add_child(SCENES[next_scene].instantiate())
+
+
+func on_notification(message:String):
+	var instance = NOTIFICATION.instantiate() as Notification
+	notifications.add_child(instance)
+	instance.message.text = message

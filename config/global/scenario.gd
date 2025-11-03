@@ -15,24 +15,32 @@ const KEY_EVENTS = "events"
 # Сценарные события:
 signal friend_has_come # друг пришел
 signal friend_has_left # друг ушел
+signal cutscene_on # катсцена началась
+signal cutscene_off # катсцена закончилась
 signal encryption_machine_try_code_breaking(key:String) # шифр. машинка ввод символов
+signal oscilloscope_write_params(params:PackedInt32Array) # записаны параметры крутилок осциллографа в дневник
+signal computer_try_send_signal(params:PackedInt32Array) # отправлен сигнал параметров через компьютер
+signal computer_response(respone:String) # ответ компьютера на сигнал
 
 # Сценарные ключи
 const ENCRYPTION_MACHINE_PASSWORD:String = "тест"
 const ENCRYPTION_MACHINE_ANSWER:String = "Я УсиЩ, ПРОЗРЕЙ фото с ГлазиЩем"
+const OSCILLOSCOPE_PARAMS:PackedInt32Array = [0, 1, 2, 3, 4]
+const NOTIFICATION_UPDATE_DIARY:String = "Запись в дневнике обновлена..."
 
 # Ход сценария:
 var data_base:Array[Dictionary] = [
 	{
 		KEY_ACTOR : ACTOR_NONE,
 		KEY_SPEECH : "Как всегда пунктуален. Уже на протяжении нескольких месяцев Женя приходит в одно и то же время, чтобы принести мне новую порцию еды",
+		KEY_EVENTS : [event(self.cutscene_on)]
 	},
 	{
 		KEY_ACTOR : ACTOR_NONE,
 		KEY_SPEECH : "и энергетиков, а заодно вынести мой мусор. Не знаю, чтобы я делал без такого понимающего друга.",
 	},
 	{
-		KEY_EVENTS : [event(friend_has_come)]
+		KEY_EVENTS : [event(self.friend_has_come)]
 	},
 	{
 		KEY_ACTOR : ACTOR_FRIEND,

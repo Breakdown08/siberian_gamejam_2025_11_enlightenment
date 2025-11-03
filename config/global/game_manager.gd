@@ -2,6 +2,34 @@ extends Node
 
 var scenario_id:int = -1
 var current_actor:String = ""
+var is_cutscene:bool = false
+var is_speech_finished = false
+
+
+func _init() -> void:
+	Scenario.cutscene_on.connect(func():
+		is_cutscene = true
+	)
+	Scenario.cutscene_off.connect(func():
+		is_cutscene = false
+	)
+	EventBus.speech_started.connect(func():
+		is_speech_finished = false
+	)
+	EventBus.speech_finished.connect(func():
+		is_speech_finished = true
+	)
+	EventBus.game_started.connect(func():
+		start()
+	)
+
+
+func start():
+	scenario_id = -1
+	current_actor = ""
+	is_cutscene = false
+	is_speech_finished = false
+	scenario_next()
 
 
 func scenario_next():
@@ -10,6 +38,7 @@ func scenario_next():
 		var scenario:Dictionary = Scenario.data_base[scenario_id]
 		emit_scenario_dialog(scenario)
 		emit_scenario_events(scenario)
+		EventBus.scenario_id_updated.emit(scenario_id)
 
 
 func emit_scenario_dialog(scenario:Dictionary):
@@ -30,8 +59,8 @@ func emit_scenario_events(scenario:Dictionary):
 			Scenario.emit_signal(signal_name)
 
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		if scenario_id < Scenario.data_base.size() - 1:
-			#scenario_id = -1
-			scenario_next()
+func _input(event:InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if is_cutscene and is_speech_finished and scenario_id < Scenario.data_base.size() - 1:
+				scenario_next()

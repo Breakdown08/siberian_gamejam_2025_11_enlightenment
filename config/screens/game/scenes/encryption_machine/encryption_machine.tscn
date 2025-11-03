@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://0ykvcbglgwku"]
 
 [ext_resource type="Script" uid="uid://d20s8xet4h41" path="res://config/screens/game/scenes/encryption_machine/encryption_machine.gd" id="1_01rjc"]
-[ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/screens/game/config/system_panel/system_panel.tscn" id="2_dvm5s"]
+[ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_dvm5s"]
 [ext_resource type="Texture2D" uid="uid://caenkvel5vpvf" path="res://config/screens/game/scenes/encryption_machine/resources/encryption_machine.png" id="2_n1fy3"]
 [ext_resource type="PackedScene" uid="uid://gj2jowl3ih7p" path="res://config/screens/game/scenes/encryption_machine/display/display.tscn" id="4_dvm5s"]
 [ext_resource type="PackedScene" uid="uid://clmlheau8koda" path="res://config/screens/game/scenes/encryption_machine/switch/switch.tscn" id="4_k4nx7"]

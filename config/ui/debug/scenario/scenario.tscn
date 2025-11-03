@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh56eo3q3xvwn"]
+
+[ext_resource type="Script" uid="uid://bhvabb1i2c75y" path="res://config/ui/debug/scenario/scenario.gd" id="1_j8l4d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
+bg_color = Color(1, 0.33261612, 0.35665008, 1)
+
+[node name="scenario" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.23645833
+anchor_right = 0.28020832
+anchor_bottom = 0.037037037
+theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
+script = ExtResource("1_j8l4d")
+metadata/_edit_use_anchors_ = true
+
+[node name="id" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "---"
+horizontal_alignment = 1
+vertical_alignment = 1

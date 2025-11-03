@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf8akmyd0msei"]
+[gd_scene load_steps=7 format=3 uid="uid://cf8akmyd0msei"]
 
 [ext_resource type="Script" uid="uid://dhk2u4falvg5h" path="res://config/screens/game/scenes/oscilloscope/oscilloscope.gd" id="1_6tim8"]
 [ext_resource type="Texture2D" uid="uid://bd1n2nqfg7a3l" path="res://config/screens/game/scenes/oscilloscope/resources/oscilloscope.png" id="2_b0816"]
 [ext_resource type="Texture2D" uid="uid://ig1r2dd0lo0l" path="res://config/screens/game/scenes/oscilloscope/resources/reference_oscilloscope.png" id="3_g1i1e"]
 [ext_resource type="Texture2D" uid="uid://dkbm7pk3abwhn" path="res://config/screens/game/scenes/oscilloscope/resources/potentiometer.png" id="4_kgl6y"]
+[ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="5_mkgrp"]
+[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="6_hvpvx"]
 
 [node name="oscilloscope" type="Control"]
 layout_mode = 3
@@ -97,3 +99,26 @@ anchor_bottom = 0.5904386
 texture = ExtResource("4_kgl6y")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="cheat_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 655.0
+offset_top = 438.0
+offset_right = 959.0
+offset_bottom = 545.0
+theme_override_font_sizes/font_size = 20
+text = "ЧИТЕРСКАЯ КНОПКА"
+
+[node name="system_panel" parent="." instance=ExtResource("5_mkgrp")]
+layout_mode = 1
+
+[node name="room" parent="system_panel/margin" index="0" instance=ExtResource("6_hvpvx")]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "В КОМНАТУ"
+
+[connection signal="pressed" from="cheat_button" to="." method="_on_cheat_button_pressed"]
+
+[editable path="system_panel"]

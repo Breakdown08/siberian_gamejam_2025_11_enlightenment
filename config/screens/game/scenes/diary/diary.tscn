@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://csq0hllx406t5"]
+[gd_scene load_steps=5 format=3 uid="uid://csq0hllx406t5"]
 
 [ext_resource type="Script" uid="uid://djr4rnct1ah17" path="res://config/screens/game/scenes/diary/diary.gd" id="1_5oupm"]
+[ext_resource type="Texture2D" uid="uid://c2tmn8yj4m4mp" path="res://config/screens/game/scenes/diary/resources/diary.png" id="2_6dj4t"]
+[ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_i7wao"]
+[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="3_6dj4t"]
 
 [node name="diary" type="Control"]
 layout_mode = 3
@@ -10,3 +13,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5oupm")
+
+[node name="static_background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6dj4t")
+
+[node name="system_panel" parent="." instance=ExtResource("2_i7wao")]
+layout_mode = 1
+
+[node name="room" parent="system_panel/margin" index="0" instance=ExtResource("3_6dj4t")]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "В КОМНАТУ"
+
+[editable path="system_panel"]
