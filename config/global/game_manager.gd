@@ -32,6 +32,7 @@ func start():
 	is_cutscene = false
 	is_speech_finished = false
 	scenario_next()
+	#debug_scenario(60)
 
 
 func scenario_next():
@@ -41,6 +42,11 @@ func scenario_next():
 		emit_scenario_dialog(scenario)
 		emit_scenario_events(scenario)
 		EventBus.scenario_id_updated.emit(scenario_id)
+
+
+func debug_scenario(id:int):
+	for i in range(id+1):
+		scenario_next()
 
 
 func emit_scenario_dialog(scenario:Dictionary):
