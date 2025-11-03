@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://br3wx4hh16v08"]
+
+[ext_resource type="Script" uid="uid://ch8lu8qrlj2ox" path="res://config/screens/game/scenes/encryption_machine/input/input.gd" id="1_e8nca"]
+[ext_resource type="FontFile" uid="uid://bkeiamdlsi230" path="res://config/resources/fonts/press_start_2p_regular.ttf" id="2_y28jf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8nca"]
+bg_color = Color(0.23081565, 0.25667801, 0.13340995, 1)
+
+[node name="input" type="Control"]
+custom_minimum_size = Vector2(273, 120)
+layout_mode = 3
+anchor_right = 0.1421875
+anchor_bottom = 0.11111111
+script = ExtResource("1_e8nca")
+metadata/_edit_use_anchors_ = true
+
+[node name="panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e8nca")
+
+[node name="margin" type="MarginContainer" parent="panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 0
+
+[node name="display" type="Label" parent="panel/margin"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y28jf")
+theme_override_font_sizes/font_size = 45
+horizontal_alignment = 2
+clip_text = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://da2myacsb7u44"]
 
-[ext_resource type="Script" uid="uid://b87656qbxtdhe" path="res://config/screens/game/scenes/computer/computer.gd" id="1_mls1d"]
+[ext_resource type="Script" uid="uid://co76kp77363e4" path="res://config/screens/game/scenes/computer/computer.gd" id="1_mls1d"]
 
 [node name="computer" type="Control"]
 layout_mode = 3

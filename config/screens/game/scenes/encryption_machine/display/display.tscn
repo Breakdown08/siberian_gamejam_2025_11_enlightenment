@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://gj2jowl3ih7p"]
+
+[ext_resource type="Script" uid="uid://bw0ehpsjbyu77" path="res://config/screens/game/scenes/encryption_machine/display/display.gd" id="1_h1ift"]
+[ext_resource type="FontFile" uid="uid://bkeiamdlsi230" path="res://config/resources/fonts/press_start_2p_regular.ttf" id="2_57waa"]
+
+[sub_resource type="Gradient" id="Gradient_57waa"]
+offsets = PackedFloat32Array(0, 0.12014134, 0.8975265, 0.94699645, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.29411766, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_811t6"]
+gradient = SubResource("Gradient_57waa")
+
+[node name="display" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(780, 110)
+layout_mode = 3
+anchor_right = 0.41145834
+anchor_bottom = 0.10185185
+offset_right = -10.0
+script = ExtResource("1_h1ift")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbols" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 1240.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_57waa")
+theme_override_font_sizes/font_size = 40
+
+[node name="gradient" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_811t6")

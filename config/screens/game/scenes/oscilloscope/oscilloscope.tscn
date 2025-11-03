@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cf8akmyd0msei"]
+[gd_scene load_steps=5 format=3 uid="uid://cf8akmyd0msei"]
 
 [ext_resource type="Script" uid="uid://dhk2u4falvg5h" path="res://config/screens/game/scenes/oscilloscope/oscilloscope.gd" id="1_6tim8"]
+[ext_resource type="Texture2D" uid="uid://bd1n2nqfg7a3l" path="res://config/screens/game/scenes/oscilloscope/resources/oscilloscope.png" id="2_b0816"]
+[ext_resource type="Texture2D" uid="uid://ig1r2dd0lo0l" path="res://config/screens/game/scenes/oscilloscope/resources/reference_oscilloscope.png" id="3_g1i1e"]
+[ext_resource type="Texture2D" uid="uid://dkbm7pk3abwhn" path="res://config/screens/game/scenes/oscilloscope/resources/potentiometer.png" id="4_kgl6y"]
 
 [node name="oscilloscope" type="Control"]
 layout_mode = 3
@@ -10,3 +13,87 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6tim8")
+
+[node name="static_background" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1880.0
+offset_bottom = -1040.0
+texture = ExtResource("2_b0816")
+metadata/_edit_use_anchors_ = true
+
+[node name="reference" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.21568628)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_g1i1e")
+
+[node name="controls" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="potentiometer_1" type="TextureRect" parent="controls"]
+layout_mode = 0
+anchor_left = 0.25364584
+anchor_top = 0.7138889
+anchor_right = 0.34947917
+anchor_bottom = 0.88796294
+texture = ExtResource("4_kgl6y")
+metadata/_edit_use_anchors_ = true
+
+[node name="potentiometer_2" type="TextureRect" parent="controls"]
+self_modulate = Color(1, 0.7882353, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13020833
+anchor_top = 0.61851853
+anchor_right = 0.20052083
+anchor_bottom = 0.7462358
+texture = ExtResource("4_kgl6y")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="potentiometer_3" type="TextureRect" parent="controls"]
+self_modulate = Color(1, 1, 0.5686275, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13072917
+anchor_top = 0.3212963
+anchor_right = 0.2109375
+anchor_bottom = 0.46698856
+texture = ExtResource("4_kgl6y")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="potentiometer_4" type="TextureRect" parent="controls"]
+self_modulate = Color(0.6156863, 1, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6432292
+anchor_top = 0.23796296
+anchor_right = 0.71666664
+anchor_bottom = 0.37135655
+texture = ExtResource("4_kgl6y")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="potentiometer_5" type="TextureRect" parent="controls"]
+self_modulate = Color(0.7882353, 0.65882355, 0.4, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.715625
+anchor_top = 0.43055555
+anchor_right = 0.80364585
+anchor_bottom = 0.5904386
+texture = ExtResource("4_kgl6y")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true

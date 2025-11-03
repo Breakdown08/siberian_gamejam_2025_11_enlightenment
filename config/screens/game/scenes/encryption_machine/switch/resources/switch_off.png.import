@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b575qpv8cl3ph"
-path="res://.godot/imported/interactive_glasses.png-d869d4dbb32080455519c325aacb7db2.ctex"
+uid="uid://cojx2suaqa6ik"
+path="res://.godot/imported/switch_off.png-f74543013da389b95dd09464a73c5eaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/screens/game/config/resources/interactive_glasses.png"
-dest_files=["res://.godot/imported/interactive_glasses.png-d869d4dbb32080455519c325aacb7db2.ctex"]
+source_file="res://config/screens/game/scenes/encryption_machine/switch/resources/switch_off.png"
+dest_files=["res://.godot/imported/switch_off.png-f74543013da389b95dd09464a73c5eaf.ctex"]
 
 [params]
 

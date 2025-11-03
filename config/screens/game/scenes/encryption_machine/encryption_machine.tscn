@@ -1,6 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://0ykvcbglgwku"]
+[gd_scene load_steps=11 format=3 uid="uid://0ykvcbglgwku"]
 
 [ext_resource type="Script" uid="uid://d20s8xet4h41" path="res://config/screens/game/scenes/encryption_machine/encryption_machine.gd" id="1_01rjc"]
+[ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/screens/game/config/system_panel/system_panel.tscn" id="2_dvm5s"]
+[ext_resource type="Texture2D" uid="uid://caenkvel5vpvf" path="res://config/screens/game/scenes/encryption_machine/resources/encryption_machine.png" id="2_n1fy3"]
+[ext_resource type="PackedScene" uid="uid://gj2jowl3ih7p" path="res://config/screens/game/scenes/encryption_machine/display/display.tscn" id="4_dvm5s"]
+[ext_resource type="PackedScene" uid="uid://clmlheau8koda" path="res://config/screens/game/scenes/encryption_machine/switch/switch.tscn" id="4_k4nx7"]
+[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="6_weqib"]
+[ext_resource type="PackedScene" uid="uid://br3wx4hh16v08" path="res://config/screens/game/scenes/encryption_machine/input/input.tscn" id="7_wp4pw"]
+
+[sub_resource type="Gradient" id="Gradient_k4nx7"]
+offsets = PackedFloat32Array(0.014134276, 0.22614841, 0.37102473, 0.5865724, 0.7385159, 0.8869258)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0.9372549, 0, 0, 0, 0, 0, 0, 0, 0.8117647, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dvm5s"]
+gradient = SubResource("Gradient_k4nx7")
+width = 32
+height = 32
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_weqib"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="encryption_machine" type="Control"]
 layout_mode = 3
@@ -10,3 +39,338 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_01rjc")
+metadata/_edit_use_anchors_ = true
+
+[node name="static_background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_n1fy3")
+metadata/_edit_use_anchors_ = true
+
+[node name="switches" type="GridContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.119791664
+anchor_top = 0.5324074
+anchor_right = 0.9046875
+anchor_bottom = 0.79814816
+theme_override_constants/h_separation = 35
+theme_override_constants/v_separation = -6
+columns = 14
+metadata/_edit_use_anchors_ = true
+
+[node name="switch_1" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="switch_2" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_2" index="0"]
+text = "Б"
+
+[node name="switch_3" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_3" index="0"]
+text = "В"
+
+[node name="switch_4" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_4" index="0"]
+text = "Г"
+
+[node name="switch_5" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_5" index="0"]
+text = "Д"
+
+[node name="switch_6" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_6" index="0"]
+text = "Е"
+
+[node name="switch_7" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_7" index="0"]
+text = "Ж"
+
+[node name="switch_8" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_8" index="0"]
+text = "З"
+
+[node name="switch_9" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_9" index="0"]
+text = "И"
+
+[node name="switch_10" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_10" index="0"]
+text = "К"
+
+[node name="switch_11" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_11" index="0"]
+text = "Л"
+
+[node name="switch_12" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_12" index="0"]
+text = "М"
+
+[node name="switch_13" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_13" index="0"]
+text = "Н"
+
+[node name="switch_14" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_14" index="0"]
+text = "О"
+
+[node name="switch_15" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_15" index="0"]
+text = "П"
+
+[node name="switch_16" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_16" index="0"]
+text = "Р"
+
+[node name="switch_17" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_17" index="0"]
+text = "С"
+
+[node name="switch_18" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_18" index="0"]
+text = "Т"
+
+[node name="switch_19" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_19" index="0"]
+text = "У"
+
+[node name="switch_20" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_20" index="0"]
+text = "Ф"
+
+[node name="switch_21" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_21" index="0"]
+text = "Х"
+
+[node name="switch_22" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_22" index="0"]
+text = "Ц"
+
+[node name="switch_23" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_23" index="0"]
+text = "Ч"
+
+[node name="switch_24" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_24" index="0"]
+text = "Ш"
+
+[node name="switch_25" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_25" index="0"]
+self_modulate = Color(1, 0, 1, 1)
+text = "Щ"
+
+[node name="switch_26" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_26" index="0"]
+text = "Ъ"
+
+[node name="switch_27" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_27" index="0"]
+text = "Ы"
+
+[node name="switch_28" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_28" index="0"]
+text = "Ь"
+
+[node name="switch_29" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_29" index="0"]
+text = "Э"
+
+[node name="switch_30" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_30" index="0"]
+text = "Ю"
+
+[node name="switch_31" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_31" index="0"]
+text = "Я"
+
+[node name="switch_32" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_32" index="0"]
+text = ":"
+
+[node name="switch_33" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_33" index="0"]
+offset_left = -19.5
+offset_top = -21.0
+offset_right = 20.5
+offset_bottom = 24.0
+text = ","
+
+[node name="switch_34" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_34" index="0"]
+offset_left = -19.5
+offset_top = -21.0
+offset_right = 20.5
+offset_bottom = 24.0
+text = "."
+
+[node name="switch_35" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_35" index="0"]
+offset_left = -19.5
+offset_top = -14.0
+offset_right = 20.5
+offset_bottom = 31.0
+text = "\\n"
+
+[node name="gradient" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 559.0
+offset_right = 1735.0
+offset_bottom = 853.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_dvm5s")
+
+[node name="display" parent="." instance=ExtResource("4_dvm5s")]
+layout_mode = 1
+anchor_left = 0.47916666
+anchor_top = 0.3287037
+anchor_right = 0.90052086
+anchor_bottom = 0.43425927
+
+[node name="system_panel" parent="." instance=ExtResource("2_dvm5s")]
+layout_mode = 1
+
+[node name="room" parent="system_panel/margin" index="0" instance=ExtResource("6_weqib")]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "В КОМНАТУ"
+
+[node name="reset" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.122395836
+anchor_top = 0.3287037
+anchor_right = 0.17916666
+anchor_bottom = 0.37685186
+theme_override_styles/focus = SubResource("StyleBoxFlat_weqib")
+text = "СБРОС"
+metadata/_edit_use_anchors_ = true
+
+[node name="accept" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.125
+anchor_top = 0.4
+anchor_right = 0.17916666
+anchor_bottom = 0.44814816
+theme_override_styles/focus = SubResource("StyleBoxFlat_weqib")
+text = "ОК"
+metadata/_edit_use_anchors_ = true
+
+[node name="input" parent="." instance=ExtResource("7_wp4pw")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.25520834
+anchor_top = 0.3351852
+anchor_right = 0.39739582
+anchor_bottom = 0.4462963
+offset_left = -3.0517578e-05
+offset_top = -3.0517578e-05
+
+[editable path="switches/switch_1"]
+[editable path="switches/switch_2"]
+[editable path="switches/switch_3"]
+[editable path="switches/switch_4"]
+[editable path="switches/switch_5"]
+[editable path="switches/switch_6"]
+[editable path="switches/switch_7"]
+[editable path="switches/switch_8"]
+[editable path="switches/switch_9"]
+[editable path="switches/switch_10"]
+[editable path="switches/switch_11"]
+[editable path="switches/switch_12"]
+[editable path="switches/switch_13"]
+[editable path="switches/switch_14"]
+[editable path="switches/switch_15"]
+[editable path="switches/switch_16"]
+[editable path="switches/switch_17"]
+[editable path="switches/switch_18"]
+[editable path="switches/switch_19"]
+[editable path="switches/switch_20"]
+[editable path="switches/switch_21"]
+[editable path="switches/switch_22"]
+[editable path="switches/switch_23"]
+[editable path="switches/switch_24"]
+[editable path="switches/switch_25"]
+[editable path="switches/switch_26"]
+[editable path="switches/switch_27"]
+[editable path="switches/switch_28"]
+[editable path="switches/switch_29"]
+[editable path="switches/switch_30"]
+[editable path="switches/switch_31"]
+[editable path="switches/switch_32"]
+[editable path="switches/switch_33"]
+[editable path="switches/switch_34"]
+[editable path="switches/switch_35"]
+[editable path="system_panel"]

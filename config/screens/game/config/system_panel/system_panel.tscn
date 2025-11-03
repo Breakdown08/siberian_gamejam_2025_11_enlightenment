@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc2saquoootea"]
+[gd_scene load_steps=3 format=3 uid="uid://bc2saquoootea"]
 
-[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="1_4hcxd"]
 [ext_resource type="Script" uid="uid://bx3freh8lmrq7" path="res://config/screens/game/config/system_panel/system_panel.gd" id="1_5c0df"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bea4q"]
@@ -8,11 +7,14 @@ bg_color = Color(0.08235294, 0.2784314, 0.35686275, 0.7176471)
 
 [node name="system_panel" type="Panel"]
 custom_minimum_size = Vector2(0, 100)
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
+anchor_bottom = 0.09259259
+offset_bottom = -100.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bea4q")
 script = ExtResource("1_5c0df")
+metadata/_edit_use_anchors_ = true
 
 [node name="margin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -22,10 +24,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 32
-
-[node name="menu" parent="margin" instance=ExtResource("1_4hcxd")]
-custom_minimum_size = Vector2(90, 60)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "МЕНЮ"

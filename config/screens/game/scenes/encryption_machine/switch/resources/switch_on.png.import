@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b85px23e46g8r"
-path="res://.godot/imported/reference_room.png-6e9690ceab02d0f971d94b1d1aa247dc.ctex"
+uid="uid://blfa04tdwp3ir"
+path="res://.godot/imported/switch_on.png-33cfa5a9644369961c28ca2f5c9e64e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/resources/references/reference_room.png"
-dest_files=["res://.godot/imported/reference_room.png-6e9690ceab02d0f971d94b1d1aa247dc.ctex"]
+source_file="res://config/screens/game/scenes/encryption_machine/switch/resources/switch_on.png"
+dest_files=["res://.godot/imported/switch_on.png-33cfa5a9644369961c28ca2f5c9e64e0.ctex"]
 
 [params]
 

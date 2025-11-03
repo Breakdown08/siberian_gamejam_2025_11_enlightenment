@@ -50,13 +50,13 @@ func on_dialog_continue(actor_speech:String):
 
 func match_actor(actor:String):
 	match actor:
-		Scenario.ACTOR_FRIEND:
+		Scenario.ACTOR_HERO, Scenario.ACTOR_NONE:
+			tab.alignment = BoxContainer.ALIGNMENT_BEGIN
+			style_box_flat.corner_radius_top_left = 0
+			style_box_flat.corner_radius_top_right = style_box_flat.corner_radius_bottom_left
+			speech.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT 		
+		_:
 			tab.alignment = BoxContainer.ALIGNMENT_END
 			style_box_flat.corner_radius_top_left = style_box_flat.corner_radius_bottom_left
 			style_box_flat.corner_radius_top_right = 0
 			speech.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		_:
-			tab.alignment = BoxContainer.ALIGNMENT_BEGIN
-			style_box_flat.corner_radius_top_left = 0
-			style_box_flat.corner_radius_top_right = style_box_flat.corner_radius_bottom_left
-			speech.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT 
