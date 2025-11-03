@@ -1,6 +1,7 @@
 extends Node
 
 var scenario_id:int = -1
+var scenario_stage:int = 1
 var current_actor:String = ""
 var is_cutscene:bool = false
 var is_speech_finished = false
@@ -26,6 +27,7 @@ func _init() -> void:
 
 func start():
 	scenario_id = -1
+	scenario_stage = 1
 	current_actor = ""
 	is_cutscene = false
 	is_speech_finished = false

@@ -16,9 +16,10 @@ func _ready() -> void:
 	style_box_flat = body.get("theme_override_styles/panel") as StyleBoxFlat
 	EventBus.dialog.connect(on_dialog)
 	EventBus.dialog_continue.connect(on_dialog_continue)
+	EventBus.thought.connect(on_thought)
 
 
-func animation_update_text(actor_speech:String):
+func animation_update_text(actor_speech:String, hide_on_finished:bool=false):
 	EventBus.speech_started.emit()
 	speech.text = actor_speech
 	speech.visible_ratio = 0.0
@@ -26,10 +27,12 @@ func animation_update_text(actor_speech:String):
 	tween.tween_property(speech, "visible_ratio", 1.0, Utils.get_visible_ratio_time(actor_speech) / 3)
 	tween.tween_callback(func():
 		EventBus.speech_finished.emit()
+		if hide_on_finished:
+			animation_hide_dialog()
 	)
 
 
-func animation_show_dialog(actor:String, actor_speech:String):
+func animation_show_dialog(actor:String, actor_speech:String, hide_on_finished:bool=false):
 	EventBus.speech_started.emit()
 	match_actor(actor)
 	show()
@@ -41,7 +44,17 @@ func animation_show_dialog(actor:String, actor_speech:String):
 	tween.tween_property(self, "scale", Vector2.ONE, ANIMATION_DURATION)
 	tween.parallel().tween_property(self, "modulate", Color.WHITE, ANIMATION_DURATION)
 	tween.tween_callback(func():
-		animation_update_text(actor_speech)
+		animation_update_text(actor_speech, hide_on_finished)
+	)
+
+
+func animation_hide_dialog():
+	var tween:Tween = Utils.tween(self, "dialog")
+	tween.tween_interval(1.0)
+	tween.tween_property(self, "scale", Vector2.ZERO, ANIMATION_DURATION)
+	tween.parallel().tween_property(self, "modulate", Color.TRANSPARENT, ANIMATION_DURATION)
+	tween.tween_callback(func():
+		hide()
 	)
 
 
@@ -51,6 +64,10 @@ func on_dialog(actor:String, actor_speech:String):
 
 func on_dialog_continue(actor_speech:String):
 	animation_update_text(actor_speech)
+
+
+func on_thought(hero_speech:String):
+	animation_show_dialog(Scenario.ACTOR_NONE, hero_speech, true)
 
 
 func match_actor(actor:String):
