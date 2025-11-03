@@ -16,7 +16,7 @@ static func remove_tween(node:Node, key:='tween'):
 
 
 static func get_visible_ratio_time(text:String) -> float:
-	const READING_SPEED_WORDS_PER_SECOND:float = 2.0
+	const READING_SPEED_WORDS_PER_SECOND:float = 3.4
 	var trimmed_text:String = text.strip_edges()
 	if trimmed_text.is_empty():
 		return 0.3
