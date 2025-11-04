@@ -353,8 +353,9 @@ var data_base:Array[Dictionary] = [
 	{
 		KEY_ACTOR : ACTOR_FRIEND,
 		KEY_SPEECH : "То есть ты решил тратить время на чьи-то шутки?",
-	},# TODO: спрайт меняется на злость после этой реплики
-	{
+	},
+	{   
+		KEY_EVENTS : [event(self.friend_angry)],
 		KEY_ACTOR : ACTOR_FRIEND,
 		KEY_SPEECH : "Я думал, ты занят серьезным расследованием и поиском инопланетян!",
 	},
@@ -405,8 +406,9 @@ var data_base:Array[Dictionary] = [
 	{
 		KEY_ACTOR : ACTOR_FRIEND,
 		KEY_SPEECH : "Пойди подыши воздухом, потрогай траву.",
-	},#TODO после этой реплики меняется спрайт на нейтральный
-	{
+	},
+	{ 
+		KEY_EVENTS : [event(self.friend_normal)],
 		KEY_ACTOR : ACTOR_FRIEND,
 		KEY_SPEECH : "Я расшифровывал это сообщение и знаю, что там нет ничего интересного.",
 	},
@@ -621,8 +623,9 @@ var data_base:Array[Dictionary] = [
 	{
 		KEY_ACTOR : ACTOR_HERO,
 		KEY_SPEECH : "Не объяснишь, как такое получилось?",
-	},#TODO меняется спрайт на злость
+	},
 	{
+		KEY_EVENTS : [event(self.friend_angry)],
 		KEY_ACTOR : ACTOR_FRIEND,
 		KEY_SPEECH : "Ты все же лез в ту волну? Ты продолжил заниматься этим?",
 	},
@@ -640,7 +643,7 @@ var data_base:Array[Dictionary] = [
 	},
 	{
 		KEY_ACTOR : ACTOR_HERO,
-		KEY_SPEECH : ". Ты избегал знакомства с ним, даже прятался от него, когда он встречал нас на улице.",
+		KEY_SPEECH : "Ты избегал знакомства с ним, даже прятался от него, когда он встречал нас на улице.",
 	},
 	{
 		KEY_ACTOR : ACTOR_HERO,
@@ -688,7 +691,7 @@ var data_base:Array[Dictionary] = [
 	},
 	{
 		KEY_ACTOR : ACTOR_HERO,
-		KEY_SPEECH : "! Если бы сразу попробовал еще раз, мы бы приблизились к…",
+		KEY_SPEECH : "Если бы сразу попробовал еще раз, мы бы приблизились к…",
 	},
 	{
 		KEY_ACTOR : ACTOR_FRIEND,
@@ -748,7 +751,7 @@ var data_base:Array[Dictionary] = [
 	},
 	{
 		KEY_ACTOR : ACTOR_FRIEND,
-		KEY_SPEECH : ". Знаешь что, раз ты меня в чем-то подозреваешь, я просто уйду.",
+		KEY_SPEECH : "Знаешь что, раз ты меня в чем-то подозреваешь, я просто уйду.",
 	},
 	{
 		KEY_ACTOR : ACTOR_FRIEND,
@@ -790,7 +793,7 @@ var data_base:Array[Dictionary] = [
 	{
 		KEY_EVENTS : [event(self.cutscene_off)],
 	},
-	{
+	{#TODO тут он тыкает по всему потом на фотографию и сцена с фото
 		KEY_EVENTS : [event(self.cutscene_on)],
 	},
 	{
@@ -835,7 +838,7 @@ var data_base:Array[Dictionary] = [
 	},
 	{
 		KEY_EVENTS : [event(self.cutscene_off)],
-	},
+	},#TODO задание с шифровальной машинкой
 	{ KEY_EVENTS : [event(self.cutscene_on)],
 	},
 	{
@@ -864,7 +867,7 @@ var data_base:Array[Dictionary] = [
 	},
 	{
 		KEY_EVENTS : [event(self.cutscene_off)],
-	},
+	},#TODO тут сцена с очками
 	{
 		KEY_EVENTS : [event(self.cutscene_on)],
 	},

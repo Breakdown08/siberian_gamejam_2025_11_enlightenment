@@ -69,15 +69,73 @@ offset_right = -130.0
 offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 74
 
 [node name="item" parent="hints_scene_1" instance=ExtResource("5_m4cta")]
 layout_mode = 2
 
+[node name="box" parent="hints_scene_1/item" index="0"]
+offset_left = -57.0
+offset_top = 9.0
+offset_right = 276.0
+offset_bottom = -2.0
+
 [node name="key" parent="hints_scene_1/item/box" index="0"]
-text = "ключ"
+text = "Я поймал странный сигнал в форме буквы \"Ш\"
+или \"Щ\""
 
 [node name="value" parent="hints_scene_1/item/box" index="1"]
-text = "значение "
+visible = false
+
+[node name="item_2" parent="hints_scene_1" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="box" parent="hints_scene_1/item_2" index="0"]
+offset_left = -57.0
+offset_top = 9.0
+offset_right = 276.0
+offset_bottom = -2.0
+
+[node name="key" parent="hints_scene_1/item_2/box" index="0"]
+text = "Таинственный шифр, полученный от странного
+сигнала... Надо его расшифровать
+Подсказка от Жения: изучить фотографию
+отца. Надо заняться этим"
+
+[node name="value" parent="hints_scene_1/item_2/box" index="1"]
+visible = false
+
+[node name="item_3" parent="hints_scene_1" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="box" parent="hints_scene_1/item_3" index="0"]
+offset_left = -57.0
+offset_top = 9.0
+offset_right = 276.0
+offset_bottom = -2.0
+
+[node name="key" parent="hints_scene_1/item_3/box" index="0"]
+text = "Подпись на обратной стороне фотографии:
+ «Они *** под нас, *** глаза»"
+
+[node name="value" parent="hints_scene_1/item_3/box" index="1"]
+visible = false
+
+[node name="item_4" parent="hints_scene_1" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="box" parent="hints_scene_1/item_4" index="0"]
+offset_left = -57.0
+offset_top = 9.0
+offset_right = 276.0
+offset_bottom = -2.0
+
+[node name="key" parent="hints_scene_1/item_4/box" index="0"]
+text = "Я помню, что очки лежат в футляре на полке.
+ Надо проверить там"
+
+[node name="value" parent="hints_scene_1/item_4/box" index="1"]
+visible = false
 
 [node name="hints_scene_2" type="VBoxContainer" parent="."]
 visible = false
@@ -117,9 +175,6 @@ grow_vertical = 2
 [node name="item" parent="hints_scene_3" instance=ExtResource("5_m4cta")]
 layout_mode = 2
 
-[node name="key" parent="hints_scene_3/item/box" index="0"]
-text = "ключ"
-
 [node name="value" parent="hints_scene_3/item/box" index="1"]
 text = "значение "
 
@@ -149,6 +204,9 @@ text = "значение "
 [editable path="list/oscilloscope_params"]
 [editable path="list/radio_response"]
 [editable path="hints_scene_1/item"]
+[editable path="hints_scene_1/item_2"]
+[editable path="hints_scene_1/item_3"]
+[editable path="hints_scene_1/item_4"]
 [editable path="hints_scene_2/item"]
 [editable path="hints_scene_3/item"]
 [editable path="hints_scene_4/item"]
