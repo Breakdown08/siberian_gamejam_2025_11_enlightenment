@@ -79,7 +79,76 @@ text = "ключ"
 [node name="value" parent="hints_scene_1/item/box" index="1"]
 text = "значение "
 
+[node name="hints_scene_2" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1016.0
+offset_top = 94.0
+offset_right = -130.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="item" parent="hints_scene_2" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="key" parent="hints_scene_2/item/box" index="0"]
+text = "ключ"
+
+[node name="value" parent="hints_scene_2/item/box" index="1"]
+text = "значение "
+
+[node name="hints_scene_3" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1016.0
+offset_top = 94.0
+offset_right = -130.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="item" parent="hints_scene_3" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="key" parent="hints_scene_3/item/box" index="0"]
+text = "ключ"
+
+[node name="value" parent="hints_scene_3/item/box" index="1"]
+text = "значение "
+
+[node name="hints_scene_4" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1016.0
+offset_top = 94.0
+offset_right = -130.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="item" parent="hints_scene_4" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="key" parent="hints_scene_4/item/box" index="0"]
+text = "ключ"
+
+[node name="value" parent="hints_scene_4/item/box" index="1"]
+text = "значение "
+
 [editable path="system_panel"]
 [editable path="list/oscilloscope_params"]
 [editable path="list/radio_response"]
 [editable path="hints_scene_1/item"]
+[editable path="hints_scene_2/item"]
+[editable path="hints_scene_3/item"]
+[editable path="hints_scene_4/item"]
