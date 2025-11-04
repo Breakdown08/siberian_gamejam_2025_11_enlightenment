@@ -7,9 +7,15 @@ extends Control
 
 
 func _ready() -> void:
+	for item in $hints_scene_1.get_children():
+		item.hide()
 	room.pressed.connect(_on_room_pressed)
 	clear()
 	get_oscilloscope_params_from_diary()
+	$hints_scene_1/shch.visible = true if GameManager.is_diary_unlocked else false
+	$hints_scene_1/radio_success_response.visible = true if GameManager.is_radio_success_response else false
+	$hints_scene_1/photo.visible = true if GameManager.is_photo_turned else false
+	$hints_scene_1/glasses.visible = true if GameManager.is_remeber_for_glasses else false
 
 
 func _on_room_pressed():

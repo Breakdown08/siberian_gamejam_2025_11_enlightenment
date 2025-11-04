@@ -4,6 +4,7 @@ class_name Game extends Control
 @onready var button_menu:Button = $system_panel/margin/menu
 @onready var scene:Node = $scene
 @onready var notifications:Control = $notifications
+@onready var game_over:TextureRect = $game_over
 
 const NOTIFICATION:PackedScene = preload("res://config/ui/popup/notification/notification.tscn")
 
@@ -35,7 +36,16 @@ func _ready() -> void:
 	button_menu.pressed.connect(on_button_menu_pressed)
 	EventBus.scene_switched.connect(on_scene_switched)
 	EventBus.notification.connect(on_notification)
+	Scenario.game_over.connect(on_game_over)
 	EventBus.game_started.emit()
+	Scenario.final_scene.connect(func():
+		$final.show()
+		$static_background.hide()
+		$hero.hide()
+		$friend.hide()
+		$interactive_items.hide()
+		$window.hide()
+	)
 
 
 func on_button_menu_pressed():
@@ -54,3 +64,10 @@ func on_notification(message:String):
 	var instance = NOTIFICATION.instantiate() as Notification
 	notifications.add_child(instance)
 	instance.message.text = message
+
+
+func on_game_over():
+	game_over.show()
+	var tween:Tween = Utils.tween(self)
+	tween.tween_property(game_over, "modulate", Color.WHITE, 2.0)
+	

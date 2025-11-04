@@ -10,6 +10,14 @@ var oscilloscope_params:String = ""
 var oscilloscope_is_locked:bool = false
 var morse_book_code_selected:String = ""
 
+var is_remeber_for_glasses:bool = false
+var is_photo_turned:bool = false
+var is_radio_success_response:bool = false
+var is_diary_unlocked:bool = false
+var is_morse_translated:bool = false
+var is_photo_opened:bool = false
+var is_encryption_success:bool = false
+
 
 func _init() -> void:
 	Scenario.cutscene_on.connect(func():
@@ -36,7 +44,10 @@ func start():
 	is_cutscene = false
 	is_speech_finished = false
 	scenario_next()
-	#debug_scenario(65)
+	#debug_scenario(67)
+	#debug_scenario(127)
+	#debug_scenario(150)
+	#debug_scenario(206)
 
 
 func scenario_next():
@@ -71,7 +82,8 @@ func emit_scenario_events(scenario:Dictionary):
 func _input(event:InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if is_cutscene and is_speech_finished and scenario_id < Scenario.data_base.size() - 1:
+			#if is_cutscene and is_speech_finished and scenario_id < Scenario.data_base.size() - 1:
+			if is_cutscene and scenario_id < Scenario.data_base.size() - 1:
 				scenario_next()
 
 
@@ -84,4 +96,27 @@ func _ready() -> void:
 	Scenario.oscilloscope_write_params.connect(
 		func(new_value):
 			oscilloscope_params = new_value
+	)
+	Scenario.diary_unlocked.connect(func ():
+		is_diary_unlocked = true
+	)
+	Scenario.radio_success_response.connect(func ():
+		is_radio_success_response = true
+	)
+	Scenario.photo_back_side_checked.connect(func ():
+		is_photo_turned = true
+	)
+	Scenario.remember_glasses.connect(func ():
+		is_remeber_for_glasses = true
+	)
+	Scenario.morse_translated.connect(func ():
+		is_morse_translated = true
+	)
+	Scenario.next_stage.connect(func():
+		scenario_stage += 1
+		if scenario_stage == 3:
+			is_photo_opened = true
+	)
+	Scenario.encryption_machine_success.connect(func ():
+		is_encryption_success = true
 	)

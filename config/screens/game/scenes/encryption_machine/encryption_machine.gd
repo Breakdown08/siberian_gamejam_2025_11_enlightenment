@@ -18,6 +18,7 @@ func _ready() -> void:
 		switch.switched.connect(display.on_switch_switched)
 		switch.switched.connect(input.on_switch_switched)
 		reset.pressed.connect(switch._ready)
+	Scenario.back_to_room.connect(_on_room_pressed)
 
 
 func _on_room_pressed():
@@ -25,7 +26,10 @@ func _on_room_pressed():
 
 
 func on_encryption_machine_try_code_breaking(key:String):
-	if key.to_upper() == Scenario.ENCRYPTION_MACHINE_PASSWORD.to_upper():
-		var result = Scenario.ENCRYPTION_MACHINE_ANSWER
-		display.animation_result(result, Utils.get_visible_ratio_time(result) * 5)
-		display.animation_success_color()
+	if !GameManager.is_encryption_success:
+		if key.to_upper() == Scenario.ENCRYPTION_MACHINE_PASSWORD.to_upper():
+			var result = Scenario.ENCRYPTION_MACHINE_ANSWER
+			display.animation_result(result, Utils.get_visible_ratio_time(result) * 5)
+			display.animation_success_color()
+			Scenario.encryption_machine_success.emit()
+			GameManager.scenario_next()

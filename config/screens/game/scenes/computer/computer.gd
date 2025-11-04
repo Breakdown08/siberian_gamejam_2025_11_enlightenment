@@ -25,8 +25,10 @@ func _on_room_pressed():
 
 func success():
 	Scenario.computer_response.emit(Scenario.RADIO_RESPONSE)
+	Scenario.radio_success_response.emit()
 	response.text = Scenario.RADIO_RESPONSE
-	GameManager.scenario_next()
+	if GameManager.scenario_stage == 1:
+		GameManager.scenario_next()
 
 
 func empty_response():

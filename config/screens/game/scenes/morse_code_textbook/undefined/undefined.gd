@@ -6,6 +6,8 @@ class_name MorseCodeTextBookUndefined extends Control
 
 const ANIMATION_DURATION:float = 0.3
 
+signal unsecret
+
 
 func _ready() -> void:
 	button.pressed.connect(on_button_pressed)
@@ -36,4 +38,5 @@ func show_secret():
 	tween.tween_property(char_node, "self_modulate", Color.WHITE, ANIMATION_DURATION)
 	tween.tween_callback(func():
 		code_node.hide()
+		unsecret.emit()
 	)

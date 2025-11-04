@@ -48,6 +48,8 @@ const TABLE:Dictionary[String, String] = {
 var response:Array
 var unique_response:Array
 
+var secret_id:int = 0
+
 
 func _ready() -> void:
 	room.pressed.connect(_on_room_pressed)
@@ -55,6 +57,7 @@ func _ready() -> void:
 	unique_response = Utils.get_unique_array(response)
 	init_chars()
 	init_secret()
+	Scenario.back_to_room.connect(_on_room_pressed)
 
 
 func _on_room_pressed():
@@ -76,6 +79,7 @@ func init_secret():
 		var instance = UNDEFINED.instantiate() as MorseCodeTextBookUndefined
 		password.add_child(instance)
 		instance.code_node.text = key
+		instance.unsecret.connect(on_unsecret)
 
 
 func on_selected(target:MorseCodeTextBookChar):
@@ -92,3 +96,12 @@ static func find_symbol_by_code(code:String) -> String:
 		if TABLE[symbol] == code:
 			return symbol
 	return "none"
+
+
+func on_unsecret():
+	if !GameManager.is_morse_translated:
+		secret_id += 1
+		if secret_id == password.get_child_count():
+			Scenario.morse_translated.emit()
+			GameManager.scenario_next()
+		

@@ -18,21 +18,32 @@ signal friend_has_left # друг ушел
 signal friend_normal # друг в норме
 signal friend_angry # друг в злости
 signal cutscene_on # катсцена началась
+signal next_stage # следующая сцена
 signal cutscene_off # катсцена закончилась
 signal encryption_machine_try_code_breaking(key:String) # шифр. машинка ввод символов
+signal encryption_machine_unlocked # шифр. машинка разблокирована
+signal encryption_machine_success # шифр. машинка угадана
 signal oscilloscope_write_params(params:String) # записаны параметры крутилок осциллографа в дневник
 signal oscilloscope_unlocked # осциллограф разблокирован для использования
 signal oscilloscope_success # осциллограф угадан
 signal diary_unlocked # дневник разблокирован для использования
+signal photo_back_side_checked # посмотрели на обратную сторону фотки
+signal photo_unlocked # разблокирована фотка
+signal remember_glasses # вспомнили очки
+signal radio_success_response # успешный ответ
 signal computer_unlocked # компьютер разблокирован для использования
 signal computer_try_send_signal(params:String) # отправлен сигнал параметров через компьютер
 signal computer_response(respone:String) # ответ компьютера на сигнал
 signal back_to_room # принудительный возврат в комнату
+signal morse_translated # морязнка переведена
+signal glasses_unlocked
+signal final_scene
+signal game_over
 
 # Сценарные ключи
 const RADIO_RESPONSE_EMPTY:String = "... превышено ожидание ответа ..."
 const RADIO_RESPONSE:String = "−−− −• •• −− •− ••• −•− •• •−• ••− ••−− − ••• •−•− •−−• −−− −•• −• •− ••• •−•−•− ••− •−•• ••− −−−• −−−− •− •−−− ••• •−− −−− •• −−• •−•• •− −−•• •−"
-const ENCRYPTION_MACHINE_PASSWORD:String = "тест"
+const ENCRYPTION_MACHINE_PASSWORD:String = "МАСКИРУЮТСЯ_УЛУЧШАЙ"
 const ENCRYPTION_MACHINE_ANSWER:String = "Я УсиЩ, ПРОЗРЕЙ фото с ГлазиЩем"
 const OSCILLOSCOPE_PARAMS:String = "(1.0, 1.0)"
 const NOTIFICATION_UPDATE_DIARY:String = "Запись в дневнике обновлена..."
@@ -335,7 +346,7 @@ var data_base:Array[Dictionary] = [
 		KEY_SPEECH : "И все же, разве это не лучший результат за последнее время?",
 	},
 	{
-		KEY_EVENTS : [event(self.friend_has_come), event(self.back_to_room)],
+		KEY_EVENTS : [event(self.friend_has_come), event(self.back_to_room), event(self.next_stage)],
 		KEY_ACTOR : ACTOR_FRIEND,
 		KEY_SPEECH : "Ты выглядишь бледнее, чем обычно. С тобой что-то случилось?",
 	},
@@ -597,7 +608,7 @@ var data_base:Array[Dictionary] = [
 		KEY_SPEECH : "Кажется, что вопросов у меня меньше не стало.",
 	},
 	{
-		KEY_EVENTS : [event(self.friend_has_come)],
+		KEY_EVENTS : [event(self.friend_has_come), event(self.back_to_room),  event(self.next_stage)],
 		KEY_ACTOR : ACTOR_FRIEND,
 		KEY_SPEECH : "Ты сегодня еще более задумчивый. Неужели моя подсказка помогла тебе?",
 	},
@@ -865,9 +876,10 @@ var data_base:Array[Dictionary] = [
 	{
 		KEY_ACTOR : ACTOR_NONE,
 		KEY_SPEECH : "У отца в кармашке очки! Они были и у меня. Он мне их оставил. Как я мог об этом забыть.",
+		KEY_EVENTS : [event(self.back_to_room)],
 	},
 	{
-		KEY_EVENTS : [event(self.cutscene_off)],
+		KEY_EVENTS : [event(self.cutscene_off), event(self.next_stage)],
 	},#TODO тут сцена с очками
 	{
 		KEY_EVENTS : [event(self.cutscene_on)],
@@ -878,11 +890,15 @@ var data_base:Array[Dictionary] = [
 		KEY_SPEECH : "Я пришел извиниться…",
 	},
 	{
+		KEY_EVENTS : [event(self.final_scene)],
 		KEY_ACTOR : ACTOR_NONE,
 		KEY_SPEECH : "Это Женя что ли? Очки дали мне возможность увидеть его истинное лицо?",
 	},
 	{
 		KEY_ACTOR : ACTOR_HERO,
 		KEY_SPEECH : "Так ты на самом деле пришелец?!",
+	},
+	{
+		KEY_EVENTS : [event(self.game_over)]
 	},
 ]

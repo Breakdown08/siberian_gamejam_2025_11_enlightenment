@@ -1,15 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://fbupj5u7t7od"]
+[gd_scene load_steps=19 format=3 uid="uid://fbupj5u7t7od"]
 
 [ext_resource type="Script" uid="uid://d3556b3fldogt" path="res://config/screens/game/game.gd" id="1_rm2kr"]
 [ext_resource type="Texture2D" uid="uid://br0npawvifefd" path="res://config/resources/static_background.png" id="2_4xw68"]
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="3_bea4q"]
 [ext_resource type="PackedScene" uid="uid://cgyox8l1wd4nb" path="res://config/screens/game/scenes/window/window.tscn" id="3_kl8j2"]
+[ext_resource type="Texture2D" uid="uid://b2p2156wtjxiy" path="res://config/resources/final.png" id="3_mwajf"]
 [ext_resource type="PackedScene" uid="uid://b34hevgxbyfql" path="res://config/screens/game/interactive_item/variants/morse_code_textbook/morse_code_textbook.tscn" id="10_kl8j2"]
 [ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="12_che8u"]
 [ext_resource type="PackedScene" uid="uid://cr4j1dhnjms4f" path="res://config/ui/actor_speech_panel/actor_speech_panel.tscn" id="12_v58cl"]
 [ext_resource type="PackedScene" uid="uid://bve1ca5g20od6" path="res://config/screens/game/actors/friend/friend.tscn" id="13_che8u"]
 [ext_resource type="PackedScene" uid="uid://n2la2f336s84" path="res://config/screens/game/actors/hero/hero.tscn" id="15_mwajf"]
 [ext_resource type="Texture2D" uid="uid://dupbapb23iudf" path="res://config/resources/room.png" id="16_mwajf"]
+[ext_resource type="Texture2D" uid="uid://bctwsrqhta6ka" path="res://config/resources/game_over.png" id="18_bjmkh"]
 [ext_resource type="PackedScene" uid="uid://did6276qugi8o" path="res://config/screens/game/interactive_item/variants/computer/computer.tscn" id="25_657kl"]
 [ext_resource type="PackedScene" uid="uid://cy305tkklbguq" path="res://config/screens/game/interactive_item/variants/diary/diary.tscn" id="26_lwjy1"]
 [ext_resource type="PackedScene" uid="uid://bnffu67hk4hwy" path="res://config/screens/game/interactive_item/variants/glasses/glasses.tscn" id="27_8ekm0"]
@@ -34,6 +36,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_4xw68")
+
+[node name="final" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mwajf")
 
 [node name="window" parent="." instance=ExtResource("3_kl8j2")]
 layout_mode = 0
@@ -161,5 +173,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("16_mwajf")
+
+[node name="game_over" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1880.0
+offset_bottom = -1040.0
+mouse_filter = 0
+texture = ExtResource("18_bjmkh")
+metadata/_edit_use_anchors_ = true
 
 [editable path="system_panel"]

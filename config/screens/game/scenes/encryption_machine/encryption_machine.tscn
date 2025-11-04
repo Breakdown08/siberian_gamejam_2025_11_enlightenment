@@ -113,6 +113,12 @@ layout_mode = 2
 [node name="symbol" parent="switches/switch_9" index="0"]
 text = "И"
 
+[node name="switch_36" parent="switches" instance=ExtResource("4_k4nx7")]
+layout_mode = 2
+
+[node name="symbol" parent="switches/switch_36" index="0"]
+text = "Й"
+
 [node name="switch_10" parent="switches" instance=ExtResource("4_k4nx7")]
 layout_mode = 2
 
@@ -246,32 +252,6 @@ layout_mode = 2
 [node name="symbol" parent="switches/switch_31" index="0"]
 text = "Я"
 
-[node name="switch_32" parent="switches" instance=ExtResource("4_k4nx7")]
-layout_mode = 2
-
-[node name="symbol" parent="switches/switch_32" index="0"]
-text = ":"
-
-[node name="switch_33" parent="switches" instance=ExtResource("4_k4nx7")]
-layout_mode = 2
-
-[node name="symbol" parent="switches/switch_33" index="0"]
-offset_left = -19.5
-offset_top = -21.0
-offset_right = 20.5
-offset_bottom = 24.0
-text = ","
-
-[node name="switch_34" parent="switches" instance=ExtResource("4_k4nx7")]
-layout_mode = 2
-
-[node name="symbol" parent="switches/switch_34" index="0"]
-offset_left = -19.5
-offset_top = -21.0
-offset_right = 20.5
-offset_bottom = 24.0
-text = "."
-
 [node name="switch_35" parent="switches" instance=ExtResource("4_k4nx7")]
 layout_mode = 2
 
@@ -280,7 +260,7 @@ offset_left = -19.5
 offset_top = -14.0
 offset_right = 20.5
 offset_bottom = 31.0
-text = "\\n"
+text = "_"
 
 [node name="gradient" type="TextureRect" parent="."]
 layout_mode = 0
@@ -347,6 +327,7 @@ offset_top = -3.0517578e-05
 [editable path="switches/switch_7"]
 [editable path="switches/switch_8"]
 [editable path="switches/switch_9"]
+[editable path="switches/switch_36"]
 [editable path="switches/switch_10"]
 [editable path="switches/switch_11"]
 [editable path="switches/switch_12"]
@@ -369,8 +350,5 @@ offset_top = -3.0517578e-05
 [editable path="switches/switch_29"]
 [editable path="switches/switch_30"]
 [editable path="switches/switch_31"]
-[editable path="switches/switch_32"]
-[editable path="switches/switch_33"]
-[editable path="switches/switch_34"]
 [editable path="switches/switch_35"]
 [editable path="system_panel"]
