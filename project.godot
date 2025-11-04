@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="enlightenment"
-run/main_scene="uid://tobbaooxwyv0"
+run/main_scene="uid://f7sebr1kml04"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/bg_color=Color(0.011087594, 0.011087574, 0.011087577, 1)
+boot_splash/show_image=false
 config/icon="res://config/resources/icon.svg"
 
 [autoload]
