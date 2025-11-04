@@ -33,4 +33,33 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "В КОМНАТУ"
 
+[node name="database" type="GridContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.061458334
+anchor_top = 0.1425926
+anchor_right = 0.4673215
+anchor_bottom = 0.9094734
+offset_right = -7.257263
+offset_bottom = 6.7686768
+rotation = -0.008726646
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 32
+columns = 7
+metadata/_edit_use_anchors_ = true
+
+[node name="password" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5338542
+anchor_top = 0.1425926
+anchor_right = 0.93971735
+anchor_bottom = 0.9094734
+offset_right = -7.257263
+offset_bottom = 6.7686768
+rotation = -0.008726646
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 32
+columns = 7
+metadata/_edit_use_anchors_ = true
+
 [editable path="system_panel"]

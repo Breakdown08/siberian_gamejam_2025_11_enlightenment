@@ -8,6 +8,7 @@ var is_speech_finished = false
 
 var oscilloscope_params:String = ""
 var oscilloscope_is_locked:bool = false
+var morse_book_code_selected:String = ""
 
 
 func _init() -> void:

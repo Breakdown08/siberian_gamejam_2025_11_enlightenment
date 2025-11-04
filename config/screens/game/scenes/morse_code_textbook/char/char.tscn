@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1xbjntw3ixga"]
+
+[ext_resource type="FontFile" uid="uid://gt4dr3icg54w" path="res://config/resources/fonts/hand_pastry_chef.ttf" id="1_8gfe0"]
+[ext_resource type="Script" uid="uid://c0jdxys5075y1" path="res://config/screens/game/scenes/morse_code_textbook/char/char.gd" id="1_lmhuj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iox7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lmhuj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oxnhh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qtoti"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iyhkf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sakug"]
+
+[node name="char" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lmhuj")
+
+[node name="panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1iox7")
+
+[node name="body" type="VBoxContainer" parent="panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="code" type="Label" parent="panel/body"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8gfe0")
+theme_override_font_sizes/font_size = 40
+text = "..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="symbol" type="Label" parent="panel/body"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8gfe0")
+theme_override_font_sizes/font_size = 40
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lmhuj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oxnhh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qtoti")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iyhkf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sakug")

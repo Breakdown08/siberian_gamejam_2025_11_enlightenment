@@ -26,3 +26,13 @@ static func get_visible_ratio_time(text:String) -> float:
 			word_count += 1
 	var time_seconds := float(word_count) / READING_SPEED_WORDS_PER_SECOND
 	return time_seconds
+
+
+static func get_unique_array(arr:Array) -> Array:
+	var seen:Dictionary = {}
+	var result:Array = []
+	for item in arr:
+		if not seen.has(item):
+			seen[item] = true
+			result.append(item)
+	return result

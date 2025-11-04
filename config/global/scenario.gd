@@ -30,7 +30,7 @@ signal back_to_room # принудительный возврат в комна�
 
 # Сценарные ключи
 const RADIO_RESPONSE_EMPTY:String = "... превышено ожидание ответа ..."
-const RADIO_RESPONSE:String = "--- -. ..  -- .- ... -.- .. .-. ..- ..-- - ... .-.-  .--. --- -..  -. .- ... --..--  ..- .-.. ..- ---. ---- .- .---  ... .-- --- ..  --. .-.. .- --.. .-"
+const RADIO_RESPONSE:String = "−−− −• •• −− •− ••• −•− •• •−• ••− ••−− − ••• •−•− •−−• −−− −•• −• •− ••• •−•−•− ••− •−•• ••− −−−• −−−− •− •−−− ••• •−− −−− •• −−• •−•• •− −−•• •−"
 const ENCRYPTION_MACHINE_PASSWORD:String = "тест"
 const ENCRYPTION_MACHINE_ANSWER:String = "Я УсиЩ, ПРОЗРЕЙ фото с ГлазиЩем"
 const OSCILLOSCOPE_PARAMS:String = "[1, 2, 3, 4]"

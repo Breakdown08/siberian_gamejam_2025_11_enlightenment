@@ -33,4 +33,12 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "В КОМНАТУ"
 
+[node name="button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 275.0
+offset_right = 227.0
+offset_bottom = 342.0
+text = "ПЕРЕВЕРНУТЬ"
+
 [editable path="system_panel"]
