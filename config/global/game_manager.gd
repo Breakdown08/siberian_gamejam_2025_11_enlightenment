@@ -82,8 +82,8 @@ func emit_scenario_events(scenario:Dictionary):
 func _input(event:InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			#if is_cutscene and is_speech_finished and scenario_id < Scenario.data_base.size() - 1:
-			if is_cutscene and scenario_id < Scenario.data_base.size() - 1:
+			if is_cutscene and is_speech_finished and scenario_id < Scenario.data_base.size() - 1:
+			#if is_cutscene and scenario_id < Scenario.data_base.size() - 1:
 				scenario_next()
 
 
