@@ -99,7 +99,7 @@ offset_bottom = -2.0
 [node name="key" parent="hints_scene_1/item_2/box" index="0"]
 text = "Таинственный шифр, полученный от странного
 сигнала... Надо его расшифровать
-Подсказка от Жения: изучить фотографию
+Подсказка от Жени: изучить фотографию
 отца. Надо заняться этим"
 
 [node name="value" parent="hints_scene_1/item_2/box" index="1"]
