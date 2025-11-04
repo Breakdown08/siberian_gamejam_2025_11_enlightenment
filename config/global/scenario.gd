@@ -18,9 +18,10 @@ signal friend_has_left # друг ушел
 signal cutscene_on # катсцена началась
 signal cutscene_off # катсцена закончилась
 signal encryption_machine_try_code_breaking(key:String) # шифр. машинка ввод символов
-signal oscilloscope_write_params(params:PackedInt32Array) # записаны параметры крутилок осциллографа в дневник
+signal oscilloscope_write_params(params:String) # записаны параметры крутилок осциллографа в дневник
 signal oscilloscope_unlocked # осциллограф разблокирован для использования
-signal computer_try_send_signal(params:PackedInt32Array) # отправлен сигнал параметров через компьютер
+signal diary_unlocked # дневник разблокирован для использования
+signal computer_try_send_signal(params:String) # отправлен сигнал параметров через компьютер
 signal computer_response(respone:String) # ответ компьютера на сигнал
 
 # Сценарные ключи

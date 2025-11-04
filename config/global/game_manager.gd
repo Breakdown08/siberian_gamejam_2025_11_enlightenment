@@ -6,6 +6,8 @@ var current_actor:String = ""
 var is_cutscene:bool = false
 var is_speech_finished = false
 
+var oscilloscope_params:String = ""
+
 
 func _init() -> void:
 	Scenario.cutscene_on.connect(func():
@@ -72,3 +74,11 @@ func _input(event:InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if is_cutscene and is_speech_finished and scenario_id < Scenario.data_base.size() - 1:
 				scenario_next()
+
+
+# Запись игровых состояний:
+func _ready() -> void:
+	Scenario.oscilloscope_write_params.connect(
+	func(new_value):
+		oscilloscope_params = new_value
+)

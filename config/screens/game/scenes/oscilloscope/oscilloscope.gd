@@ -8,9 +8,17 @@ func _ready() -> void:
 
 
 func _on_cheat_button_pressed() -> void:
-	Scenario.oscilloscope_write_params.emit(PackedInt32Array([1, 2, 3, 4]))
-	EventBus.notification.emit(Scenario.NOTIFICATION_UPDATE_DIARY)
+	write_params()
+	update_diary()
 
 
 func _on_room_pressed():
 	EventBus.scene_switched.emit(Game.SCENE.MAIN)
+
+
+func update_diary():
+	EventBus.notification.emit(Scenario.NOTIFICATION_UPDATE_DIARY)
+
+
+func write_params():
+	Scenario.oscilloscope_write_params.emit(str([1, 2, 3, 4]))

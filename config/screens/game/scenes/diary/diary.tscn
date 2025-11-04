@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://csq0hllx406t5"]
+[gd_scene load_steps=6 format=3 uid="uid://csq0hllx406t5"]
 
 [ext_resource type="Script" uid="uid://djr4rnct1ah17" path="res://config/screens/game/scenes/diary/diary.gd" id="1_5oupm"]
 [ext_resource type="Texture2D" uid="uid://c2tmn8yj4m4mp" path="res://config/screens/game/scenes/diary/resources/diary.png" id="2_6dj4t"]
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_i7wao"]
 [ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="3_6dj4t"]
+[ext_resource type="PackedScene" uid="uid://kh2oi1kk1yj6" path="res://config/screens/game/scenes/diary/item/item.tscn" id="5_m4cta"]
 
 [node name="diary" type="Control"]
 layout_mode = 3
@@ -33,4 +34,52 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "В КОМНАТУ"
 
+[node name="list" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 111.0
+offset_top = 75.0
+offset_right = -1035.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="oscilloscope_params" parent="list" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="key" parent="list/oscilloscope_params/box" index="0"]
+text = "ОСЦИЛЛОГРАФ: "
+
+[node name="radio_response" parent="list" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="key" parent="list/radio_response/box" index="0"]
+text = "РАДИО: "
+
+[node name="hints_scene_1" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1016.0
+offset_top = 94.0
+offset_right = -130.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="item" parent="hints_scene_1" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="key" parent="hints_scene_1/item/box" index="0"]
+text = "ключ"
+
+[node name="value" parent="hints_scene_1/item/box" index="1"]
+text = "значение "
+
 [editable path="system_panel"]
+[editable path="list/oscilloscope_params"]
+[editable path="list/radio_response"]
+[editable path="hints_scene_1/item"]

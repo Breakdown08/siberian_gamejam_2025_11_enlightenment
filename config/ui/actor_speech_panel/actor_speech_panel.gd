@@ -7,6 +7,7 @@ extends Control
 @onready var tab_panel:Panel = $margin/body/tab/panel
 
 const ANIMATION_DURATION:float = 0.3
+const HIDE_INTERVAL:float = 3.0
 
 var style_box_flat:StyleBoxFlat
 
@@ -51,7 +52,7 @@ func animation_show_dialog(actor:String, actor_speech:String, hide_on_finished:b
 
 func animation_hide_dialog():
 	var tween:Tween = Utils.tween(self)
-	tween.tween_interval(1.0)
+	tween.tween_interval(HIDE_INTERVAL)
 	tween.tween_property(self, "scale", Vector2.ZERO, ANIMATION_DURATION)
 	tween.parallel().tween_property(self, "modulate", Color.TRANSPARENT, ANIMATION_DURATION)
 	tween.tween_callback(func():
