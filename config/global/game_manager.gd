@@ -7,6 +7,7 @@ var is_cutscene:bool = false
 var is_speech_finished = false
 
 var oscilloscope_params:String = ""
+var oscilloscope_is_locked:bool = false
 
 
 func _init() -> void:
@@ -34,7 +35,7 @@ func start():
 	is_cutscene = false
 	is_speech_finished = false
 	scenario_next()
-	#debug_scenario(60)
+	#debug_scenario(65)
 
 
 func scenario_next():
@@ -55,10 +56,7 @@ func emit_scenario_dialog(scenario:Dictionary):
 	if scenario.has_all([Scenario.KEY_ACTOR, Scenario.KEY_SPEECH]):
 		var actor:String = scenario[Scenario.KEY_ACTOR]
 		var actor_speech:String = scenario[Scenario.KEY_SPEECH]
-		if current_actor == actor:
-			EventBus.dialog_continue.emit(actor_speech)
-		else:
-			EventBus.dialog.emit(actor, actor_speech)
+		EventBus.dialog.emit(actor, actor_speech)
 		current_actor = actor
 
 
@@ -78,7 +76,11 @@ func _input(event:InputEvent) -> void:
 
 # Запись игровых состояний:
 func _ready() -> void:
+	Scenario.oscilloscope_unlocked.connect(
+		func():
+			oscilloscope_is_locked = true
+	)
 	Scenario.oscilloscope_write_params.connect(
-	func(new_value):
-		oscilloscope_params = new_value
-)
+		func(new_value):
+			oscilloscope_params = new_value
+	)

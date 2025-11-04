@@ -17,6 +17,8 @@ func _on_room_pressed():
 
 
 func get_oscilloscope_params_from_diary():
+	if GameManager.oscilloscope_params.is_empty():
+		return
 	oscilloscope_params.show()
 	oscilloscope_params.write_value(GameManager.oscilloscope_params)
 

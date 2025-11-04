@@ -21,13 +21,17 @@ signal encryption_machine_try_code_breaking(key:String) # шифр. машинк
 signal oscilloscope_write_params(params:String) # записаны параметры крутилок осциллографа в дневник
 signal oscilloscope_unlocked # осциллограф разблокирован для использования
 signal diary_unlocked # дневник разблокирован для использования
+signal computer_unlocked # компьютер разблокирован для использования
 signal computer_try_send_signal(params:String) # отправлен сигнал параметров через компьютер
 signal computer_response(respone:String) # ответ компьютера на сигнал
+signal back_to_room # принудительный возврат в комнату
 
 # Сценарные ключи
+const RADIO_RESPONSE_EMPTY:String = "... превышено ожидание ответа ..."
+const RADIO_RESPONSE:String = "--- -. ..  -- .- ... -.- .. .-. ..- ..-- - ... .-.-  .--. --- -..  -. .- ... --..--  ..- .-.. ..- ---. ---- .- .---  ... .-- --- ..  --. .-.. .- --.. .-"
 const ENCRYPTION_MACHINE_PASSWORD:String = "тест"
 const ENCRYPTION_MACHINE_ANSWER:String = "Я УсиЩ, ПРОЗРЕЙ фото с ГлазиЩем"
-const OSCILLOSCOPE_PARAMS:PackedInt32Array = [0, 1, 2, 3, 4]
+const OSCILLOSCOPE_PARAMS:String = "[1, 2, 3, 4]"
 const NOTIFICATION_UPDATE_DIARY:String = "Запись в дневнике обновлена..."
 
 # Ход сценария:
@@ -328,7 +332,7 @@ var data_base:Array[Dictionary] = [
 		KEY_SPEECH : "И все же, разве это не лучший результат за последнее время?",
 	},
 	{
-		KEY_EVENTS : [event(self.friend_has_come)],
+		KEY_EVENTS : [event(self.friend_has_come), event(self.back_to_room)],
 		KEY_ACTOR : ACTOR_FRIEND,
 		KEY_SPEECH : "Ты выглядишь бледнее, чем обычно. С тобой что-то случилось?",
 	},

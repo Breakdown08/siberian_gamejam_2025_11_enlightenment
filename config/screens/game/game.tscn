@@ -127,12 +127,8 @@ visible = false
 position = Vector2(1779, 502)
 
 [node name="hero" parent="." instance=ExtResource("15_mwajf")]
-visible = false
 position = Vector2(702.00006, 528.00006)
 scale = Vector2(0.665, 0.665)
-
-[node name="actor_speech_panel" parent="." instance=ExtResource("12_v58cl")]
-layout_mode = 1
 
 [node name="scene" type="Control" parent="."]
 layout_mode = 1
@@ -143,6 +139,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="actor_speech_panel" parent="." instance=ExtResource("12_v58cl")]
+layout_mode = 1
 
 [node name="notifications" type="Control" parent="."]
 layout_mode = 1

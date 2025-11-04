@@ -1,7 +1,7 @@
 class_name Thoughts extends Node
 
-const MY_HOME:String = "Дом, мой милый дом"
 const NOT_INTERESTING:String = "Мне это не интересно"
+const RADIO_EMPTY_RESPONSE:String = "Ответа нет, попробую еще раз..."
 
 const ABOUT_ITEMS:Dictionary[int, Dictionary] = {
 	1 : {

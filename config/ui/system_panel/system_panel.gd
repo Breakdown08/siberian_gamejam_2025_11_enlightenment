@@ -12,3 +12,10 @@ func _input(event:InputEvent) -> void:
 			modulate = Color.WHITE
 		else:
 			modulate = Color.TRANSPARENT
+
+
+func _process(delta: float) -> void:
+	if GameManager.is_cutscene:
+		hide()
+	else:
+		show()
