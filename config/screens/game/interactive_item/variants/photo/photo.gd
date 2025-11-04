@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func on_new_thought(speech:String):
 	match GameManager.scenario_stage:
-		1:
+		2:
 			if thought_id > 0:
 				Scenario.photo_unlocked.emit()
 		3:

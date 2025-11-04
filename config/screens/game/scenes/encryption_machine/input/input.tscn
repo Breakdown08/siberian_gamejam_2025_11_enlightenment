@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://br3wx4hh16v08"]
+[gd_scene load_steps=3 format=3 uid="uid://br3wx4hh16v08"]
 
 [ext_resource type="Script" uid="uid://ch8lu8qrlj2ox" path="res://config/screens/game/scenes/encryption_machine/input/input.gd" id="1_e8nca"]
-[ext_resource type="FontFile" uid="uid://bkeiamdlsi230" path="res://config/resources/fonts/press_start_2p_regular.ttf" id="2_y28jf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8nca"]
 bg_color = Color(0.23081565, 0.25667801, 0.13340995, 1)
@@ -37,7 +36,6 @@ theme_override_constants/margin_bottom = 0
 
 [node name="display" type="Label" parent="panel/margin"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_y28jf")
 theme_override_font_sizes/font_size = 45
 horizontal_alignment = 2
 clip_text = true

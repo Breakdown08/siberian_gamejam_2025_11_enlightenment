@@ -7,7 +7,7 @@ extends Panel
 func _ready() -> void:
 	EventBus.scenario_id_updated.connect(
 		func(scenario_id:int):
-			id.text = str(scenario_id)
+			id.text = str(scenario_id) + " " + str(GameManager.scenario_stage)
 	)
 	EventBus.speech_finished.connect(func():
 		next_scenario_indicator.modulate = Color.GREEN

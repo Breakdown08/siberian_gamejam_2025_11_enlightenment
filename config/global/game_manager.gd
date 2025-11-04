@@ -46,8 +46,8 @@ func start():
 	scenario_next()
 	#debug_scenario(67)
 	#debug_scenario(127)
-	#debug_scenario(150)
-	#debug_scenario(206)
+	#debug_scenario(180)
+	#debug_scenario(207)
 
 
 func scenario_next():

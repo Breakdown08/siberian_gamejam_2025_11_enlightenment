@@ -11,11 +11,11 @@ const ANIMATION_DURATION:float = 0.3
 
 
 func _ready() -> void:
-	if GameManager.is_photo_opened:
+	if GameManager.is_photo_opened and GameManager.scenario_id < 198:
 		front_without_label.show()
 		front.hide()
 		GameManager.scenario_next()
-		$button.hide()
+		#$button.hide()
 	room.pressed.connect(_on_room_pressed)
 	back.modulate = Color.TRANSPARENT
 	#if GameManager.is_photo_turned:

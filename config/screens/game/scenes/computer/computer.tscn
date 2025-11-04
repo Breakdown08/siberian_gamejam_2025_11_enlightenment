@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://da2myacsb7u44"]
+[gd_scene load_steps=5 format=3 uid="uid://da2myacsb7u44"]
 
 [ext_resource type="Script" uid="uid://co76kp77363e4" path="res://config/screens/game/scenes/computer/computer.gd" id="1_mls1d"]
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_276df"]
 [ext_resource type="Texture2D" uid="uid://bjws0q5lrr0pr" path="res://config/screens/game/scenes/computer/resources/computer.png" id="2_li4uo"]
 [ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="3_li4uo"]
-[ext_resource type="FontFile" uid="uid://bkeiamdlsi230" path="res://config/resources/fonts/press_start_2p_regular.ttf" id="5_mf5j1"]
 
 [node name="computer" type="Control"]
 layout_mode = 3
@@ -66,7 +65,6 @@ theme_override_constants/margin_bottom = 50
 [node name="response" type="Label" parent="output/margin"]
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("5_mf5j1")
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1

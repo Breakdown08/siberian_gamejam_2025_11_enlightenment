@@ -36,6 +36,7 @@ signal computer_try_send_signal(params:String) # отправлен сигнал
 signal computer_response(respone:String) # ответ компьютера на сигнал
 signal back_to_room # принудительный возврат в комнату
 signal morse_translated # морязнка переведена
+signal morse_unlocked
 signal glasses_unlocked
 signal final_scene
 signal game_over
