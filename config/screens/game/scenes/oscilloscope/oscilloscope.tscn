@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf8akmyd0msei"]
+[gd_scene load_steps=11 format=3 uid="uid://cf8akmyd0msei"]
 
 [ext_resource type="Script" uid="uid://dhk2u4falvg5h" path="res://config/screens/game/scenes/oscilloscope/oscilloscope.gd" id="1_6tim8"]
 [ext_resource type="Texture2D" uid="uid://bd1n2nqfg7a3l" path="res://config/screens/game/scenes/oscilloscope/resources/oscilloscope.png" id="2_b0816"]
 [ext_resource type="Texture2D" uid="uid://ig1r2dd0lo0l" path="res://config/screens/game/scenes/oscilloscope/resources/reference_oscilloscope.png" id="3_g1i1e"]
 [ext_resource type="Texture2D" uid="uid://dkbm7pk3abwhn" path="res://config/screens/game/scenes/oscilloscope/resources/potentiometer.png" id="4_kgl6y"]
+[ext_resource type="Texture2D" uid="uid://bufon6vjoqnfj" path="res://config/screens/game/scenes/oscilloscope/resources/horizontal_line.png" id="4_w2nwx"]
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="5_mkgrp"]
+[ext_resource type="Texture2D" uid="uid://63gcv545xw44" path="res://config/screens/game/scenes/oscilloscope/resources/signal_over.png" id="5_mmbn4"]
 [ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="6_hvpvx"]
+[ext_resource type="Texture2D" uid="uid://ld56tvyloud4" path="res://config/screens/game/scenes/oscilloscope/resources/signal_under.png" id="6_judm1"]
+[ext_resource type="Texture2D" uid="uid://cc6fwbmd53lr8" path="res://config/screens/game/scenes/oscilloscope/resources/vertical_line.png" id="7_mmbn4"]
 
 [node name="oscilloscope" type="Control"]
 layout_mode = 3
@@ -35,11 +39,162 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_g1i1e")
 
+[node name="signals" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.266
+anchor_top = 0.291
+anchor_right = 0.266
+anchor_bottom = 0.291
+offset_left = 0.27999878
+offset_top = -0.27999878
+offset_right = 610.28
+offset_bottom = 374.72
+
+[node name="horizontal_line" type="TextureRect" parent="signals"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -0.5
+offset_right = 297.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_w2nwx")
+expand_mode = 1
+
+[node name="vertical_line_1" type="TextureRect" parent="signals"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = -184.5
+offset_right = -141.0
+offset_bottom = 351.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.602, 0.683)
+texture = ExtResource("7_mmbn4")
+expand_mode = 1
+
+[node name="vertical_line_2" type="TextureRect" parent="signals"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 18.0
+offset_top = -185.5
+offset_right = 39.0
+offset_bottom = 350.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.601, 0.682)
+texture = ExtResource("7_mmbn4")
+expand_mode = 1
+
+[node name="vertical_line_3" type="TextureRect" parent="signals"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 161.0
+offset_top = -185.5
+offset_right = 182.0
+offset_bottom = 350.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.599, 0.68)
+texture = ExtResource("7_mmbn4")
+expand_mode = 1
+
+[node name="Area_1" type="ColorRect" parent="signals"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 148.445
+offset_bottom = 367.17
+color = Color(0.57327366, 0.21667713, 0.28689185, 0.32156864)
+
+[node name="Area_2" type="ColorRect" parent="signals"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 3.0
+offset_right = 329.3
+offset_bottom = 368.11
+color = Color(0.57327366, 0.21667713, 0.28689185, 0.32156864)
+
+[node name="Area_3" type="ColorRect" parent="signals"]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 2.0
+offset_right = 471.685
+offset_bottom = 367.11
+color = Color(0.57327366, 0.21667713, 0.28689185, 0.32156864)
+
+[node name="Area_4" type="ColorRect" parent="signals"]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 3.0
+offset_right = 602.995
+offset_bottom = 367.03
+color = Color(0.57327366, 0.21667713, 0.28689185, 0.32156864)
+
+[node name="peak_1" type="TextureRect" parent="signals"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 47.0
+offset_right = 123.0
+offset_bottom = 188.5
+texture = ExtResource("5_mmbn4")
+expand_mode = 1
+
+[node name="peak_2" type="TextureRect" parent="signals"]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 47.0
+offset_right = 263.0
+offset_bottom = 188.5
+texture = ExtResource("5_mmbn4")
+expand_mode = 1
+
+[node name="peak_3" type="TextureRect" parent="signals"]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 47.0
+offset_right = 423.0
+offset_bottom = 188.5
+texture = ExtResource("5_mmbn4")
+expand_mode = 1
+
+[node name="peak_4" type="TextureRect" parent="signals"]
+layout_mode = 0
+offset_left = 506.0
+offset_top = 187.0
+offset_right = 551.0
+offset_bottom = 328.7
+scale = Vector2(1, 0.6)
+texture = ExtResource("6_judm1")
+expand_mode = 1
+flip_v = true
+
 [node name="controls" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 10.0
+offset_right = -1.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -65,6 +220,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="potentiometer_3" type="TextureRect" parent="controls"]
+visible = false
 self_modulate = Color(1, 1, 0.5686275, 1)
 layout_mode = 1
 anchors_preset = -1
@@ -101,6 +257,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="cheat_button" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 655.0
 offset_top = 438.0
@@ -119,6 +276,14 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "В КОМНАТУ"
 
+[connection signal="mouse_entered" from="controls/potentiometer_1" to="." method="_on_potentiometer_1_mouse_entered"]
+[connection signal="mouse_exited" from="controls/potentiometer_1" to="." method="_on_potentiometer_1_mouse_exited"]
+[connection signal="mouse_entered" from="controls/potentiometer_2" to="." method="_on_potentiometer_2_mouse_entered"]
+[connection signal="mouse_exited" from="controls/potentiometer_2" to="." method="_on_potentiometer_2_mouse_exited"]
+[connection signal="mouse_entered" from="controls/potentiometer_4" to="." method="_on_potentiometer_4_mouse_entered"]
+[connection signal="mouse_exited" from="controls/potentiometer_4" to="." method="_on_potentiometer_4_mouse_exited"]
+[connection signal="mouse_entered" from="controls/potentiometer_5" to="." method="_on_potentiometer_5_mouse_entered"]
+[connection signal="mouse_exited" from="controls/potentiometer_5" to="." method="_on_potentiometer_5_mouse_exited"]
 [connection signal="pressed" from="cheat_button" to="." method="_on_cheat_button_pressed"]
 
 [editable path="system_panel"]
