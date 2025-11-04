@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://7qwo8537y6fe"]
+[gd_scene load_steps=5 format=3 uid="uid://7qwo8537y6fe"]
 
 [ext_resource type="Script" uid="uid://cvxykx05opitw" path="res://config/screens/main_menu/main_menu.gd" id="1_quvd8"]
+[ext_resource type="Texture2D" uid="uid://bny0ojtd8qe46" path="res://config/screens/main_menu/resources/Title_screen_eyes.png" id="2_3ivpt"]
+[ext_resource type="Texture2D" uid="uid://cbc0s6lxtpsfd" path="res://config/screens/main_menu/resources/Title_screen.png" id="2_53bw0"]
 [ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="2_droc2"]
 
 [node name="main_menu" type="Control"]
@@ -12,6 +14,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_quvd8")
 
+[node name="Screen_2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_3ivpt")
+
+[node name="Screen_1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_53bw0")
+
 [node name="panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(300, 150)
 layout_mode = 1
@@ -21,9 +38,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -175.5
-offset_top = -106.5
+offset_top = 221.0
 offset_right = 175.5
-offset_bottom = 106.5
+offset_bottom = 434.0
 grow_horizontal = 2
 grow_vertical = 2
 
