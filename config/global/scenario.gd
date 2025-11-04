@@ -609,7 +609,7 @@ var data_base:Array[Dictionary] = [
 	},#TODO меняется спрайт на злость
 	{
 		KEY_ACTOR : ACTOR_FRIEND,
-		KEY_SPEECH : "ы все же лез в ту волну? Ты продолжил заниматься этим?",
+		KEY_SPEECH : "Ты все же лез в ту волну? Ты продолжил заниматься этим?",
 	},
 	{
 		KEY_ACTOR : ACTOR_FRIEND,
@@ -740,6 +740,7 @@ var data_base:Array[Dictionary] = [
 		KEY_SPEECH : "Сиди один здесь в своей темной комнате и копайся в железках, идя по ложному следу. Удачи.",
 	},
 	{
+		KEY_EVENTS : [event(self.friend_has_left)],
 		KEY_ACTOR : ACTOR_NONE,
 		KEY_SPEECH : "Так дверью хлопнул, что полки затряслись. Надо будет проверить не упало ли что-нибудь.",
 	},
@@ -770,5 +771,99 @@ var data_base:Array[Dictionary] = [
 	{
 		KEY_ACTOR : ACTOR_NONE,
 		KEY_SPEECH : "Надо посмотреть на разбилась ли фотография.",
+	},
+	{
+		KEY_EVENTS : [event(self.cutscene_off)],
+	},
+	{
+		KEY_EVENTS : [event(self.cutscene_on)],
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Что это? Моя шифровальная машина, доставшаяся мне от отца?",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "А почему я ни разу не попробовал убрать этот листик?",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Вероятно, я боялся повредить фотографию, иначе этот затуп оправдать не смогу.",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Хотя почему затуп? Ну машина и машина.",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Про то, что она существует я знал: она стоит у меня на столе. Чего-то необычного я в ней не нахожу.",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Хм... А могут ли быть связаны слова с оборота фотографии с этой машинкой?",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Зачем бы они были написаны сзади иначе, логично? Звучит логично.", 
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Но как будто вводить полностью фразу целиком как-то не удобно.",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Не зря же не хватает только пары слов.",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Может попробовать ввести их в машинку?!",
+	},
+	{
+		KEY_EVENTS : [event(self.cutscene_off)],
+	},
+	{ KEY_EVENTS : [event(self.cutscene_on)],
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Новое послание? “Я УсиЩ. Прозрей фото с ГлазиЩем”. Что это может значить?",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "УсиЩ, ГлазиЩ... Это же то, что я видел на фотографии.",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Их прозвища в детективном агентстве! Надо подумать...",
+	},
+	{ 
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "И что я должен увидеть на фото? Прозрей? Увидеть что-то новое?",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Увидеть что-то новое? Увидеть… Улучшить зрение… Очки! Точно!",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "У отца в кармашке очки! Они были и у меня. Он мне их оставил. Как я мог об этом забыть.",
+	},
+	{
+		KEY_EVENTS : [event(self.cutscene_off)],
+	},
+	{
+		KEY_EVENTS : [event(self.cutscene_on)],
+	},
+	{#TODO тут вид от первого лица становится
+		KEY_EVENTS : [event(self.friend_has_come)],
+		KEY_ACTOR : ACTOR_FRIEND, #TODO 
+		KEY_SPEECH : "Я пришел извиниться…",
+	},
+	{
+		KEY_ACTOR : ACTOR_NONE,
+		KEY_SPEECH : "Это Женя что ли? Очки дали мне возможность увидеть его истинное лицо?",
+	},
+	{
+		KEY_ACTOR : ACTOR_HERO,
+		KEY_SPEECH : "Так ты на самом деле пришелец?!",
 	},
 ]
