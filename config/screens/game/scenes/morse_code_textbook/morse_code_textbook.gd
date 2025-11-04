@@ -9,7 +9,7 @@ const UNDEFINED:PackedScene = preload("res://config/screens/game/scenes/morse_co
 
 const TABLE:Dictionary[String, String] = {
 	"А" : "•−",
-	"Б" : "•••",
+	"Б" : "−•••",
 	"В" : "•−−",
 	"Г" : "−−•",
 	"Д" : "−••",
