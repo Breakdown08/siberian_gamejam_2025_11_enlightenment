@@ -1,63 +1,27 @@
 extends Control
 
 @onready var room:Button = $system_panel/margin/room
+@onready var pot_1:TextureRect = $controls/potentiometer_1
+@onready var pot_2:TextureRect = $controls/potentiometer_2
+@onready var curve:TextureRect = $display/curve
 
-var area_count = 4
-@onready var areas = [
-	$signals/Area_1,
-	$signals/Area_2,
-	$signals/Area_3,
-	$signals/Area_4
-]
-var move_speed = 20.0
-var move_element = null
+var pot_1_focused:bool = false
+var pot_2_focused:bool = false
 
-var bg_width = 610
-@onready var peaks = [
-	$signals/peak_1,
-	$signals/peak_2,
-	$signals/peak_3,
-	$signals/peak_4
-]
+const POT_ROTATION_STEP:int = 5
+const COEF:float = 0.05
 
-var first_encoder_wheel = false
-var second_encoder_wheel = false
-var third_encoder_wheel = false
-var fourth_encoder_wheel = false
-var zone_occupied := {}  # ключ = зона (ColorRect), значение = пик
+var pot_1_percent:float = 0.0
+var pot_2_percent:float = 0.0
 
-func _process(_delta):
-	_check_peaks()
-	
-func _check_peaks():
-	var area_occupancy = []
-	area_occupancy.resize(areas.size())
-	area_occupancy.fill(null)
+var init_scale:Vector2
 
-	for peak in peaks:
-		var peak_center = peak.position.x + peak.size.x / 2
-		var peak_left = peak.position.x
-		var assigned = false
+var success:bool = false
 
-		for i in range(areas.size()):
-			var area = areas[i]
-			var left = area.position.x
-			var right = area.position.x + area.size.x
-			
-			#if peak.name == "peak_4" and area.name == "Area_4":
-				#area_occupancy[i] = peak
-				#peak.modulate = Color(0, 1, 0)
-				#assigned = true
-				#break
-			if peak_center >= left and peak_center <= right:
-				if area_occupancy[i] != null:
-					peak.modulate = Color(1, 0, 0)
-					area_occupancy[i].modulate = Color(1, 0, 0)
-				else:
-					area_occupancy[i] = peak
-					peak.modulate = Color(0, 1, 0)
-				assigned = true
-				break
+
+func _ready() -> void:
+	init_scale = scale
+	room.pressed.connect(_on_room_pressed)
 
 
 func _on_cheat_button_pressed() -> void:
@@ -77,43 +41,55 @@ func write_params():
 	Scenario.oscilloscope_write_params.emit(str([1, 2, 3, 4]))
 
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		if move_element != null:
-			if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-				move_element.position.x -= move_speed
-			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-				move_element.position.x += move_speed
+func _on_potentiometer_1_mouse_entered() -> void:
+	pot_1_focused = true
+
+
+func _on_potentiometer_1_mouse_exited() -> void:
+	pot_1_focused = false
 
 
 func _on_potentiometer_2_mouse_entered() -> void:
-	first_encoder_wheel = true
-	move_element = peaks[0]
+	pot_2_focused = true
+
 
 func _on_potentiometer_2_mouse_exited() -> void:
-	first_encoder_wheel = false
-	move_element = null
+	pot_2_focused = false
 
-func _on_potentiometer_1_mouse_entered() -> void:
-	second_encoder_wheel = true
-	move_element = peaks[1]
 
-func _on_potentiometer_1_mouse_exited() -> void:
-	second_encoder_wheel = false
-	move_element = null
+func round_to_tenth(value: float) -> float:
+	return round(value * 10.0) / 10.0
 
-func _on_potentiometer_4_mouse_entered() -> void:
-	third_encoder_wheel = true
-	move_element = peaks[2]
 
-func _on_potentiometer_4_mouse_exited() -> void:
-	third_encoder_wheel = false
-	move_element = null
 
-func _on_potentiometer_5_mouse_entered() -> void:
-	fourth_encoder_wheel = true
-	move_element = peaks[3]
+func _input(event:InputEvent) -> void:
+	if !success:
+		if event is InputEventMouseButton:
+			if event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN]:
+				var polarity:int = 1 if event.button_index == MOUSE_BUTTON_WHEEL_UP else -1
+				if pot_1_focused:
+					on_pot_1(polarity)
+				if pot_2_focused:
+					on_pot_2(polarity)
+				var rounded = Vector2(round_to_tenth(curve.scale.x), round_to_tenth(curve.scale.y))
+				if rounded == Vector2.ONE:
+					curve.modulate = Color.GREEN
+					success = true
+					Scenario.oscilloscope_success.emit()
+				else:
+					curve.modulate = Color.WHITE
 
-func _on_potentiometer_5_mouse_exited() -> void:
-	fourth_encoder_wheel = false
-	move_element = null
+
+func on_pot_1(polarity:int):
+	pot_1.rotation_degrees += POT_ROTATION_STEP * polarity
+	curve.scale.x = clampf(curve.scale.x + COEF * polarity, 0.8, 3.0)
+
+
+func on_pot_2(polarity:int):
+	pot_2.rotation_degrees += POT_ROTATION_STEP * polarity
+	curve.scale.y = clampf(curve.scale.y + COEF * polarity, -2, 3.0)
+
+
+func _on_write_params_pressed() -> void:
+	Scenario.oscilloscope_write_params.emit(str(Vector2(round_to_tenth(curve.scale.x), round_to_tenth(curve.scale.y))))
+	EventBus.notification.emit(Scenario.NOTIFICATION_UPDATE_DIARY)
