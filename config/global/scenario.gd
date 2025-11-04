@@ -15,6 +15,8 @@ const KEY_EVENTS = "events"
 # Сценарные события:
 signal friend_has_come # друг пришел
 signal friend_has_left # друг ушел
+signal friend_normal # друг в норме
+signal friend_angry # друг в злости
 signal cutscene_on # катсцена началась
 signal cutscene_off # катсцена закончилась
 signal encryption_machine_try_code_breaking(key:String) # шифр. машинка ввод символов

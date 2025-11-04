@@ -123,8 +123,7 @@ size_flags_vertical = 4
 text = "МЕНЮ"
 
 [node name="friend" parent="." instance=ExtResource("13_che8u")]
-visible = false
-position = Vector2(1779, 502)
+position = Vector2(1246, 502)
 
 [node name="hero" parent="." instance=ExtResource("15_mwajf")]
 position = Vector2(702.00006, 528.00006)

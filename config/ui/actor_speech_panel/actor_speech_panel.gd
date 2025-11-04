@@ -14,6 +14,7 @@ var style_box_flat:StyleBoxFlat
 
 func _ready() -> void:
 	hide()
+	body.self_modulate = Color("5c5c6194")
 	style_box_flat = body.get("theme_override_styles/panel") as StyleBoxFlat
 	EventBus.dialog.connect(on_dialog)
 	EventBus.thought.connect(on_thought)
@@ -75,13 +76,9 @@ func on_thought(hero_speech:String):
 
 func match_actor(actor:String):
 	match actor:
-		Scenario.ACTOR_HERO, Scenario.ACTOR_NONE:
-			tab.alignment = BoxContainer.ALIGNMENT_BEGIN
-			style_box_flat.corner_radius_top_left = 0
-			style_box_flat.corner_radius_top_right = style_box_flat.corner_radius_bottom_left
-			speech.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT 		
-		_:
-			tab.alignment = BoxContainer.ALIGNMENT_END
-			style_box_flat.corner_radius_top_left = style_box_flat.corner_radius_bottom_left
-			style_box_flat.corner_radius_top_right = 0
-			speech.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		Scenario.ACTOR_HERO:
+			tab_panel.self_modulate = Color("4cb072")
+		Scenario.ACTOR_NONE:
+			tab_panel.self_modulate = Color("33abb8ff")
+		Scenario.ACTOR_FRIEND:
+			tab_panel.self_modulate = Color("0ea2f1ff")
