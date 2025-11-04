@@ -39,11 +39,11 @@ var data_base:Array[Dictionary] = [
 	{
 		KEY_ACTOR : ACTOR_NONE,
 		KEY_SPEECH : "До меня доносятся шаги. Не нужно быть экстрасенсом, чтобы догадаться. Я знаю кто сейчас зайдет.",
+		KEY_EVENTS : [event(self.cutscene_on)],
 	},
 	{	
 		KEY_ACTOR : ACTOR_NONE,
 		KEY_SPEECH : "Как всегда пунктуален. Уже на протяжении нескольких месяцев Женя приходит в одно и то же время.",
-		KEY_EVENTS : [event(self.cutscene_on)]
 	},
 	{
 		KEY_ACTOR : ACTOR_NONE,
