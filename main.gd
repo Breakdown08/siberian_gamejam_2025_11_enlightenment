@@ -1,5 +1,8 @@
 class_name Main extends Control
 
+@onready var screen:Node = $screen
+@onready var audio:AudioStreamPlayer = $auido
+
 enum SCREEN {GAME, SETTINGS, MAIN_MENU}
 
 const SCREENS:Dictionary[SCREEN, PackedScene] = {
@@ -8,15 +11,17 @@ const SCREENS:Dictionary[SCREEN, PackedScene] = {
 	SCREEN.MAIN_MENU : preload("res://config/screens/main_menu/main_menu.tscn"),
 }
 
-@onready var screen:Node = $screen
+
+func _ready() -> void:
+	EventBus.screen_switched.connect(on_screen_switched)
+	EventBus.screen_switched.emit(SCREEN.MAIN_MENU)
+	audio.play()
+	audio.finished.connect(func():
+		audio.play()
+	)
 
 
 func on_screen_switched(next_screen:SCREEN):
 	for child in screen.get_children():
 		child.queue_free()
 	screen.add_child(SCREENS[next_screen].instantiate())
-
-
-func _ready() -> void:
-	EventBus.screen_switched.connect(on_screen_switched)
-	EventBus.screen_switched.emit(SCREEN.MAIN_MENU)
