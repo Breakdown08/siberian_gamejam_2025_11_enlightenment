@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfucodb2he35p"]
+
+[ext_resource type="Script" uid="uid://bh2m7uaib0p73" path="res://config/ui/popup/notification/notification.gd" id="1_hhljg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhljg"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="notification" type="Control"]
+layout_mode = 3
+anchor_left = 0.70885414
+anchor_right = 1.0
+anchor_bottom = 0.15185185
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hhljg")
+metadata/_edit_use_anchors_ = true
+
+[node name="panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hhljg")
+
+[node name="margin" type="MarginContainer" parent="panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="center_container" type="CenterContainer" parent="panel/margin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="message" type="Label" parent="panel/margin/center_container"]
+layout_mode = 2
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

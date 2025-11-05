@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://did6276qugi8o"]
+
+[ext_resource type="PackedScene" uid="uid://bh2ouu1kk3ij5" path="res://config/screens/game/interactive_item/interactive_item.tscn" id="1_qu3ji"]
+[ext_resource type="Script" uid="uid://cxabom84nkio4" path="res://config/screens/game/interactive_item/variants/computer/computer.gd" id="2_yqpif"]
+[ext_resource type="AudioStream" uid="uid://cqpul4k1fs4aa" path="res://sound_fx/desktop/mouse_5.mp3" id="3_3jvwo"]
+[ext_resource type="Texture2D" uid="uid://dxvjfdi1xti25" path="res://config/screens/game/interactive_item/variants/computer/resources/interactive_computer.png" id="3_sy62b"]
+[ext_resource type="AudioStream" uid="uid://cowkievma70c" path="res://sound_fx/desktop/keyboard_6.mp3" id="4_sy62b"]
+
+[node name="computer" instance=ExtResource("1_qu3ji")]
+custom_minimum_size = Vector2(307, 209.99997)
+anchors_preset = -1
+anchor_right = 0.15989584
+anchor_bottom = 0.19444442
+offset_right = -307.0
+offset_bottom = -209.99997
+script = ExtResource("2_yqpif")
+scene = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="sprite" parent="." index="0"]
+position = Vector2(157, 103)
+texture = ExtResource("3_sy62b")
+
+[node name="audio_focused" parent="." index="2"]
+stream = ExtResource("3_3jvwo")
+
+[node name="audio_pressed" parent="." index="3"]
+stream = ExtResource("4_sy62b")

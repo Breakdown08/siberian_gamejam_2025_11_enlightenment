@@ -1,0 +1,146 @@
+[gd_scene load_steps=6 format=3 uid="uid://csq0hllx406t5"]
+
+[ext_resource type="Script" uid="uid://djr4rnct1ah17" path="res://config/screens/game/scenes/diary/diary.gd" id="1_5oupm"]
+[ext_resource type="Texture2D" uid="uid://c2tmn8yj4m4mp" path="res://config/screens/game/scenes/diary/resources/diary.png" id="2_6dj4t"]
+[ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_i7wao"]
+[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="3_6dj4t"]
+[ext_resource type="PackedScene" uid="uid://kh2oi1kk1yj6" path="res://config/screens/game/scenes/diary/item/item.tscn" id="5_m4cta"]
+
+[node name="diary" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5oupm")
+
+[node name="static_background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6dj4t")
+
+[node name="system_panel" parent="." instance=ExtResource("2_i7wao")]
+layout_mode = 1
+
+[node name="room" parent="system_panel/margin" index="0" instance=ExtResource("3_6dj4t")]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "В КОМНАТУ"
+
+[node name="list" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 111.0
+offset_top = 75.0
+offset_right = -1035.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="oscilloscope_params" parent="list" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="key" parent="list/oscilloscope_params/box" index="0"]
+text = "ОСЦИЛЛОГРАФ: "
+
+[node name="radio_response" parent="list" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="key" parent="list/radio_response/box" index="0"]
+text = "РАДИО: "
+
+[node name="hints_scene_1" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1016.0
+offset_top = 94.0
+offset_right = -130.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 74
+
+[node name="shch" parent="hints_scene_1" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="box" parent="hints_scene_1/shch" index="0"]
+offset_left = -57.0
+offset_top = 9.0
+offset_right = 276.0
+offset_bottom = -2.0
+
+[node name="key" parent="hints_scene_1/shch/box" index="0"]
+text = "Я поймал странный сигнал в форме буквы \"Ш\"
+или \"Щ\""
+
+[node name="value" parent="hints_scene_1/shch/box" index="1"]
+visible = false
+
+[node name="radio_success_response" parent="hints_scene_1" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="box" parent="hints_scene_1/radio_success_response" index="0"]
+offset_left = -57.0
+offset_top = 9.0
+offset_right = 276.0
+offset_bottom = -2.0
+
+[node name="key" parent="hints_scene_1/radio_success_response/box" index="0"]
+text = "Таинственный шифр, полученный от странного
+сигнала... Надо его расшифровать
+Подсказка от Жени: изучить фотографию
+отца. Надо заняться этим"
+
+[node name="value" parent="hints_scene_1/radio_success_response/box" index="1"]
+visible = false
+
+[node name="photo" parent="hints_scene_1" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="box" parent="hints_scene_1/photo" index="0"]
+offset_left = -57.0
+offset_top = 9.0
+offset_right = 276.0
+offset_bottom = -2.0
+
+[node name="key" parent="hints_scene_1/photo/box" index="0"]
+text = "Подпись на обратной стороне фотографии:
+ «Они *** под нас, *** глаза»"
+
+[node name="value" parent="hints_scene_1/photo/box" index="1"]
+visible = false
+
+[node name="glasses" parent="hints_scene_1" instance=ExtResource("5_m4cta")]
+layout_mode = 2
+
+[node name="box" parent="hints_scene_1/glasses" index="0"]
+offset_left = -57.0
+offset_top = 9.0
+offset_right = 276.0
+offset_bottom = -2.0
+
+[node name="key" parent="hints_scene_1/glasses/box" index="0"]
+text = "Я помню, что очки лежат в футляре на полке.
+ Надо проверить там"
+
+[node name="value" parent="hints_scene_1/glasses/box" index="1"]
+visible = false
+
+[editable path="system_panel"]
+[editable path="list/oscilloscope_params"]
+[editable path="list/radio_response"]
+[editable path="hints_scene_1/shch"]
+[editable path="hints_scene_1/radio_success_response"]
+[editable path="hints_scene_1/photo"]
+[editable path="hints_scene_1/glasses"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cn51hyjk3hel0"]
+
+[ext_resource type="PackedScene" uid="uid://bh2ouu1kk3ij5" path="res://config/screens/game/interactive_item/interactive_item.tscn" id="1_s0ylg"]
+[ext_resource type="Script" uid="uid://cg2q2vbmxt7ld" path="res://config/screens/game/interactive_item/variants/encryption_machine/encryption_machine.gd" id="2_x8shd"]
+[ext_resource type="Texture2D" uid="uid://b6lqqolaplto4" path="res://config/screens/game/interactive_item/variants/encryption_machine/resources/interactive_encryption_machine.png" id="3_e0hbu"]
+[ext_resource type="AudioStream" uid="uid://c45nxn0lntrur" path="res://sound_fx/mini-game3/jack_out3.mp3" id="3_xadrr"]
+[ext_resource type="AudioStream" uid="uid://dw5vwe8ia8h4a" path="res://sound_fx/mini-game3/jack_in3.mp3" id="4_e0hbu"]
+
+[node name="encryption_machine" instance=ExtResource("1_s0ylg")]
+custom_minimum_size = Vector2(170, 80)
+anchors_preset = -1
+anchor_right = 0.088541664
+anchor_bottom = 0.074074075
+offset_right = -170.0
+offset_bottom = -80.0
+script = ExtResource("2_x8shd")
+scene = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="sprite" parent="." index="0"]
+position = Vector2(85, 39)
+texture = ExtResource("3_e0hbu")
+
+[node name="audio_focused" parent="." index="2"]
+stream = ExtResource("3_xadrr")
+
+[node name="audio_pressed" parent="." index="3"]
+stream = ExtResource("4_e0hbu")
