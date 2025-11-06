@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5gebwld4imdq"]
+
+[ext_resource type="Script" uid="uid://h5oh1udvs2oo" path="res://config/screens/game/scenes/morse_code_textbook/undefined/undefined.gd" id="1_hkiir"]
+[ext_resource type="FontFile" uid="uid://gt4dr3icg54w" path="res://config/resources/fonts/hand_pastry_chef.ttf" id="2_e545g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkiir"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e545g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tjhc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu0la"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_obgo6"]
+
+[node name="undefined" type="Control"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 3
+anchor_right = 0.03125
+anchor_bottom = 0.055555556
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hkiir")
+metadata/_edit_use_anchors_ = true
+
+[node name="button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hkiir")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_e545g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0tjhc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fu0la")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_obgo6")
+metadata/_edit_use_anchors_ = true
+
+[node name="code" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="char" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_e545g")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1

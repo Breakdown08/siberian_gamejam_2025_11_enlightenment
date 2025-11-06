@@ -1,0 +1,138 @@
+[gd_scene load_steps=9 format=3 uid="uid://cf8akmyd0msei"]
+
+[ext_resource type="Script" uid="uid://dhk2u4falvg5h" path="res://config/screens/game/scenes/oscilloscope/oscilloscope.gd" id="1_6tim8"]
+[ext_resource type="Texture2D" uid="uid://bd1n2nqfg7a3l" path="res://config/screens/game/scenes/oscilloscope/resources/oscilloscope.png" id="2_b0816"]
+[ext_resource type="Texture2D" uid="uid://ig1r2dd0lo0l" path="res://config/screens/game/scenes/oscilloscope/resources/reference_oscilloscope.png" id="3_g1i1e"]
+[ext_resource type="Texture2D" uid="uid://dkbm7pk3abwhn" path="res://config/screens/game/scenes/oscilloscope/resources/potentiometer.png" id="4_kgl6y"]
+[ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="5_mkgrp"]
+[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="6_hvpvx"]
+[ext_resource type="Texture2D" uid="uid://c377y28w3563g" path="res://config/screens/game/scenes/oscilloscope/resources/curve.png" id="7_hvpvx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvpvx"]
+bg_color = Color(0.075209565, 0.23374069, 0.19332975, 1)
+
+[node name="oscilloscope" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6tim8")
+
+[node name="static_background" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1880.0
+offset_bottom = -1040.0
+texture = ExtResource("2_b0816")
+metadata/_edit_use_anchors_ = true
+
+[node name="reference" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.21568628)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_g1i1e")
+
+[node name="controls" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="potentiometer_1" type="TextureRect" parent="controls"]
+self_modulate = Color(1, 1, 0.5686275, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13072917
+anchor_top = 0.3212963
+anchor_right = 0.2109375
+anchor_bottom = 0.46698856
+pivot_offset = Vector2(77, 78.674)
+texture = ExtResource("4_kgl6y")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="potentiometer_2" type="TextureRect" parent="controls"]
+self_modulate = Color(0.7882353, 0.65882355, 0.4, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26041666
+anchor_top = 0.712037
+anchor_right = 0.3484375
+anchor_bottom = 0.8719201
+pivot_offset = Vector2(84.5, 86.337)
+texture = ExtResource("4_kgl6y")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="system_panel" parent="." instance=ExtResource("5_mkgrp")]
+layout_mode = 1
+
+[node name="room" parent="system_panel/margin" index="0" instance=ExtResource("6_hvpvx")]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "В КОМНАТУ"
+
+[node name="display" type="Control" parent="."]
+clip_contents = true
+anchors_preset = 0
+anchor_left = 0.26456973
+anchor_top = 0.29445195
+anchor_right = 0.5823649
+anchor_bottom = 0.6279905
+offset_right = -3.166748
+offset_bottom = 5.310913
+rotation = -0.008726646
+metadata/_edit_use_anchors_ = true
+
+[node name="panel" type="Panel" parent="display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.287384
+offset_bottom = 0.95755005
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hvpvx")
+
+[node name="curve" type="TextureRect" parent="display"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.17298187
+anchor_top = 0.16414408
+anchor_right = 1.3245469
+anchor_bottom = 0.9027924
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.4, 1.7)
+texture = ExtResource("7_hvpvx")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="write_params" type="Button" parent="."]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 801.0
+offset_right = 1170.0
+offset_bottom = 935.0
+theme_override_font_sizes/font_size = 25
+text = "ЗАПИСАТЬ ПАРАМЕТРЫ"
+
+[connection signal="mouse_entered" from="controls/potentiometer_1" to="." method="_on_potentiometer_1_mouse_entered"]
+[connection signal="mouse_exited" from="controls/potentiometer_1" to="." method="_on_potentiometer_1_mouse_exited"]
+[connection signal="mouse_entered" from="controls/potentiometer_2" to="." method="_on_potentiometer_2_mouse_entered"]
+[connection signal="mouse_exited" from="controls/potentiometer_2" to="." method="_on_potentiometer_2_mouse_exited"]
+[connection signal="pressed" from="write_params" to="." method="_on_write_params_pressed"]
+
+[editable path="system_panel"]

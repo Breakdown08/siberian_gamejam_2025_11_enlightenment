@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmg8hnkti5r18"]
+
+[ext_resource type="Script" uid="uid://qrfb463lls7k" path="res://config/screens/game/scenes/morse_code_textbook/morse_code_textbook.gd" id="1_2nsya"]
+[ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_6857g"]
+[ext_resource type="Texture2D" uid="uid://dg8fsvc83d4lb" path="res://config/screens/game/scenes/morse_code_textbook/resources/morse_code_textbook.png" id="2_qkqkb"]
+[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="3_qkqkb"]
+
+[node name="morse_code_textbook" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2nsya")
+
+[node name="static_background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qkqkb")
+
+[node name="system_panel" parent="." instance=ExtResource("2_6857g")]
+layout_mode = 1
+
+[node name="room" parent="system_panel/margin" index="0" instance=ExtResource("3_qkqkb")]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "В КОМНАТУ"
+
+[node name="database" type="GridContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.061458334
+anchor_top = 0.1425926
+anchor_right = 0.4673215
+anchor_bottom = 0.9094734
+offset_right = -7.257263
+offset_bottom = 6.7686768
+rotation = -0.008726646
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 32
+columns = 7
+metadata/_edit_use_anchors_ = true
+
+[node name="password" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5338542
+anchor_top = 0.1425926
+anchor_right = 0.93971735
+anchor_bottom = 0.9094734
+offset_right = -7.257263
+offset_bottom = 6.7686768
+rotation = -0.008726646
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 32
+columns = 7
+metadata/_edit_use_anchors_ = true
+
+[editable path="system_panel"]

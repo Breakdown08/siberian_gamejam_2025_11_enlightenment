@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1uw0iuwrvde"]
+
+[ext_resource type="Script" uid="uid://c3w8j7hq1bwwj" path="res://config/screens/game/scenes/photo/photo.gd" id="1_glqho"]
+[ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_erndg"]
+[ext_resource type="Texture2D" uid="uid://oa54mfklhahj" path="res://config/screens/game/scenes/photo/resources/photo_hide (1).png" id="2_hu5v2"]
+[ext_resource type="Texture2D" uid="uid://bvdmqf0xtejx6" path="res://config/screens/game/scenes/photo/resources/photo_back.png" id="3_dlc32"]
+[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="3_i3sf4"]
+[ext_resource type="Texture2D" uid="uid://dogxwsb3dps4c" path="res://config/screens/game/scenes/photo/resources/photo (1).png" id="3_i7e2s"]
+
+[node name="photo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_glqho")
+
+[node name="front" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="front" type="TextureRect" parent="front"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hu5v2")
+
+[node name="front_without_label" type="TextureRect" parent="front"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_i7e2s")
+
+[node name="back" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dlc32")
+
+[node name="system_panel" parent="." instance=ExtResource("2_erndg")]
+layout_mode = 1
+
+[node name="room" parent="system_panel/margin" index="0" instance=ExtResource("3_i3sf4")]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "В КОМНАТУ"
+
+[node name="button" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.46302083
+anchor_top = 0.10555556
+anchor_right = 0.55885416
+anchor_bottom = 0.16111112
+text = "ПЕРЕВЕРНУТЬ"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="button" to="." method="_on_button_pressed"]
+
+[editable path="system_panel"]
