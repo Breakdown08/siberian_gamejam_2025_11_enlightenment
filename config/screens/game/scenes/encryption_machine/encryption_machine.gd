@@ -10,7 +10,7 @@ class_name EncryptionMachine extends Control
 
 func _ready() -> void:
 	Scenario.encryption_machine_try_code_breaking.connect(on_encryption_machine_try_code_breaking)
-	room.pressed.connect(_on_room_pressed)
+	room.pressed.connect(GameManager.back_to_room.emit)
 	reset.pressed.connect(input.on_reset)
 	accept.pressed.connect(input.on_accept)
 	for item in switches:
@@ -18,11 +18,7 @@ func _ready() -> void:
 		switch.switched.connect(display.on_switch_switched)
 		switch.switched.connect(input.on_switch_switched)
 		reset.pressed.connect(switch._ready)
-	Scenario.back_to_room.connect(_on_room_pressed)
-
-
-func _on_room_pressed():
-	EventBus.scene_switched.emit(Game.SCENE.MAIN)
+	room.pressed.connect(func(): GameManager.back_to_room.emit())
 
 
 func on_encryption_machine_try_code_breaking(key:String):
@@ -32,4 +28,4 @@ func on_encryption_machine_try_code_breaking(key:String):
 			display.animation_result(result, Utils.get_visible_ratio_time(result) * 5)
 			display.animation_success_color()
 			Scenario.encryption_machine_success.emit()
-			GameManager.scenario_next()
+			GameManager.scenario_next.emit()

@@ -4,10 +4,6 @@ extends Control
 
 
 func _ready() -> void:
-	room.pressed.connect(_on_room_pressed)
-	Scenario.final_scene.connect(_on_room_pressed)
-	GameManager.scenario_next()
-
-
-func _on_room_pressed():
-	EventBus.scene_switched.emit(Game.SCENE.MAIN)
+	room.pressed.connect(func(): GameManager.back_to_room.emit())
+	#Scenario.final_scene.connect(_on_room_pressed)
+	GameManager.scenario_next.emit()

@@ -14,23 +14,19 @@ func _ready() -> void:
 	if GameManager.is_photo_opened and GameManager.scenario_id < 198:
 		front_without_label.show()
 		front.hide()
-		GameManager.scenario_next()
+		GameManager.scenario_next.emit()
 		#$button.hide()
-	room.pressed.connect(_on_room_pressed)
+	room.pressed.connect(func(): GameManager.back_to_room.emit())
 	back.modulate = Color.TRANSPARENT
 	#if GameManager.is_photo_turned:
 		#front_without_label.hide()
 		#back.
 
 
-func _on_room_pressed():
-	EventBus.scene_switched.emit(Game.SCENE.MAIN)
-
-
 func _on_button_pressed() -> void:
 	if !GameManager.is_photo_turned:
 		Scenario.photo_back_side_checked.emit()
-		EventBus.notification.emit(Scenario.NOTIFICATION_UPDATE_DIARY)
+		#EventBus.notification.emit(Scenario.NOTIFICATION_UPDATE_DIARY)
 	back_side = !back_side
 	var tween:Tween = Utils.tween(self).set_parallel(true)
 	if back_side:

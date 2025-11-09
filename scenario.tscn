@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6yjhbmn14vkh"]
+
+[ext_resource type="Script" uid="uid://ddd52y723d56s" path="res://config/global/scenario/actor.gd" id="1_bmpdm"]
+[ext_resource type="Script" uid="uid://c7r1473hdnxi6" path="res://config/global/scenario/database.gd" id="2_p3jsh"]
+[ext_resource type="Script" uid="uid://balu28xoci4g7" path="res://config/global/scenario/skeleton/skeleton.gd" id="3_s7a3y"]
+[ext_resource type="Script" uid="uid://btby3cxfoj8lm" path="res://config/screens/game/config/game_act.gd" id="4_a05x2"]
+[ext_resource type="Script" uid="uid://cb7slha3ncqxn" path="res://config/global/scenario/skeleton/cutscene.gd" id="5_6dm4g"]
+[ext_resource type="Script" uid="uid://br57gpcvgtf12" path="res://config/global/scenario/skeleton/actor_speech.gd" id="6_a05x2"]
+[ext_resource type="Script" uid="uid://bndaqlbrpvuf2" path="res://config/global/scenario/skeleton/event_creator.gd" id="7_a05x2"]
+[ext_resource type="Script" uid="uid://cheg3kobk3jjy" path="res://config/global/scenario/event.gd" id="8_67p4d"]
+
+[node name="scenario" type="Node"]
+
+[node name="actors" type="Node" parent="."]
+
+[node name="hero" type="Node" parent="actors"]
+script = ExtResource("1_bmpdm")
+actor_name = "Главный герой"
+metadata/_custom_type_script = "uid://ddd52y723d56s"
+
+[node name="friend" type="Node" parent="actors"]
+script = ExtResource("1_bmpdm")
+actor_name = "Женя"
+metadata/_custom_type_script = "uid://ddd52y723d56s"
+
+[node name="none" type="Node" parent="actors"]
+script = ExtResource("1_bmpdm")
+actor_name = "..."
+metadata/_custom_type_script = "uid://ddd52y723d56s"
+
+[node name="database" type="Node" parent="."]
+script = ExtResource("2_p3jsh")
+scenario_keys = Dictionary[String, String]({
+"encryption_machine_answer": "Я УсиЩ, ПРОЗРЕЙ фото с ГлазиЩем",
+"encryption_machine_password": "МАСКИРУЮТСЯ_УЛУЧШАЙ",
+"not_interesting": "Мне это сейчас не нужно...",
+"notification_update_diary": "Запись в дневнике обновлена...",
+"oscilloscope_correct_params": "(1.0, 1.0)",
+"radio_response_empty": "... превышено ожидание ответа ...",
+"radio_response_success": "−−− −• •• −− •− ••• −•− •• •−• ••− ••−− − ••• •−•− •−−• −−− −•• −• •− ••• •−•−•− ••− •−•• ••− −−−• −−−− •− •−−− ••• •−− −−− •• −−• •−•• •− −−•• •−"
+})
+metadata/_custom_type_script = "uid://c7r1473hdnxi6"
+
+[node name="skeleton" type="Node" parent="."]
+script = ExtResource("3_s7a3y")
+metadata/_custom_type_script = "uid://balu28xoci4g7"
+
+[node name="act_1" type="Node" parent="skeleton"]
+script = ExtResource("4_a05x2")
+items_availability = Dictionary[int, bool]({
+0: true,
+5: true
+})
+metadata/_custom_type_script = "uid://btby3cxfoj8lm"
+
+[node name="cutscene_1" type="Node" parent="skeleton/act_1"]
+script = ExtResource("5_6dm4g")
+metadata/_custom_type_script = "uid://cb7slha3ncqxn"
+
+[node name="actor_speech_1" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/none")
+speech = Array[String](["До меня доносятся шаги. Не нужно быть экстрасенсом, чтобы догадаться. Я знаю кто сейчас зайдет.", "Как всегда пунктуален. Уже на протяжении нескольких месяцев Женя приходит в одно и то же время.", "Он приносит мне еду и энергетики, а заодно выносит мусор. Не знаю, что бы я делал без такого понимающего друга.", "Последние несколько лет вся моя жизнь – поиск инопланетян. Я уверен, что мой отец добрался до правды и поэтому его устранили.", "В комнату врывается свежий воздух, когда мой друг открывает дверь.", "Я не помню, какой сейчас месяц и день недели,", "ведь каждый мой день – день сурка: ем, пью кофе – все за столом, все с радио и отцовскими дневниками.", "Когда я видел последний раз солнечный свет?", "Не помню, если не считать те редкие лучи, проникающие в мою комнату сквозь занавески на окнах.", "Я на секунду отрываюсь от последнего дневника отца в момент, когда Женя обращается ко мне."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="event_creator_1" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../../events/friend_has_come"), NodePath("../../../../events/diary_note_1"), null]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="actor_speech_2" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/friend")
+speech = Array[String](["Привет! Как продвигается твое расследование?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="out" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("out")]
+script = ExtResource("7_a05x2")
+out = NodePath("../../../act_2")
+wait_for_player = true
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="act_2" type="Node" parent="skeleton"]
+script = ExtResource("4_a05x2")
+metadata/_custom_type_script = "uid://btby3cxfoj8lm"
+
+[node name="events" type="Node" parent="."]
+
+[node name="friend_has_come" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Друг пришел"
+key = "friend_has_come"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="friend_has_left" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Друг ушел"
+key = "friend_has_left"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="diary_note_1" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Запись в дневнике"
+key = "diary_note"
+value = "Это попадет в дневник"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="diary_note_2" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Запись в дневнике"
+key = "diary_note"
+value = "Это значение тоже попадет в дневник"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="diary_updated" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Уведомлениие о том что дневник обновлен"
+key = "diary_updated"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"

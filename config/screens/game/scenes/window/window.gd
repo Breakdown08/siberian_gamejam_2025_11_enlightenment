@@ -11,8 +11,8 @@ var ANIMATION_DURATION:float = 1.0
 
 func _ready() -> void:
 	reset_modulate()
-	Scenario.cutscene_on.connect(stop_animation)
-	Scenario.cutscene_off.connect(animate)
+	Scenario.cutscene_started.connect(stop_animation)
+	Scenario.cutscene_finished.connect(animate)
 	#animate() # for debug
 	
 	
