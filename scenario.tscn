@@ -49,7 +49,12 @@ metadata/_custom_type_script = "uid://balu28xoci4g7"
 script = ExtResource("4_a05x2")
 items_availability = Dictionary[int, bool]({
 0: true,
+1: true,
 5: true
+})
+items_info = Dictionary[int, Array]({
+0: ["Тестовое описание для компа"],
+5: ["Тестовое описание для осциллографа"]
 })
 metadata/_custom_type_script = "uid://btby3cxfoj8lm"
 
@@ -146,10 +151,9 @@ actor = NodePath("../../../../actors/friend")
 speech = Array[String](["Может, он и пытался как-то намекнуть тебе, где нужно искать. Но тот сигнал был ошибкой.", "Может, это должен был быть другой сигнал? Он не оставлял подсказки, что нужно искать?", "Может, цифры, буквы? Какой-то ключ, который натолкнет тебя на нужную зацепку?", "Я думаю, что это где-то здесь. Возможно, мы пока не видим, не замечаем, но в какой-то момент прозрение дойдет до нас.", "Слушай, не буду тебя отвлекать, но подумай над тем, что я сказал. Пока. И не отчаивайся!"])
 metadata/_custom_type_script = "uid://br57gpcvgtf12"
 
-[node name="event_creator_2" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("events", "out")]
+[node name="event_creator_2" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("events")]
 script = ExtResource("7_a05x2")
 events = [NodePath("../../../../events/friend_has_left")]
-out = NodePath("../../../act_2")
 metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
 
 [node name="actor_speech_none_6" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
@@ -158,19 +162,24 @@ actor = NodePath("../../../../actors/none")
 speech = Array[String](["Не отчаивайся… Мне кажется, за столько лет поисков я уже забыл это слово.", "Каждый день начинаю с дневников, пытаясь сдвинуться с мертвой точки.", "Вся моя жизни – радио, это мое хобби, мое увлечение, моя миссия.", "Но что, если я думаю не в ту сторону? Может быть, тот сигнал и был ключом?", "Я часто встречал букву «Щ» в разговорах отца с другом.", "А последняя волна как раз напоминала эту букву. Вдруг я набрел тогда на инопланетян?", "Возможно, нужно попробовать подключиться еще раз? Может быть, я смогу поймать более стабильную волну?", "Что если предыдущая расшифровка ничего не дала, потому что я записал что-то неправильно?", "В любом случае, если я не попробую, вопросов меньше не станет.", "Пожалуй, время начать все сначала и воспроизвести ту букву на осциллографе."])
 metadata/_custom_type_script = "uid://br57gpcvgtf12"
 
-[node name="out" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("out")]
-script = ExtResource("7_a05x2")
-out = NodePath("../../../act_2")
-metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
-
 [node name="event_creator" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("events")]
 script = ExtResource("7_a05x2")
 events = [NodePath("../../../../events/diary_note_1")]
 metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
 
+[node name="out" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("out")]
+script = ExtResource("7_a05x2")
+out = NodePath("../../game")
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="game" type="Node" parent="skeleton/act_1" node_paths=PackedStringArray("out")]
+script = ExtResource("7_a05x2")
+out = NodePath("../../act_2")
+wait_for_player = true
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
 [node name="act_2" type="Node" parent="skeleton"]
 script = ExtResource("4_a05x2")
-wait_for_player = true
 metadata/_custom_type_script = "uid://btby3cxfoj8lm"
 
 [node name="cutscene" type="Node" parent="skeleton/act_2"]

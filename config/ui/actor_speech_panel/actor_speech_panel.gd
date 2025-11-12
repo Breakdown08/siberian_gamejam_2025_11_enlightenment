@@ -21,6 +21,7 @@ func _ready() -> void:
 	body.self_modulate = Color("5c5c6194")
 	style_box_flat = body.get("theme_override_styles/panel") as StyleBoxFlat
 	Scenario.speech.connect(on_speech)
+	Scenario.cutscene_finished.connect(func():animation_hide_dialog(true))
 	GameManager.item_info.connect(on_item_info)
 
 
@@ -32,7 +33,7 @@ func animation_update_text(actor_speech:String, hide_on_finished:bool=false):
 	tween.tween_property(speech, "visible_ratio", 1.0, Utils.get_visible_ratio_time(actor_speech) / 3)
 	tween.tween_callback(func():
 		Scenario.speech_finished.emit()
-		if hide_on_finished or GameManager.is_cutscene:
+		if Scenario.is_stopped or hide_on_finished:
 			animation_hide_dialog()
 	)
 
@@ -53,9 +54,10 @@ func animation_show_dialog(actor:Actor, actor_speech:String, hide_on_finished:bo
 	)
 
 
-func animation_hide_dialog():
+func animation_hide_dialog(fast:bool = false):
 	var tween:Tween = Utils.tween(self, "visible")
-	tween.tween_interval(HIDE_INTERVAL)
+	if !fast:
+		tween.tween_interval(HIDE_INTERVAL)
 	tween.tween_property(self, "scale", Vector2.ZERO, ANIMATION_DURATION)
 	tween.parallel().tween_property(self, "modulate", Color.TRANSPARENT, ANIMATION_DURATION)
 	tween.tween_callback(func():

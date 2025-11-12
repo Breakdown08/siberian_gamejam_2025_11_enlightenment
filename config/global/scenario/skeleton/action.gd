@@ -7,22 +7,16 @@ signal executed
 
 
 func _init() -> void:
-	ready.connect(_base_ready)
 	executed.connect(_debug_info)
-
-
-func _base_ready():
 	executed.connect(_on_executed)
-	if wait_for_player:
-		GameManager.scenario_next.connect(func():
-			if Scenario.skeleton.cursor == self:
-				execute()
-		)
 
 
 func play():
 	if not wait_for_player:
+		Scenario.is_stopped = false
 		execute()
+		return
+	Scenario.is_stopped = true
 
 
 func execute():
@@ -39,7 +33,7 @@ func _debug_info():
 		tab = "		"
 	elif self is EventCreator:
 		tab = "		"
-	prints(tab + "[SCENARIO] Play scenario action by %s" % self.name)
+	prints(tab + "[SCENARIO] action by %s executed" % self.name)
 
 
 func _on_executed():

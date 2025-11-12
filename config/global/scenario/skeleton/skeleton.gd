@@ -6,6 +6,9 @@ var cursor:ScenarioSkeletonAction = null
 
 
 func start() -> void:
+	Scenario.reading_finished.connect(func():
+		_on_next_action(cursor)
+	)
 	Scenario.next_action.connect(_on_next_action)
 	_init_cursor()
 	_on_next_action(cursor)
@@ -18,6 +21,7 @@ func _input(event:InputEvent):
 
 func _init_cursor():
 	if not test == null:
+		Scenario.cutscene_started.emit()
 		cursor = test
 		prints("WARNING: TEST SCENARIO MODE STARTED AT NODE %s" % cursor.name)
 		return
@@ -27,8 +31,8 @@ func _init_cursor():
 func _on_next_action(next_cursor:ScenarioSkeletonAction):
 	if next_cursor != null:
 		cursor = next_cursor
-		cursor.play()
 		if cursor.wait_for_player:
 			Scenario.cutscene_finished.emit()
+		cursor.play()
 	else:
-		prints("тупик сценария...")
+		push_error("Scenario is locked")

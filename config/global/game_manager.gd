@@ -7,7 +7,6 @@ var is_cutscene:bool = false
 var is_speech_finished = false
 
 signal game_started(game_instance:Game)
-signal reading_finished
 signal scenario_next
 signal interactive_item_opened(target:Game.INTERACTIVE_ITEM)
 signal back_to_room
@@ -23,7 +22,6 @@ func _init() -> void:
 	Scenario.speech_started.connect(func(): is_speech_finished = false)
 	Scenario.speech_finished.connect(func(): is_speech_finished = true)
 	game_started.connect(func(game_instance): start(game_instance))
-	reading_finished.connect(func(): Scenario.skeleton.cursor.execute())
 
 
 func start(game_instance:Game):
@@ -46,8 +44,8 @@ func _input(event:InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if is_cutscene and is_speech_finished and Scenario.skeleton.cursor != null:
-				reading_finished.emit()
+				Scenario.reading_finished.emit()
 			elif event.double_click and is_cutscene and Scenario.skeleton.cursor != null:
-				reading_finished.emit()
+				Scenario.reading_finished.emit()
 	if Input.is_action_just_pressed("ui_accept"):
 		scenario_next.emit()

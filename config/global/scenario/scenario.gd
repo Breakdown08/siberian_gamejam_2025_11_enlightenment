@@ -7,16 +7,29 @@ var database:ScenarioDatabase
 var actors:Node
 
 signal event(key:String, value:String)
+
 signal next_action(next_cursor:ScenarioSkeletonAction)
+
 signal speech(actor:Actor, text:String)
+
 signal act_started(act:Act)
+
 signal cutscene_started
 signal cutscene_finished
+
 signal speech_started
 signal speech_finished
 
+signal reading_started
+signal reading_finished
+
+var is_reading_finished:bool = true
+var is_stopped:bool = false
+
 
 func _ready() -> void:
+	reading_started.connect(func(): is_reading_finished = false)
+	reading_finished.connect(func(): is_reading_finished = true)
 	var config = CONFIG.instantiate()
 	config.name = "config"
 	add_child(config)
@@ -27,7 +40,7 @@ func _ready() -> void:
 
 func create_event(scenario_event:ScenarioEvent):
 	event.emit(scenario_event.key, scenario_event.value)
-	prints("[SCENARIO] event: %s, description: %s" % [scenario_event.name, scenario_event.description])
+	prints("		[SCENARIO] event: %s, description: %s" % [scenario_event.name, scenario_event.description])
 
 
 func get_actor(actor:String) -> Actor:
