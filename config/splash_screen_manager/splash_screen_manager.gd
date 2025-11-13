@@ -67,6 +67,7 @@ func _input(event):
 	if (event is InputEventKey or event is InputEventMouseButton) and event.pressed:
 		if splash_scene == 1:
 			#tween.stop()
+			splash_screen.visible = false
 			timer.set_time_left(0)
 			fade(splash_scene + 1)
 		elif splash_scene == 2:
