@@ -30,15 +30,7 @@ func start(game_instance:Game):
 	current_actor = null
 	is_cutscene = false
 	is_speech_finished = false
-<<<<<<< HEAD
 	Scenario.skeleton.start()
-=======
-	scenario_next()
-	#debug_scenario(67)
-	#debug_scenario(127)
-	#debug_scenario(180)
-	#debug_scenario(207)
->>>>>>> e61611c (Правки по мини-игре)
 
 
 func on_scenario_event(key:String, value:String = ""):
