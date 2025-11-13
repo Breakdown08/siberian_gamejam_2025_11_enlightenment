@@ -1,26 +1,28 @@
-[gd_scene load_steps=20 format=3 uid="uid://cf8akmyd0msei"]
+[gd_scene load_steps=24 format=3 uid="uid://cf8akmyd0msei"]
 
 [ext_resource type="Script" uid="uid://dhk2u4falvg5h" path="res://config/screens/game/scenes/oscilloscope/oscilloscope.gd" id="1_6tim8"]
 [ext_resource type="Texture2D" uid="uid://bd1n2nqfg7a3l" path="res://config/screens/game/scenes/oscilloscope/resources/oscilloscope.png" id="2_b0816"]
 [ext_resource type="Texture2D" uid="uid://ig1r2dd0lo0l" path="res://config/screens/game/scenes/oscilloscope/resources/reference_oscilloscope.png" id="3_g1i1e"]
 [ext_resource type="Texture2D" uid="uid://dkbm7pk3abwhn" path="res://config/screens/game/scenes/oscilloscope/resources/potentiometer.png" id="4_kgl6y"]
+[ext_resource type="AudioStream" uid="uid://60lt5dlx04sn" path="res://sound_fx/minigame1/encoder_3.mp3" id="5_hs066"]
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="5_mkgrp"]
+[ext_resource type="AudioStream" uid="uid://csrfxbaxv6kq0" path="res://sound_fx/minigame1/encoder_4.mp3" id="6_2sbwp"]
 [ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="6_hvpvx"]
-[ext_resource type="Texture2D" uid="uid://c377y28w3563g" path="res://config/screens/game/scenes/oscilloscope/resources/curve.png" id="7_hvpvx"]
+[ext_resource type="AudioStream" uid="uid://pb0uah5meuyr" path="res://sound_fx/minigame1/encoder_5.mp3" id="7_0lhr5"]
+[ext_resource type="Texture2D" uid="uid://cknxny0djx6h6" path="res://config/screens/game/scenes/oscilloscope/resources/Signal_1.png" id="8_5pgya"]
+[ext_resource type="AudioStream" uid="uid://hd7bbjhbn1va" path="res://sound_fx/minigame1/encoder_6.mp3" id="8_dp0xa"]
 [ext_resource type="Texture2D" uid="uid://cu78eyvni6fhg" path="res://config/screens/game/scenes/oscilloscope/resources/oscil_axes.png" id="8_ok20n"]
-[ext_resource type="Texture2D" uid="uid://cr2bdmibkxdj" path="res://config/screens/game/scenes/oscilloscope/resources/signal_1.png" id="9_bjn7l"]
-[ext_resource type="Texture2D" uid="uid://bh3o4vi7f2aro" path="res://config/screens/game/scenes/oscilloscope/resources/signal_2.png" id="10_kp1in"]
-[ext_resource type="Texture2D" uid="uid://dii6kogceq6jw" path="res://config/screens/game/scenes/oscilloscope/resources/signal_3.png" id="11_mg1kn"]
-[ext_resource type="Texture2D" uid="uid://siuwad2vbdg3" path="res://config/screens/game/scenes/oscilloscope/resources/signal_4.png" id="12_br4kd"]
-[ext_resource type="Texture2D" uid="uid://lyucsgf8tm6f" path="res://config/screens/game/scenes/oscilloscope/resources/signal_5.png" id="13_hs066"]
-[ext_resource type="Texture2D" uid="uid://dq5bn5707fuox" path="res://config/screens/game/scenes/oscilloscope/resources/signal_6.png" id="14_2sbwp"]
-[ext_resource type="Texture2D" uid="uid://k4e8y6pqx0rl" path="res://config/screens/game/scenes/oscilloscope/resources/signal_7.png" id="15_0lhr5"]
-[ext_resource type="Texture2D" uid="uid://bej4wyd4xyplp" path="res://config/screens/game/scenes/oscilloscope/resources/signal_8.png" id="16_dp0xa"]
-[ext_resource type="Texture2D" uid="uid://ea8u2oqer8dh" path="res://config/screens/game/scenes/oscilloscope/resources/signal_9.png" id="17_k1wbv"]
-[ext_resource type="Texture2D" uid="uid://b3056ia20xk0x" path="res://config/screens/game/scenes/oscilloscope/resources/signal_10.png" id="18_s3h13"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvpvx"]
-bg_color = Color(0.075209565, 0.23374069, 0.19332975, 1)
+[ext_resource type="AudioStream" uid="uid://cbsgm2vut4kn2" path="res://sound_fx/minigame1/encoder_7.mp3" id="9_k1wbv"]
+[ext_resource type="Texture2D" uid="uid://cbogwiltofmi1" path="res://config/screens/game/scenes/oscilloscope/resources/Signal_2.png" id="9_ok20n"]
+[ext_resource type="Texture2D" uid="uid://jbyqy0hqnvyd" path="res://config/screens/game/scenes/oscilloscope/resources/Signal_3.png" id="10_bjn7l"]
+[ext_resource type="AudioStream" uid="uid://b2fw78i70xcv6" path="res://sound_fx/minigame1/encoder_8.mp3" id="10_s3h13"]
+[ext_resource type="Texture2D" uid="uid://btuk84xputd78" path="res://config/screens/game/scenes/oscilloscope/resources/Signal_4.png" id="11_kp1in"]
+[ext_resource type="Texture2D" uid="uid://dtpe4kldntumx" path="res://config/screens/game/scenes/oscilloscope/resources/Signal_5.png" id="12_mg1kn"]
+[ext_resource type="Texture2D" uid="uid://bxxmrmhqrm2by" path="res://config/screens/game/scenes/oscilloscope/resources/Signal_6.png" id="13_br4kd"]
+[ext_resource type="Texture2D" uid="uid://dphlqgl4ivrhg" path="res://config/screens/game/scenes/oscilloscope/resources/Signal_7.png" id="14_hs066"]
+[ext_resource type="Texture2D" uid="uid://lrt5kv2q7xu7" path="res://config/screens/game/scenes/oscilloscope/resources/Signal_8.png" id="15_2sbwp"]
+[ext_resource type="Texture2D" uid="uid://dj2jn77vv2hdl" path="res://config/screens/game/scenes/oscilloscope/resources/Signal_9.png" id="16_0lhr5"]
+[ext_resource type="Texture2D" uid="uid://c87mgp2hfxd27" path="res://config/screens/game/scenes/oscilloscope/resources/Signal_10.png" id="17_dp0xa"]
 
 [node name="oscilloscope" type="Control"]
 layout_mode = 3
@@ -41,6 +43,7 @@ texture = ExtResource("2_b0816")
 metadata/_edit_use_anchors_ = true
 
 [node name="reference" type="TextureRect" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.21568628)
 layout_mode = 1
 anchors_preset = 15
@@ -62,27 +65,38 @@ grow_vertical = 2
 self_modulate = Color(1, 1, 0.5686275, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7036458
-anchor_top = 0.40833333
-anchor_right = 0.815625
-anchor_bottom = 0.6117349
-pivot_offset = Vector2(77, 78.674)
+anchor_left = 0.696875
+anchor_top = 0.38981482
+anchor_right = 0.82239586
+anchor_bottom = 0.61781377
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(122.5, 123)
 texture = ExtResource("4_kgl6y")
 expand_mode = 1
-metadata/_edit_use_anchors_ = true
 
-[node name="potentiometer_2" type="TextureRect" parent="controls"]
-self_modulate = Color(0.7882353, 0.65882355, 0.4, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.26041666
-anchor_top = 0.712037
-anchor_right = 0.3484375
-anchor_bottom = 0.8719201
-pivot_offset = Vector2(84.5, 86.337)
-texture = ExtResource("4_kgl6y")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
+[node name="encoder_3" type="AudioStreamPlayer" parent="controls"]
+stream = ExtResource("5_hs066")
+
+[node name="encoder_4" type="AudioStreamPlayer" parent="controls"]
+stream = ExtResource("6_2sbwp")
+
+[node name="encoder_5" type="AudioStreamPlayer" parent="controls"]
+stream = ExtResource("7_0lhr5")
+
+[node name="encoder_6" type="AudioStreamPlayer" parent="controls"]
+stream = ExtResource("8_dp0xa")
+
+[node name="encoder_7" type="AudioStreamPlayer" parent="controls"]
+stream = ExtResource("9_k1wbv")
+
+[node name="encoder_8" type="AudioStreamPlayer" parent="controls"]
+stream = ExtResource("10_s3h13")
+
+[node name="sounds" type="Control" parent="controls"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="system_panel" parent="." instance=ExtResource("5_mkgrp")]
 layout_mode = 1
@@ -106,34 +120,7 @@ offset_bottom = 5.310913
 rotation = -0.008726646
 metadata/_edit_use_anchors_ = true
 
-[node name="panel" type="Panel" parent="display"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -2.287384
-offset_bottom = 0.95755005
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_hvpvx")
-
-[node name="curve" type="TextureRect" parent="display"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.17298187
-anchor_top = 0.16414408
-anchor_right = 1.3245469
-anchor_bottom = 0.9027924
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2.4, 1.7)
-texture = ExtResource("7_hvpvx")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="texture_rect" type="TextureRect" parent="display"]
+[node name="background_oscil" type="TextureRect" parent="display"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -157,7 +144,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_bjn7l")
+texture = ExtResource("8_5pgya")
 
 [node name="signal_2" type="TextureRect" parent="display/Curves"]
 visible = false
@@ -167,7 +154,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("10_kp1in")
+texture = ExtResource("9_ok20n")
 
 [node name="signal_3" type="TextureRect" parent="display/Curves"]
 visible = false
@@ -177,7 +164,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("11_mg1kn")
+texture = ExtResource("10_bjn7l")
 
 [node name="signal_4" type="TextureRect" parent="display/Curves"]
 visible = false
@@ -187,7 +174,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("12_br4kd")
+texture = ExtResource("11_kp1in")
 
 [node name="signal_5" type="TextureRect" parent="display/Curves"]
 visible = false
@@ -197,7 +184,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("13_hs066")
+texture = ExtResource("12_mg1kn")
 
 [node name="signal_6" type="TextureRect" parent="display/Curves"]
 visible = false
@@ -207,7 +194,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("14_2sbwp")
+texture = ExtResource("13_br4kd")
 
 [node name="signal_7" type="TextureRect" parent="display/Curves"]
 visible = false
@@ -217,16 +204,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_0lhr5")
+texture = ExtResource("15_2sbwp")
 
 [node name="signal_8" type="TextureRect" parent="display/Curves"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("16_dp0xa")
+texture = ExtResource("14_hs066")
 
 [node name="signal_9" type="TextureRect" parent="display/Curves"]
 visible = false
@@ -236,7 +224,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("17_k1wbv")
+texture = ExtResource("16_0lhr5")
 
 [node name="signal_10" type="TextureRect" parent="display/Curves"]
 visible = false
@@ -246,7 +234,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("18_s3h13")
+texture = ExtResource("17_dp0xa")
 
 [node name="write_params" type="Button" parent="."]
 layout_mode = 0
@@ -259,8 +247,6 @@ text = "ЗАПИСАТЬ ПАРАМЕТРЫ"
 
 [connection signal="mouse_entered" from="controls/potentiometer_1" to="." method="_on_potentiometer_1_mouse_entered"]
 [connection signal="mouse_exited" from="controls/potentiometer_1" to="." method="_on_potentiometer_1_mouse_exited"]
-[connection signal="mouse_entered" from="controls/potentiometer_2" to="." method="_on_potentiometer_2_mouse_entered"]
-[connection signal="mouse_exited" from="controls/potentiometer_2" to="." method="_on_potentiometer_2_mouse_exited"]
 [connection signal="pressed" from="write_params" to="." method="_on_write_params_pressed"]
 
 [editable path="system_panel"]

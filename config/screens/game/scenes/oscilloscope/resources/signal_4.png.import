@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://siuwad2vbdg3"
-path="res://.godot/imported/signal_4.png-603651547c4ee753af16b900c493a967.ctex"
+uid="uid://btuk84xputd78"
+path="res://.godot/imported/Signal_4.png-1a6d423747ad08fdad6ae1bbb1d90683.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/screens/game/scenes/oscilloscope/resources/signal_4.png"
-dest_files=["res://.godot/imported/signal_4.png-603651547c4ee753af16b900c493a967.ctex"]
+source_file="res://config/screens/game/scenes/oscilloscope/resources/Signal_4.png"
+dest_files=["res://.godot/imported/Signal_4.png-1a6d423747ad08fdad6ae1bbb1d90683.ctex"]
 
 [params]
 
