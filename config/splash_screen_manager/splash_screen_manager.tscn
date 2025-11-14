@@ -8,8 +8,23 @@
 [ext_resource type="Texture2D" uid="uid://dlcbni7ybevjy" path="res://config/resources/Loading_4.png" id="6_scfds"]
 [ext_resource type="Texture2D" uid="uid://djcxhjheasebc" path="res://config/resources/Loading_5.png" id="7_7jwp0"]
 
+[sub_resource type="Animation" id="Animation_plg6e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Eye1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_v301p"]
-resource_name = "Blink"
+resource_name = "blink"
 length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
@@ -73,25 +88,10 @@ tracks/4/keys = {
 "values": [false, true, false]
 }
 
-[sub_resource type="Animation" id="Animation_plg6e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Eye1:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_scfds"]
 _data = {
-&"Blink": SubResource("Animation_v301p"),
-&"RESET": SubResource("Animation_plg6e")
+&"RESET": SubResource("Animation_plg6e"),
+&"blink": SubResource("Animation_v301p")
 }
 
 [node name="Control" type="Control" node_paths=PackedStringArray("splash_screen", "eye1", "eye2", "eye3", "eye4", "eye5")]
@@ -193,7 +193,7 @@ grow_vertical = 2
 texture = ExtResource("7_7jwp0")
 expand_mode = 1
 
-[node name="EyeAnim" type="AnimationPlayer" parent="control"]
+[node name="eye_anim" type="AnimationPlayer" parent="control"]
 libraries = {
 &"": SubResource("AnimationLibrary_scfds")
 }
