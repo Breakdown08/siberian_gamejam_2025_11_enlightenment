@@ -12,7 +12,8 @@ anchors_preset = -1
 anchor_right = 0.12239584
 anchor_bottom = 0.078699075
 script = ExtResource("2_c6ebj")
-scene = 3
+color_focused = null
+interactive_item = null
 metadata/_edit_use_anchors_ = true
 
 [node name="sprite" parent="." index="0"]

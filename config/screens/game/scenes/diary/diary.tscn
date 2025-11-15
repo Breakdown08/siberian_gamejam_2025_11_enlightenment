@@ -45,18 +45,13 @@ offset_right = -1035.0
 offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 24
 
 [node name="oscilloscope_params" parent="main_notes" instance=ExtResource("5_m4cta")]
 layout_mode = 2
 
-[node name="key" parent="main_notes/oscilloscope_params/box" index="0"]
-text = "ОСЦИЛЛОГРАФ: "
-
 [node name="radio_response" parent="main_notes" instance=ExtResource("5_m4cta")]
 layout_mode = 2
-
-[node name="key" parent="main_notes/radio_response/box" index="0"]
-text = "РАДИО: "
 
 [node name="common_notes" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -72,5 +67,3 @@ grow_vertical = 2
 theme_override_constants/separation = 74
 
 [editable path="system_panel"]
-[editable path="main_notes/oscilloscope_params"]
-[editable path="main_notes/radio_response"]

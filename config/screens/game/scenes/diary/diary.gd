@@ -20,8 +20,11 @@ func clear_notes():
 
 
 func get_notes():
-	var diary = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY) as DiaryInteractiveItem
-	for note in diary.notes:
-		var note_instance:DiaryNote = NOTE.instantiate()
-		notes.add_child(note_instance)
-		note_instance.key.text = str(note)
+	if GameManager.game:
+		var diary = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY) as DiaryInteractiveItem
+		for note in diary.notes:
+			var note_instance:DiaryNote = NOTE.instantiate()
+			notes.add_child(note_instance)
+			note_instance.write(str(note))
+		oscilloscope_params.write("ОСЦИЛЛОГРАФ: %s" % diary.oscilloscope_params)
+		radio_response.write("РАДИО: %s" % diary.radio_response)

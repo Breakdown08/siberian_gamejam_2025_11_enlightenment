@@ -22,6 +22,12 @@ func _init() -> void:
 	Scenario.speech_started.connect(func(): is_speech_finished = false)
 	Scenario.speech_finished.connect(func(): is_speech_finished = true)
 	game_started.connect(func(game_instance): start(game_instance))
+	scenario_next.connect(func():
+		var cursor:ScenarioSkeletonAction = Scenario.skeleton.cursor
+		cursor.wait_for_player = false
+		Scenario.skeleton._on_next_action(cursor)
+	)
+	Scenario.event.connect(on_scenario_event)
 
 
 func start(game_instance:Game):
@@ -37,7 +43,11 @@ func on_scenario_event(key:String, value:String = ""):
 	match key:
 		"diary_updated":
 			var notify_text:String = Scenario.database.get_key(key)
-			game.on_notification(notify_text)
+			if game:
+				game.on_notification(notify_text)
+		"back_to_room":
+			if game:
+				back_to_room.emit()
 
 
 func _input(event:InputEvent) -> void:
@@ -47,5 +57,3 @@ func _input(event:InputEvent) -> void:
 				Scenario.reading_finished.emit()
 			elif event.double_click and is_cutscene and Scenario.skeleton.cursor != null:
 				Scenario.reading_finished.emit()
-	if Input.is_action_just_pressed("ui_accept"):
-		scenario_next.emit()

@@ -1,100 +1,50 @@
-[gd_scene load_steps=11 format=3 uid="uid://f7sebr1kml04"]
+[gd_scene load_steps=10 format=3 uid="uid://xf0f3dfcc32u"]
 
-[ext_resource type="Script" uid="uid://bguupvwymtqxc" path="res://config/splash_screen_manager/splash_screen_manager.gd" id="1_e2qbx"]
+[ext_resource type="Script" uid="uid://66ct2a5lybk7" path="res://config/splash_screen_manager/splash_screen_manager.gd" id="1_e2qbx"]
 [ext_resource type="Texture2D" uid="uid://up1ifr3jq4x0" path="res://config/resources/logo_godot_vertical_light.png" id="1_nk0e0"]
+[ext_resource type="PackedScene" uid="uid://tobbaooxwyv0" path="res://config/main.tscn" id="2_4w76u"]
 [ext_resource type="Texture2D" uid="uid://b6wa8s722dqsx" path="res://config/resources/Loading_1.png" id="3_yqk22"]
 [ext_resource type="Texture2D" uid="uid://c5ux7oevplln0" path="res://config/resources/Loading_2.png" id="4_v301p"]
 [ext_resource type="Texture2D" uid="uid://bvn81ercbbff4" path="res://config/resources/Loading_3.png" id="5_plg6e"]
 [ext_resource type="Texture2D" uid="uid://dlcbni7ybevjy" path="res://config/resources/Loading_4.png" id="6_scfds"]
 [ext_resource type="Texture2D" uid="uid://djcxhjheasebc" path="res://config/resources/Loading_5.png" id="7_7jwp0"]
 
-[sub_resource type="Animation" id="Animation_plg6e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Eye1:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_jd6yh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yqk22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v301p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_plg6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_scfds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7jwp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_scfds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_plg6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v301p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yqk22")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="Animation" id="Animation_v301p"]
-resource_name = "blink"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Eye1:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Eye2:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Eye3:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Eye4:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Eye5:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_scfds"]
-_data = {
-&"RESET": SubResource("Animation_plg6e"),
-&"blink": SubResource("Animation_v301p")
-}
-
-[node name="Control" type="Control" node_paths=PackedStringArray("splash_screen", "eye1", "eye2", "eye3", "eye4", "eye5")]
+[node name="splash_screen_manager" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,14 +53,9 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(641, 100)
 script = ExtResource("1_e2qbx")
-splash_screen = NodePath("CenterContainer/GodotLogo")
-eye1 = NodePath("control/Eye1")
-eye2 = NodePath("control/Eye2")
-eye3 = NodePath("control/Eye3")
-eye4 = NodePath("control/Eye4")
-eye5 = NodePath("control/Eye5")
+main = ExtResource("2_4w76u")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="logo" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -125,75 +70,18 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5733365, 0.5733365)
 pivot_offset = Vector2(512, 585.5)
-
-[node name="GodotLogo" type="TextureRect" parent="CenterContainer"]
-layout_mode = 2
 texture = ExtResource("1_nk0e0")
 
-[node name="control" type="Control" parent="."]
+[node name="eye" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Eye1" type="TextureRect" parent="control"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_yqk22")
-expand_mode = 1
-
-[node name="Eye2" type="TextureRect" parent="control"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_v301p")
-expand_mode = 1
-
-[node name="Eye3" type="TextureRect" parent="control"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_plg6e")
-expand_mode = 1
-
-[node name="Eye4" type="TextureRect" parent="control"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_scfds")
-expand_mode = 1
-
-[node name="Eye5" type="TextureRect" parent="control"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_7jwp0")
-expand_mode = 1
-
-[node name="eye_anim" type="AnimationPlayer" parent="control"]
-libraries = {
-&"": SubResource("AnimationLibrary_scfds")
-}
+[node name="sprite" type="AnimatedSprite2D" parent="eye"]
+sprite_frames = SubResource("SpriteFrames_jd6yh")
+frame_progress = 0.24376565

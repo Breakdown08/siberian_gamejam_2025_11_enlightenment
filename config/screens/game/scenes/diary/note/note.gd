@@ -1,8 +1,5 @@
-class_name DiaryNote extends Control
-
-@onready var key:Label = $box/key
-@onready var value:Label = $box/value
+class_name DiaryNote extends Label
 
 
-func write_value(new_value:String):
-	value.text = new_value
+func write(new_note:String):
+	text = new_note
