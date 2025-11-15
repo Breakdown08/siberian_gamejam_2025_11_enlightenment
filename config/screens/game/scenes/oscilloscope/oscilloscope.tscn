@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cf8akmyd0msei"]
+[gd_scene load_steps=24 format=3 uid="uid://cf8akmyd0msei"]
 
 [ext_resource type="Script" uid="uid://dhk2u4falvg5h" path="res://config/screens/game/scenes/oscilloscope/oscilloscope.gd" id="1_6tim8"]
 [ext_resource type="Texture2D" uid="uid://bd1n2nqfg7a3l" path="res://config/screens/game/scenes/oscilloscope/resources/oscilloscope.png" id="2_b0816"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://divbrfsdci5dr" path="res://config/screens/game/scenes/oscilloscope/resources/signal_9.png" id="16_0lhr5"]
 [ext_resource type="Texture2D" uid="uid://db53mhm1ma51w" path="res://config/screens/game/scenes/oscilloscope/resources/signal_10.png" id="17_dp0xa"]
 [ext_resource type="Texture2D" uid="uid://dxau1dbnd3m62" path="res://config/screens/game/scenes/oscilloscope/resources/signal_5.png" id="18_br4kd"]
+[ext_resource type="Texture2D" uid="uid://cojmdr7yocd5w" path="res://config/screens/game/scenes/oscilloscope/resources/signal_7.png" id="20_hs066"]
 
 [node name="oscilloscope" type="Control"]
 layout_mode = 3
@@ -203,7 +204,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_2sbwp")
+texture = ExtResource("20_hs066")
 
 [node name="signal_8" type="TextureRect" parent="display/curves"]
 visible = false
@@ -213,7 +214,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("14_hs066")
+texture = ExtResource("15_2sbwp")
 
 [node name="signal_9" type="TextureRect" parent="display/curves"]
 visible = false

@@ -27,4 +27,4 @@ func get_notes():
 			notes.add_child(note_instance)
 			note_instance.write(str(note))
 		oscilloscope_params.write("ОСЦИЛЛОГРАФ: %s" % diary.oscilloscope_params)
-		radio_response.write("РАДИО: %s" % diary.computer.radio_response)
+		radio_response.write("РАДИО: %s" % diary.radio_response)

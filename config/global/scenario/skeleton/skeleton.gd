@@ -14,11 +14,6 @@ func start() -> void:
 	_on_next_action(cursor)
 
 
-func _input(event:InputEvent):
-	if Input.is_action_just_pressed("ui_accept"):
-		_on_next_action(cursor)
-
-
 func _init_cursor():
 	if not test == null:
 		Scenario.cutscene_started.emit()
