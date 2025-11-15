@@ -15,7 +15,7 @@ const SCREENS:Dictionary[SCREEN, PackedScene] = {
 func _ready() -> void:
 	EventBus.screen_switched.connect(on_screen_switched)
 	EventBus.screen_switched.emit(SCREEN.MAIN_MENU)
-	#audio.play()
+	audio.play()
 	audio.finished.connect(func():
 		audio.play()
 	)
