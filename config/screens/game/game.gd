@@ -1,4 +1,4 @@
-class_name Game extends Control
+class_name Game extends Node
 
 @onready var system_panel:Panel = $system_panel
 @onready var button_menu:Button = $system_panel/margin/menu
@@ -7,10 +7,9 @@ class_name Game extends Control
 @onready var game_over:TextureRect = $game_over
 
 const NOTIFICATION:PackedScene = preload("res://config/ui/popup/notification/notification.tscn")
+const MENU_PAUSE:PackedScene = preload("res://config/screens/game/scenes/menu_pause/menu_pause.tscn")
 
-enum SCENE {
-	MAIN, 
-	MENU_PAUSE, 
+enum INTERACTIVE_ITEM {
 	COMPUTER, 
 	DIARY, 
 	ENCRYPTION_MACHINE, 
@@ -20,44 +19,45 @@ enum SCENE {
 	PHOTO
 }
 
-var SCENES:Dictionary[SCENE, PackedScene] = {
-	SCENE.MENU_PAUSE : preload("res://config/screens/game/scenes/menu_pause/menu_pause.tscn"),
-	SCENE.COMPUTER : preload("res://config/screens/game/scenes/computer/computer.tscn"),
-	SCENE.DIARY : preload("res://config/screens/game/scenes/diary/diary.tscn"),
-	SCENE.ENCRYPTION_MACHINE : preload("res://config/screens/game/scenes/encryption_machine/encryption_machine.tscn"),
-	SCENE.GLASSES : preload("res://config/screens/game/scenes/glasses/glasses.tscn"),
-	SCENE.MORSE_CODE_TEXTBOOK : preload("res://config/screens/game/scenes/morse_code_textbook/morse_code_textbook.tscn"),
-	SCENE.OSCILLOSCOPE : preload("res://config/screens/game/scenes/oscilloscope/oscilloscope.tscn"),
-	SCENE.PHOTO : preload("res://config/screens/game/scenes/photo/photo.tscn"),
+const INTERACTIVE_ITEMS:Dictionary[INTERACTIVE_ITEM, PackedScene] = {
+	INTERACTIVE_ITEM.COMPUTER : preload("res://config/screens/game/scenes/computer/computer.tscn"),
+	INTERACTIVE_ITEM.DIARY : preload("res://config/screens/game/scenes/diary/diary.tscn"),
+	INTERACTIVE_ITEM.ENCRYPTION_MACHINE : preload("res://config/screens/game/scenes/encryption_machine/encryption_machine.tscn"),
+	INTERACTIVE_ITEM.GLASSES : preload("res://config/screens/game/scenes/glasses/glasses.tscn"),
+	INTERACTIVE_ITEM.MORSE_CODE_TEXTBOOK : preload("res://config/screens/game/scenes/morse_code_textbook/morse_code_textbook.tscn"),
+	INTERACTIVE_ITEM.OSCILLOSCOPE : preload("res://config/screens/game/scenes/oscilloscope/oscilloscope.tscn"),
+	INTERACTIVE_ITEM.PHOTO : preload("res://config/screens/game/scenes/photo/photo.tscn"),
 }
+
+@export var interactive_items:Dictionary[INTERACTIVE_ITEM, InteractiveItem]
 
 
 func _ready() -> void:
-	button_menu.pressed.connect(on_button_menu_pressed)
-	EventBus.scene_switched.connect(on_scene_switched)
-	EventBus.notification.connect(on_notification)
-	Scenario.game_over.connect(on_game_over)
-	EventBus.game_started.emit()
-	Scenario.final_scene.connect(func():
-		$final.show()
-		$static_background.hide()
-		$hero.hide()
-		$friend.hide()
-		$interactive_items.hide()
-		$window.hide()
-	)
+	button_menu.pressed.connect(func(): add_child(MENU_PAUSE.instantiate()))
+	GameManager.interactive_item_opened.connect(on_interactive_item_opened)
+	#Scenario.game_over.connect(on_game_over)
+	GameManager.game_started.emit(self)
+	GameManager.back_to_room.connect(on_back_to_room)
+	#Scenario.final_scene.connect(func():
+		#$final.show()
+		#$static_background.hide()
+		#$hero.hide()
+		#$friend.hide()
+		#$interactive_items.hide()
+		#$window.hide()
+	#)
 
 
-func on_button_menu_pressed():
-	add_child(SCENES[SCENE.MENU_PAUSE].instantiate())
-
-
-func on_scene_switched(next_scene:SCENE):
+func on_back_to_room():
 	for child in scene.get_children():
 		child.queue_free()
-	if next_scene == SCENE.MAIN:
-		return
-	scene.add_child(SCENES[next_scene].instantiate())
+
+
+func on_interactive_item_opened(target:INTERACTIVE_ITEM):
+	for child in scene.get_children():
+		child.queue_free()
+	if target == null: return
+	scene.add_child(INTERACTIVE_ITEMS[target].instantiate())
 
 
 func on_notification(message:String):
@@ -70,4 +70,7 @@ func on_game_over():
 	game_over.show()
 	var tween:Tween = Utils.tween(self)
 	tween.tween_property(game_over, "modulate", Color.WHITE, 2.0)
-	
+
+
+func get_interactive_item(interactive_item:INTERACTIVE_ITEM) -> InteractiveItem:
+	return interactive_items[interactive_item]

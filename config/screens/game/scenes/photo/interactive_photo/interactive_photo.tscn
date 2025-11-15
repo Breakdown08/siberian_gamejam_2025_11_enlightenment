@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://hf7fwd8uxsga"]
+
+[ext_resource type="PackedScene" uid="uid://bh2ouu1kk3ij5" path="res://config/screens/game/config/interactive_item/interactive_item.tscn" id="1_77mf5"]
+[ext_resource type="Script" uid="uid://h6d2fie418vd" path="res://config/screens/game/scenes/photo/interactive_photo/interactive_photo.gd" id="2_3ght0"]
+[ext_resource type="Texture2D" uid="uid://c7dq1souy88lf" path="res://config/screens/game/scenes/photo/resources/interactive_photo.png" id="3_ln1v1"]
+[ext_resource type="AudioStream" uid="uid://cwujd3fn27r1f" path="res://sound_fx/photo/roll_1.mp3" id="4_ln1v1"]
+[ext_resource type="AudioStream" uid="uid://032satv3j4s8" path="res://sound_fx/photo/up_3.mp3" id="5_qbcew"]
+
+[node name="photo" instance=ExtResource("1_77mf5")]
+custom_minimum_size = Vector2(100, 67)
+anchors_preset = -1
+anchor_right = 0.052083332
+anchor_bottom = 0.062037036
+offset_right = -100.0
+offset_bottom = -67.0
+script = ExtResource("2_3ght0")
+scene = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="sprite" parent="." index="0"]
+position = Vector2(50, 32)
+texture = ExtResource("3_ln1v1")
+
+[node name="audio_focused" parent="." index="2"]
+stream = ExtResource("4_ln1v1")
+
+[node name="audio_pressed" parent="." index="3"]
+stream = ExtResource("5_qbcew")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cy305tkklbguq"]
+
+[ext_resource type="PackedScene" uid="uid://bh2ouu1kk3ij5" path="res://config/screens/game/config/interactive_item/interactive_item.tscn" id="1_71lca"]
+[ext_resource type="Script" uid="uid://dbyo8qvc5avpj" path="res://config/screens/game/scenes/diary/interactive_diary/interactive_diary.gd" id="2_c6ebj"]
+[ext_resource type="Texture2D" uid="uid://bj1mmt8n6ohcg" path="res://config/screens/game/scenes/diary/resources/interactive_diary.png" id="3_mn7tq"]
+[ext_resource type="AudioStream" uid="uid://jxpdl43lit61" path="res://sound_fx/pencil/fx_6.mp3" id="4_drgik"]
+[ext_resource type="AudioStream" uid="uid://d14k0ov1nqy4j" path="res://sound_fx/journal/leaf_1.mp3" id="5_5dctl"]
+
+[node name="diary" instance=ExtResource("1_71lca")]
+custom_minimum_size = Vector2(230, 84.995)
+anchors_preset = -1
+anchor_right = 0.12239584
+anchor_bottom = 0.078699075
+script = ExtResource("2_c6ebj")
+scene = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="sprite" parent="." index="0"]
+position = Vector2(117, 44)
+texture = ExtResource("3_mn7tq")
+
+[node name="audio_focused" parent="." index="2"]
+stream = ExtResource("4_drgik")
+
+[node name="audio_pressed" parent="." index="3"]
+stream = ExtResource("5_5dctl")

@@ -21,20 +21,7 @@ var success:bool = false
 
 func _ready() -> void:
 	init_scale = scale
-	room.pressed.connect(_on_room_pressed)
-
-
-func _on_cheat_button_pressed() -> void:
-	write_params()
-	update_diary()
-
-
-func _on_room_pressed():
-	EventBus.scene_switched.emit(Game.SCENE.MAIN)
-
-
-func update_diary():
-	EventBus.notification.emit(Scenario.NOTIFICATION_UPDATE_DIARY)
+	room.pressed.connect(func(): GameManager.back_to_room.emit())
 
 
 func write_params():
@@ -91,5 +78,7 @@ func on_pot_2(polarity:int):
 
 
 func _on_write_params_pressed() -> void:
-	Scenario.oscilloscope_write_params.emit(str(Vector2(round_to_tenth(curve.scale.x), round_to_tenth(curve.scale.y))))
-	EventBus.notification.emit(Scenario.NOTIFICATION_UPDATE_DIARY)
+	var oscilloscope = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.OSCILLOSCOPE) as OscilloscopeInteractiveItem
+	var new_params = str(Vector2(round_to_tenth(curve.scale.x), round_to_tenth(curve.scale.y)))
+	oscilloscope.params = new_params
+	GameManager.on_scenario_event("diary_updated")

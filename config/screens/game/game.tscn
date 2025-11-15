@@ -5,21 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="3_bea4q"]
 [ext_resource type="PackedScene" uid="uid://cgyox8l1wd4nb" path="res://config/screens/game/scenes/window/window.tscn" id="3_kl8j2"]
 [ext_resource type="Texture2D" uid="uid://b2p2156wtjxiy" path="res://config/resources/final.png" id="3_mwajf"]
-[ext_resource type="PackedScene" uid="uid://b34hevgxbyfql" path="res://config/screens/game/interactive_item/variants/morse_code_textbook/morse_code_textbook.tscn" id="10_kl8j2"]
+[ext_resource type="PackedScene" uid="uid://b34hevgxbyfql" path="res://config/screens/game/scenes/morse_code_textbook/interactive_morse_code_textbook/interactive_morse_code_textbook.tscn" id="10_kl8j2"]
 [ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="12_che8u"]
 [ext_resource type="PackedScene" uid="uid://cr4j1dhnjms4f" path="res://config/ui/actor_speech_panel/actor_speech_panel.tscn" id="12_v58cl"]
 [ext_resource type="PackedScene" uid="uid://bve1ca5g20od6" path="res://config/screens/game/actors/friend/friend.tscn" id="13_che8u"]
 [ext_resource type="PackedScene" uid="uid://n2la2f336s84" path="res://config/screens/game/actors/hero/hero.tscn" id="15_mwajf"]
 [ext_resource type="Texture2D" uid="uid://dupbapb23iudf" path="res://config/resources/room.png" id="16_mwajf"]
 [ext_resource type="Texture2D" uid="uid://bctwsrqhta6ka" path="res://config/resources/game_over.png" id="18_bjmkh"]
-[ext_resource type="PackedScene" uid="uid://did6276qugi8o" path="res://config/screens/game/interactive_item/variants/computer/computer.tscn" id="25_657kl"]
-[ext_resource type="PackedScene" uid="uid://cy305tkklbguq" path="res://config/screens/game/interactive_item/variants/diary/diary.tscn" id="26_lwjy1"]
-[ext_resource type="PackedScene" uid="uid://bnffu67hk4hwy" path="res://config/screens/game/interactive_item/variants/glasses/glasses.tscn" id="27_8ekm0"]
-[ext_resource type="PackedScene" uid="uid://mqso644axs22" path="res://config/screens/game/interactive_item/variants/oscilloscope/oscilloscope.tscn" id="28_alk2l"]
-[ext_resource type="PackedScene" uid="uid://hf7fwd8uxsga" path="res://config/screens/game/interactive_item/variants/photo/photo.tscn" id="29_tnrtu"]
-[ext_resource type="PackedScene" uid="uid://cn51hyjk3hel0" path="res://config/screens/game/interactive_item/variants/encryption_machine/encryption_machine.tscn" id="30_1my6b"]
+[ext_resource type="PackedScene" uid="uid://did6276qugi8o" path="res://config/screens/game/scenes/computer/interactive_computer/interactive_computer.tscn" id="25_657kl"]
+[ext_resource type="PackedScene" uid="uid://cy305tkklbguq" path="res://config/screens/game/scenes/diary/interactive_diary/interactive_diary.tscn" id="26_lwjy1"]
+[ext_resource type="PackedScene" uid="uid://bnffu67hk4hwy" path="res://config/screens/game/scenes/glasses/interactive_glasses/interactive_glasses.tscn" id="27_8ekm0"]
+[ext_resource type="PackedScene" uid="uid://mqso644axs22" path="res://config/screens/game/scenes/oscilloscope/interactive_oscilloscope/interactive_oscilloscope.tscn" id="28_alk2l"]
+[ext_resource type="PackedScene" uid="uid://hf7fwd8uxsga" path="res://config/screens/game/scenes/photo/interactive_photo/interactive_photo.tscn" id="29_tnrtu"]
+[ext_resource type="PackedScene" uid="uid://cn51hyjk3hel0" path="res://config/screens/game/scenes/encryption_machine/interactive_encryption_machine/interactive_encryption_machine.tscn" id="30_1my6b"]
 
-[node name="game" type="Control"]
+[node name="game" type="Control" node_paths=PackedStringArray("interactive_items")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,8 +27,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rm2kr")
+interactive_items = {
+0: NodePath("room/interactive_items/computer"),
+1: NodePath("room/interactive_items/diary"),
+2: NodePath("room/interactive_items/encryption_machine"),
+3: NodePath("room/interactive_items/glasses"),
+4: NodePath("room/interactive_items/morse_code_textbook"),
+5: NodePath("room/interactive_items/oscilloscope"),
+6: NodePath("room/interactive_items/photo")
+}
 
-[node name="static_background" type="TextureRect" parent="."]
+[node name="room" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="static_background" type="TextureRect" parent="room"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,27 +54,29 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_4xw68")
 
-[node name="final" type="TextureRect" parent="."]
+[node name="final" type="TextureRect" parent="room"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1880.0
+offset_bottom = 1040.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_mwajf")
 
-[node name="window" parent="." instance=ExtResource("3_kl8j2")]
-layout_mode = 0
-anchor_left = 0.45572916
-anchor_top = -0.0009259259
-anchor_right = 0.75677085
-anchor_bottom = 0.31203705
+[node name="window" parent="room" instance=ExtResource("3_kl8j2")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45520833
+anchor_right = 0.75625
+anchor_bottom = 0.31296295
 offset_right = 0.0
 offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 
-[node name="interactive_items" type="Control" parent="."]
+[node name="interactive_items" type="Control" parent="room"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,14 +84,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="morse_code_textbook" parent="interactive_items" instance=ExtResource("10_kl8j2")]
+[node name="morse_code_textbook" parent="room/interactive_items" instance=ExtResource("10_kl8j2")]
 layout_mode = 1
 anchor_left = 0.15625
 anchor_top = 0.1388889
 anchor_right = 0.19791667
 anchor_bottom = 0.32407406
+interactive_item = 4
 
-[node name="photo" parent="interactive_items" instance=ExtResource("29_tnrtu")]
+[node name="photo" parent="room/interactive_items" instance=ExtResource("29_tnrtu")]
 layout_mode = 1
 anchor_left = 0.104166664
 anchor_top = 0.16481481
@@ -80,8 +100,9 @@ anchor_right = 0.15625
 anchor_bottom = 0.22685185
 offset_right = 0.0
 offset_bottom = 0.0
+interactive_item = 6
 
-[node name="glasses" parent="interactive_items" instance=ExtResource("27_8ekm0")]
+[node name="glasses" parent="room/interactive_items" instance=ExtResource("27_8ekm0")]
 layout_mode = 1
 anchor_left = 0.78125
 anchor_top = 0.16666667
@@ -89,8 +110,9 @@ anchor_right = 0.8229167
 anchor_bottom = 0.19444445
 offset_right = 0.0
 offset_bottom = 0.0
+interactive_item = 3
 
-[node name="computer" parent="interactive_items" instance=ExtResource("25_657kl")]
+[node name="computer" parent="room/interactive_items" node_paths=PackedStringArray("oscilloscope") instance=ExtResource("25_657kl")]
 layout_mode = 1
 anchor_left = 0.29270834
 anchor_top = 0.20092593
@@ -98,8 +120,9 @@ anchor_right = 0.45260417
 anchor_bottom = 0.39537033
 offset_right = 0.0
 offset_bottom = 0.0
+oscilloscope = NodePath("../oscilloscope")
 
-[node name="encryption_machine" parent="interactive_items" instance=ExtResource("30_1my6b")]
+[node name="encryption_machine" parent="room/interactive_items" instance=ExtResource("30_1my6b")]
 layout_mode = 1
 anchor_left = 0.46927083
 anchor_top = 0.27685186
@@ -107,22 +130,32 @@ anchor_right = 0.5578125
 anchor_bottom = 0.35092592
 offset_right = 0.0
 offset_bottom = 0.0
+interactive_item = 2
 
-[node name="diary" parent="interactive_items" instance=ExtResource("26_lwjy1")]
+[node name="diary" parent="room/interactive_items" instance=ExtResource("26_lwjy1")]
 layout_mode = 1
 anchor_left = 0.45208332
 anchor_top = 0.32037038
 anchor_right = 0.57447916
 anchor_bottom = 0.39906943
+interactive_item = 1
 
-[node name="oscilloscope" parent="interactive_items" instance=ExtResource("28_alk2l")]
+[node name="oscilloscope" parent="room/interactive_items" instance=ExtResource("28_alk2l")]
 layout_mode = 1
-anchor_left = 0.14947917
+anchor_left = 0.1515625
 anchor_top = 0.275
-anchor_right = 0.24322917
+anchor_right = 0.2453125
 anchor_bottom = 0.36296296
 offset_right = 0.0
 offset_bottom = 0.0
+interactive_item = 5
+
+[node name="friend" parent="room" instance=ExtResource("13_che8u")]
+position = Vector2(1246, 502)
+
+[node name="hero" parent="room" instance=ExtResource("15_mwajf")]
+position = Vector2(702.00006, 528.00006)
+scale = Vector2(0.665, 0.665)
 
 [node name="system_panel" parent="." instance=ExtResource("3_bea4q")]
 layout_mode = 1
@@ -133,13 +166,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "МЕНЮ"
-
-[node name="friend" parent="." instance=ExtResource("13_che8u")]
-position = Vector2(1246, 502)
-
-[node name="hero" parent="." instance=ExtResource("15_mwajf")]
-position = Vector2(702.00006, 528.00006)
-scale = Vector2(0.665, 0.665)
 
 [node name="scene" type="Control" parent="."]
 layout_mode = 1
@@ -177,11 +203,14 @@ texture = ExtResource("16_mwajf")
 [node name="game_over" type="TextureRect" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1880.0
 offset_bottom = -1040.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 0
 texture = ExtResource("18_bjmkh")
 metadata/_edit_use_anchors_ = true

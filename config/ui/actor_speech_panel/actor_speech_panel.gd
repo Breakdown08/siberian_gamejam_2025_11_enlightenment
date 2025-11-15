@@ -11,35 +11,39 @@ const HIDE_INTERVAL:float = 3.0
 
 var style_box_flat:StyleBoxFlat
 
+var actor_hero:Actor = Scenario.actors.get_node("hero")
+var actor_friend:Actor = Scenario.actors.get_node("friend")
+var actor_none:Actor = Scenario.actors.get_node("none")
+
 
 func _ready() -> void:
 	hide()
 	body.self_modulate = Color("5c5c6194")
 	style_box_flat = body.get("theme_override_styles/panel") as StyleBoxFlat
-	EventBus.dialog.connect(on_dialog)
-	EventBus.thought.connect(on_thought)
-	Scenario.cutscene_off.connect(animation_hide_dialog)
+	Scenario.speech.connect(on_speech)
+	Scenario.cutscene_finished.connect(func():animation_hide_dialog(true))
+	GameManager.item_info.connect(on_item_info)
 
 
 func animation_update_text(actor_speech:String, hide_on_finished:bool=false):
-	EventBus.speech_started.emit()
+	Scenario.speech_started.emit()
 	speech.text = actor_speech
 	speech.visible_ratio = 0.0
 	var tween:Tween = Utils.tween(self, "update")
 	tween.tween_property(speech, "visible_ratio", 1.0, Utils.get_visible_ratio_time(actor_speech) / 3)
 	tween.tween_callback(func():
-		EventBus.speech_finished.emit()
-		if hide_on_finished:
+		Scenario.speech_finished.emit()
+		if Scenario.is_stopped or hide_on_finished:
 			animation_hide_dialog()
 	)
 
 
-func animation_show_dialog(actor:String, actor_speech:String, hide_on_finished:bool=false):
-	EventBus.speech_started.emit()
+func animation_show_dialog(actor:Actor, actor_speech:String, hide_on_finished:bool=false):
+	Scenario.speech_started.emit()
 	match_actor(actor)
 	show()
 	speech.text = ""
-	actor_name.text = actor
+	actor_name.text = actor.actor_name
 	modulate = Color.TRANSPARENT
 	scale = Vector2.ZERO
 	var tween:Tween = Utils.tween(self, "visible")
@@ -50,9 +54,10 @@ func animation_show_dialog(actor:String, actor_speech:String, hide_on_finished:b
 	)
 
 
-func animation_hide_dialog():
+func animation_hide_dialog(fast:bool = false):
 	var tween:Tween = Utils.tween(self, "visible")
-	tween.tween_interval(HIDE_INTERVAL)
+	if !fast:
+		tween.tween_interval(HIDE_INTERVAL)
 	tween.tween_property(self, "scale", Vector2.ZERO, ANIMATION_DURATION)
 	tween.parallel().tween_property(self, "modulate", Color.TRANSPARENT, ANIMATION_DURATION)
 	tween.tween_callback(func():
@@ -60,25 +65,26 @@ func animation_hide_dialog():
 	)
 
 
-func on_dialog(actor:String, actor_speech:String):
+func on_speech(actor:Actor, text:String):
+	prints("		[SCENARIO] '%s' - %s" % [actor.actor_name, text])
 	if visible:
 		if GameManager.current_actor == actor:
-			animation_update_text(actor_speech)
+			animation_update_text(text)
 		else:
-			animation_show_dialog(actor, actor_speech)
+			animation_show_dialog(actor, text)
 	else:
-		animation_show_dialog(actor, actor_speech)
+		animation_show_dialog(actor, text)
 
 
-func on_thought(hero_speech:String):
-	animation_show_dialog(Scenario.ACTOR_NONE, hero_speech, true)
+func on_item_info(hero_speech:String):
+	animation_show_dialog(actor_none, hero_speech, true)
 
 
-func match_actor(actor:String):
+func match_actor(actor:Actor):
 	match actor:
-		Scenario.ACTOR_HERO:
+		actor_hero:
 			tab_panel.self_modulate = Color("4cb072")
-		Scenario.ACTOR_NONE:
+		actor_none:
 			tab_panel.self_modulate = Color("33abb8ff")
-		Scenario.ACTOR_FRIEND:
+		actor_friend:
 			tab_panel.self_modulate = Color("0ea2f1ff")

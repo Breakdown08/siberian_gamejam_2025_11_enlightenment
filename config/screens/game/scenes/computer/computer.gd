@@ -6,7 +6,7 @@ extends Control
 
 
 func _ready():
-	room.pressed.connect(_on_room_pressed)
+	room.pressed.connect(func(): GameManager.back_to_room.emit())
 	send_signal.pressed.connect(_on_send_signal_pressed)
 	Scenario.cutscene_on.connect(
 		func():
@@ -16,19 +16,14 @@ func _ready():
 		func():
 			send_signal.disabled = false
 	)
-	Scenario.back_to_room.connect(_on_room_pressed)
-
-
-func _on_room_pressed():
-	EventBus.scene_switched.emit(Game.SCENE.MAIN)
 
 
 func success():
 	Scenario.computer_response.emit(Scenario.RADIO_RESPONSE)
 	Scenario.radio_success_response.emit()
 	response.text = Scenario.RADIO_RESPONSE
-	if GameManager.scenario_stage == 1:
-		GameManager.scenario_next()
+	#if GameManager.scenario_stage == 1:
+		#GameManager.scenario_next()
 
 
 func empty_response():
@@ -38,7 +33,8 @@ func empty_response():
 
 
 func _on_send_signal_pressed() -> void:
-	if GameManager.oscilloscope_params == Scenario.OSCILLOSCOPE_PARAMS:
+	var oscilloscope:OscilloscopeInteractiveItem = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.OSCILLOSCOPE)
+	if oscilloscope.params == Scenario.database.get_key("oscilloscope_correct_params"):
 		success()
 	else:
 		empty_response()

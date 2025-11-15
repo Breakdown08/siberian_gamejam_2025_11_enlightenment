@@ -52,16 +52,11 @@ var secret_id:int = 0
 
 
 func _ready() -> void:
-	room.pressed.connect(_on_room_pressed)
+	room.pressed.connect(func(): GameManager.back_to_room.emit())
 	response = Scenario.RADIO_RESPONSE.split(" ")
 	unique_response = Utils.get_unique_array(response)
 	init_chars()
 	init_secret()
-	Scenario.back_to_room.connect(_on_room_pressed)
-
-
-func _on_room_pressed():
-	EventBus.scene_switched.emit(Game.SCENE.MAIN)
 
 
 func init_chars():
@@ -103,5 +98,5 @@ func on_unsecret():
 		secret_id += 1
 		if secret_id == password.get_child_count():
 			Scenario.morse_translated.emit()
-			GameManager.scenario_next()
+			GameManager.scenario_next.emit()
 		

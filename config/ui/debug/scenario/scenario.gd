@@ -5,13 +5,14 @@ extends Panel
 
 
 func _ready() -> void:
-	EventBus.scenario_id_updated.connect(
-		func(scenario_id:int):
-			id.text = str(scenario_id) + " " + str(GameManager.scenario_stage)
-	)
-	EventBus.speech_finished.connect(func():
+	#ScenarioNew.next_action.connect(
+		#func(next_cursor:ScenarioSkeletonAction):
+			#if next_cursor != null:
+				#id.text = str(next_cursor.name) + " " + str(GameManager.act.number)
+	#)
+	Scenario.speech_finished.connect(func():
 		next_scenario_indicator.modulate = Color.GREEN
 	)
-	EventBus.speech_started.connect(func():
+	Scenario.speech_started.connect(func():
 		next_scenario_indicator.modulate = Color.RED
 	)

@@ -1,0 +1,572 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6yjhbmn14vkh"]
+
+[ext_resource type="Script" uid="uid://ddd52y723d56s" path="res://config/global/scenario/actor.gd" id="1_bmpdm"]
+[ext_resource type="Script" uid="uid://c7r1473hdnxi6" path="res://config/global/scenario/database.gd" id="2_p3jsh"]
+[ext_resource type="Script" uid="uid://balu28xoci4g7" path="res://config/global/scenario/skeleton/skeleton.gd" id="3_s7a3y"]
+[ext_resource type="Script" uid="uid://btby3cxfoj8lm" path="res://config/screens/game/config/game_act.gd" id="4_a05x2"]
+[ext_resource type="Script" uid="uid://cb7slha3ncqxn" path="res://config/global/scenario/skeleton/cutscene.gd" id="5_6dm4g"]
+[ext_resource type="Script" uid="uid://br57gpcvgtf12" path="res://config/global/scenario/skeleton/actor_speech.gd" id="6_a05x2"]
+[ext_resource type="Script" uid="uid://bndaqlbrpvuf2" path="res://config/global/scenario/skeleton/event_creator.gd" id="7_a05x2"]
+[ext_resource type="Script" uid="uid://cheg3kobk3jjy" path="res://config/global/scenario/event.gd" id="8_67p4d"]
+
+[node name="scenario" type="Node"]
+
+[node name="actors" type="Node" parent="."]
+
+[node name="hero" type="Node" parent="actors"]
+script = ExtResource("1_bmpdm")
+actor_name = "Главный герой"
+metadata/_custom_type_script = "uid://ddd52y723d56s"
+
+[node name="friend" type="Node" parent="actors"]
+script = ExtResource("1_bmpdm")
+actor_name = "Женя"
+metadata/_custom_type_script = "uid://ddd52y723d56s"
+
+[node name="none" type="Node" parent="actors"]
+script = ExtResource("1_bmpdm")
+actor_name = "..."
+metadata/_custom_type_script = "uid://ddd52y723d56s"
+
+[node name="database" type="Node" parent="."]
+script = ExtResource("2_p3jsh")
+scenario_keys = Dictionary[String, String]({
+"encryption_machine_answer": "Я УсиЩ, ПРОЗРЕЙ фото с ГлазиЩем",
+"encryption_machine_password": "МАСКИРУЮТСЯ_УЛУЧШАЙ",
+"not_interesting": "Мне это сейчас не нужно...",
+"notification_update_diary": "Запись в дневнике обновлена...",
+"oscilloscope_correct_params": "(1.0, 1.0)",
+"radio_response_empty": "... превышено ожидание ответа ...",
+"radio_response_success": "−−− −• •• −− •− ••• −•− •• •−• ••− ••−− − ••• •−•− •−−• −−− −•• −• •− ••• •−•−•− ••− •−•• ••− −−−• −−−− •− •−−− ••• •−− −−− •• −−• •−•• •− −−•• •−"
+})
+metadata/_custom_type_script = "uid://c7r1473hdnxi6"
+
+[node name="skeleton" type="Node" parent="."]
+script = ExtResource("3_s7a3y")
+metadata/_custom_type_script = "uid://balu28xoci4g7"
+
+[node name="act_1" type="Node" parent="skeleton"]
+script = ExtResource("4_a05x2")
+items_availability = Dictionary[int, bool]({
+0: true,
+1: true,
+5: true
+})
+items_info = Dictionary[int, Array]({
+0: ["Тестовое описание для компа"],
+5: ["Тестовое описание для осциллографа"]
+})
+metadata/_custom_type_script = "uid://btby3cxfoj8lm"
+
+[node name="cutscene_1" type="Node" parent="skeleton/act_1"]
+script = ExtResource("5_6dm4g")
+metadata/_custom_type_script = "uid://cb7slha3ncqxn"
+
+[node name="actor_speech_none_1" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/none")
+speech = Array[String](["До меня доносятся шаги. Не нужно быть экстрасенсом, чтобы догадаться. Я знаю кто сейчас зайдет.", "Как всегда пунктуален. Уже на протяжении нескольких месяцев Женя приходит в одно и то же время.", "Он приносит мне еду и энергетики, а заодно выносит мусор. Не знаю, что бы я делал без такого понимающего друга.", "Последние несколько лет вся моя жизнь – поиск инопланетян. Я уверен, что мой отец добрался до правды и поэтому его устранили.", "В комнату врывается свежий воздух, когда мой друг открывает дверь.", "Я не помню, какой сейчас месяц и день недели,", "ведь каждый мой день – день сурка: ем, пью кофе – все за столом, все с радио и отцовскими дневниками.", "Когда я видел последний раз солнечный свет?", "Не помню, если не считать те редкие лучи, проникающие в мою комнату сквозь занавески на окнах.", "Я на секунду отрываюсь от последнего дневника отца в момент, когда Женя обращается ко мне."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="event_creator_1" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../../events/friend_has_come"), null]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="actor_speech_friend_1" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/friend")
+speech = Array[String](["Привет! Как продвигается твое расследование?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_none_2" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/none")
+speech = Array[String](["расследование… Когда-то мой отец занимался этим и заразил меня своей идеей вычислить инопланетян. ", "Он погиб, не доведя дело до конца, а я взял на себя решение этой задачи. Перечитав его дневники, переслушав все программы и подкасты,", "я не приблизился ни на сантиметр к разгадке этой тайны..."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_1" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/hero")
+speech = Array[String](["Все в той же точке. Я закончил читать последний сохранённый отцом дневник. Все остальные он сжег, когда понял, что за ним следят."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_2" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/friend")
+speech = Array[String](["Там есть подсказки, что делать дальше?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_none_3" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/none")
+speech = Array[String](["Что ему сказать? Что дневник — это набор бессвязных букв и символов?", "Набор точек и палочек? Что это все выглядит как записи сумасшедшего?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_2" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/hero")
+speech = Array[String](["Нет, он не оставил ни одной зацепки. Я даже не понимаю, что он искал.", "Если бы была возможность найти его друга, узнать, как они хотели связаться с пришельцами...", "Но друг отца давно не выходил на связь. Я не знаю, где он и что с ним."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_3" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/friend")
+speech = Array[String](["Продолжай поиски, мне кажется, что у тебя все получится."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_3" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/hero")
+speech = Array[String](["Я тоже хочу верить в это. Но нужная волна…", "Мне кажется, что ответ где-то рядом, но постоянно ускользает от меня.", "За столько лет поисков я попробовал подключиться к такому большому количеству сигналов, что даже перестал записывать их в дневнике.", "И ничего. Один раз мне показалось, что я вышел на связь с кем-то или чем-то, но…"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_4" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/friend")
+speech = Array[String](["Мы же пришли к выводу, что это просто кто-то решил подшутить, не думаю, что ты в тот момент услышал пришельцев или типа того."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_none_4" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/none")
+speech = Array[String](["Тот спорный случай, когда я услышал сквозь помехи какие-то непонятные обрывки слов, стук.", "Думал, что это Морзе.", "Женя помог тогда это расшифровать, но ничего там не обнаружил.", "Я купил себе азбуку Морзе,", "но доводы Жени о том, что это всего лишь шутка, были достаточно убедительны, чтобы я не стал декодировать это сам.", "К тому же в тот момент Женя тоже получил какой-то сигнал.", "В нем говорилось, что мой отец что-то нашел и это что-то у меня в доме.", "Правда, мы так и не узнали, что именно, а Женя отказывается подключаться еще раз к тому источнику информации.", "Думаю, этот информатор сильно напугал его, иначе он бы сделал все, чтобы помочь мне.", "Он всегда помогает."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_4" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/hero")
+speech = Array[String](["Да, думаю ты прав. Но если это не радио?", "Почему тогда отец так хотел, чтобы я был именно радиомехаником?", "Вдруг все это время мы идем по ложному следу?", "Почему ты думаешь, что твой сигнал был не шуткой?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_none_5" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/none")
+speech = Array[String](["Я собирался связать свою жизнь с астрономией, думал, что это приблизит меня к делу отца.", "Но он настоял на радио.", "Я надеялся, что это как-то связано с инопланетянами.", "Но больше никаких подсказок он мне не оставил.", "Я и правда стал радиомехаником, даже пытался работать. Но эта работа…", "Она только отвлекала меня от дела всей моей жизни.", "Да, это дело не приносит мне денег, да меня обеспечивает моя бабушка.", "Но разве не лучше знать, что я полностью посвятил себя любимому делу,", "не тратя ресурс на бесполезную, хоть и дающую финансы, работу?", "Да, из-за одержимости продолжить дело отца я стал нелюдимым домоседом.", "Что ж, зато не спился и меня не убили на улице.", "Если это случится, меня хотя бы не придется искать – я буду дома за радио."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_5" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/friend")
+speech = Array[String](["Может, он и пытался как-то намекнуть тебе, где нужно искать. Но тот сигнал был ошибкой.", "Может, это должен был быть другой сигнал? Он не оставлял подсказки, что нужно искать?", "Может, цифры, буквы? Какой-то ключ, который натолкнет тебя на нужную зацепку?", "Я думаю, что это где-то здесь. Возможно, мы пока не видим, не замечаем, но в какой-то момент прозрение дойдет до нас.", "Слушай, не буду тебя отвлекать, но подумай над тем, что я сказал. Пока. И не отчаивайся!"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="event_creator_2" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../../events/friend_has_left")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="actor_speech_none_6" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/none")
+speech = Array[String](["Не отчаивайся… Мне кажется, за столько лет поисков я уже забыл это слово.", "Каждый день начинаю с дневников, пытаясь сдвинуться с мертвой точки.", "Вся моя жизни – радио, это мое хобби, мое увлечение, моя миссия.", "Но что, если я думаю не в ту сторону? Может быть, тот сигнал и был ключом?", "Я часто встречал букву «Щ» в разговорах отца с другом.", "А последняя волна как раз напоминала эту букву. Вдруг я набрел тогда на инопланетян?", "Возможно, нужно попробовать подключиться еще раз? Может быть, я смогу поймать более стабильную волну?", "Что если предыдущая расшифровка ничего не дала, потому что я записал что-то неправильно?", "В любом случае, если я не попробую, вопросов меньше не станет.", "Пожалуй, время начать все сначала и воспроизвести ту букву на осциллографе."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="event_creator" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../../events/diary_note_1")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="out" type="Node" parent="skeleton/act_1/cutscene_1" node_paths=PackedStringArray("out")]
+script = ExtResource("7_a05x2")
+out = NodePath("../../game")
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="game" type="Node" parent="skeleton/act_1" node_paths=PackedStringArray("out")]
+script = ExtResource("7_a05x2")
+out = NodePath("../../act_2")
+wait_for_player = true
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="act_2" type="Node" parent="skeleton"]
+script = ExtResource("4_a05x2")
+metadata/_custom_type_script = "uid://btby3cxfoj8lm"
+
+[node name="cutscene" type="Node" parent="skeleton/act_2"]
+script = ExtResource("5_6dm4g")
+metadata/_custom_type_script = "uid://cb7slha3ncqxn"
+
+[node name="actor_speech_none_1" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Что это? Точки, палочки? Значит, что-то получилось или все же нет?", "Сигнал был четче, чем в первый раз. Осталось понять: это что-то значит или я в очередной раз столкнулся со стеной.", "Я столько раз приходил в никуда, что не хочу заранее верить, что эта попытка может к чему-то привести.", "И все же, разве это не лучший результат за последнее время?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="event_creator" type="Node" parent="skeleton/act_2/cutscene" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../../events/friend_has_come"), NodePath("../../../../events/back_to_room")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="actor_speech_friend_1" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Ты выглядишь бледнее, чем обычно. У тебя что-то случилось?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_1" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Я тут поэкспериментировал с тем сигналом, что ты когда-то назвал шуткой…"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_2" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["То есть ты решил тратить время на чьи-то шутки?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="event_creator_2" type="Node" parent="skeleton/act_2/cutscene" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../../events/friend_angry")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="actor_speech_friend_3" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Я думал, ты занят серьезным расследованием и поиском инопланетян!", "Лучше давай вернемся к последней зацепке. Что мы обсуждали в прошлый раз?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_none_2" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Злится? Неужели задел его тем, что перепроверяю за ним информацию?", "За годы нашей дружбы, еще со школы, я ни разу не видел, чтобы он выходил из себя.", "Женя всегда казался внимательным и заинтересованным к моему делу.", "Даже удивительно, ведь весь остальной класс не очень хотел со мной общаться из-за моей одержимости.", "Но Женя интересовался тем же, чем и я.", "Он ни разу не сказал, что инопланетян не бывает, но всегда одобрял меня даже в неудачах. Что же случилось сейчас?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_2" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["То, что мой отец как раз-таки не оставил ни одной зацепки. А эта волна давала хоть что-то.", "Я не понимаю, почему ты так против расследования в эту сторону?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_4" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Потому что это отвлекает тебя, ты растрачиваешь свои силы зря.", "Посмотри на себя: ты и так почти не выходишь из дома, питаешься доставками.", "Пойди подыши воздухом, потрогай траву."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="event_creator_3" type="Node" parent="skeleton/act_2/cutscene" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../../events/friend_normal")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="actor_speech_friend_5" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Я расшифровывал это сообщение и знаю, что там нет ничего интересного.", "Просто обратись в другую сторону, как я тебе и говорил. Посмотри фото – может, отец не просто так оставил его тебе?", "Или в дневниках сказано, зачем нужна фотография? Читай между строк."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_3" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Да что с тобой? Почему ты так зациклился на дневниках отца?", "Почему так уверен, что он оставил мне какую-то подсказку?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_6" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Я просто беспокоюсь о твоем самочувствии. Мой тебе совет: забудь про это.", "Ты уверен, что пересмотрел все возможные места, где отец мог оставить подсказку?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_4" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Ты же знаешь, что специально отец оставил мне только фото. Но там нет никаких подсказок.", "Я несколько раз посмотрел. Только потертая надпись с бессмысленным набором слов."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_7" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Может, тогда стоит заняться фото? Вдруг это не слова, а координаты?", "Что если каждая буква — это цифра или что-то такое? В такую сторону мы еще не думали, возможно, стоит?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_5" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Точно! Я обязательно проверю твою теорию. Спасибо тебе."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="event_creator_4" type="Node" parent="skeleton/act_2/cutscene" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../../events/diary_note_2")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="actor_speech_friend_8" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["За еду и вынос мусора?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_6" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["За это тоже."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_none_3" type="Node" parent="skeleton/act_2/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Женя еще никогда меня не подводил.", "Но мне кажется, он отказывается принимать, что отец мог просто ничего не оставить.", "Что если на самом деле он не приближался к открытию?", "Или он не хотел, чтобы я продолжал его дело, и все так надежно спрятал, чтобы я не нашел?", "В любом случае, ничего под обложками нет: я проверил каждую страницу, каждый форзац, каждый переплет.", "Никаких посланий мне оставлено не было.", "Женя ведь тоже человек, человеку свойственно ошибаться. Может, и он думает не в том направлении?", "Но все же фотографию стоит рассмотреть получше сзади.", "Не думаю, что мне нужно пытаться искать координаты в наборе букв.", "Слишком их там много. Может, попробовать подобрать недостающие слова?", "Опять ощущение, что я стою на месте, с которого сдвинуться совершенно невозможно.", "И это я еще основываюсь на записях отца.", "А как это все искал он, опираясь только на увиденный столб света у озера среди ночи?", "Мне кажется, я не достоин быть его сыном.", "Я недостаточно умен и находчив, чтобы добиться хоть части того, что сделал он.", "Так почему я продолжаю биться об стену? Только ли из уважения к нему или уже по привычке?", "Ладно, пора пытаться двигаться дальше с этой точки, в которой я увяз как в болоте.", "Фотография и надпись сзади. Не унываем и вперед!"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="event_creator_5" type="Node" parent="skeleton/act_2/cutscene" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../../events/diary_note_3")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="out" type="Node" parent="skeleton/act_2/cutscene" node_paths=PackedStringArray("events", "out")]
+script = ExtResource("7_a05x2")
+events = [null]
+out = NodePath("../../../act_3")
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="act_3" type="Node" parent="skeleton"]
+script = ExtResource("4_a05x2")
+wait_for_player = true
+metadata/_custom_type_script = "uid://btby3cxfoj8lm"
+
+[node name="cutscene" type="Node" parent="skeleton/act_3"]
+script = ExtResource("5_6dm4g")
+metadata/_custom_type_script = "uid://cb7slha3ncqxn"
+
+[node name="actor_speech_none_1" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Что это может значить? Маскируются? Кто они? Может, это фотография не моего отца на самом деле?", "Может быть, и не мой отец погиб? Это все обман? А что значит «улучшай глаза»? Как их можно улучшить?", "У меня зрение и без улучшений хорошее, и как хорошее зрение поможет увидеть маскировку?", "Кажется, что вопросов у меня меньше не стало."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="event_creator" type="Node" parent="skeleton/act_3/cutscene" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../../events/friend_has_come"), NodePath("../../../../events/back_to_room")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="actor_speech_friend_1" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Ты сегодня еще более задумчивый. Неужели моя подсказка помогла тебе?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_none_2" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Стоп. Ведь с этой волны был и предыдущий шифр. Я не помню, был ли он такой же или нет.", "Почему тогда Женя расшифровал и сказал, что туда копать не стоит?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_1" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Да, я нашел новую зацепку."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_2" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Почему тогда в голосе слышу подозрение и пассивную агрессию?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_2" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Потому что эта подсказка была с волны, которую ты сказал не трогать и назвал шуткой.", "Не объяснишь, как такое получилось?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="event_creator_2" type="Node" parent="skeleton/act_3/cutscene" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../../events/friend_angry")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="actor_speech_friend_3" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Ты все же лез в ту волну? Ты продолжил заниматься этим?", "Я же тебе посоветовал обратиться к отцу! Почему ты меня не слушаешь?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_3" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Потому что ты предлагаешь последнее время какие-то странные вещи. С чего ты взял, что отец мне что-то оставил?", "Ты ведь с ним не общался никогда.", "Ты избегал знакомства с ним, даже прятался от него, когда он встречал нас на улице.", "Так почему твоя ненависть к отцу переросла в веру, что он мне решил помочь?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_4" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Я всегда желал тебе только лучшего.", "Все время твоей одержимости инопланетянами, поиском ответов, радио, все твое затворничество – я все это время рядом с тобой.", "Изучить азбуку Морзе и расшифровать?", "Женя.", "Сидеть ночами, ловить непонятные сигналы?", "Тоже Женя.", "А как дело доходит до того, чтобы послушать чьи-то советы, так ты самый умный.", "Ты вообще воспринимаешь меня как друга или как доставщика еды и бесплатный вынос мусора?", "Да почему тебя так задевает моя работа не по твоим советам?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_4" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Я вообще-то в прошлый раз послушал тебя и не трогал тот сигнал еще раз. И после этого полгода просто потерял!", "Если бы сразу попробовал еще раз, мы бы приблизились к…"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_5" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Ну, к чему мы приблизились бы? Вот ты получил какую-то подсказку, а дальше что?", "Она дала тебе координаты, где находится прибор для связи с пришельцами?", "Дала знак, где искать прибор, который поможет их раскрыть?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_none_3" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Откуда он это знает? Я ничего не говорил про поиск прибора. Я даже не знал про его существование.", "Я думал, что ищу нужную волну для связи с ними, но никак не прибор для вычисления пришельцев среди нас.", "Он что-то знал и молчал?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_5" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Что за прибор раскрытия пришельцев? Мы никогда такой не обсуждали.", "Ты знаешь больше, чем говоришь? Если знаешь что-то, то может время раскрыть карты?", "Или твой друг не достоин этого знать? У тебя какое-то самостоятельное расследование, в которое я не посвящен?", "И кто еще должен говорить о доверии и не серьезном отношении к другим?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_6" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Ты говоришь какие-то абсурдные вещи. Ничего я не знаю."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_6" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Твое поведение и слова говорят об обратном. Что за прибор видения пришельцев? Они среди нас?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_friend_7" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Какое поведение? Ты давно видел нормальных людей?", "Сидишь здесь в четырех стенах, как крот в своей норе.", "Знаешь что, раз ты меня в чем-то подозреваешь, я просто уйду.", "Сиди один здесь в своей темной комнате и копайся в железках, идя по ложному следу. Удачи."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="event_creator_3" type="Node" parent="skeleton/act_3/cutscene" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../../events/friend_has_left")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="actor_speech_none_4" type="Node" parent="skeleton/act_3/cutscene"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Так дверью хлопнул, что полки затряслись. Надо будет проверить, не упало ли что-нибудь.", "Может, мне не стоило относиться к нему с подозрением?", "Все же это он мне предложил посмотреть на фото, на котором и есть надпись с шифра.", "Только к чему эта надпись? Неужели тайное слово?", "И Женя такой подозрительный. Откуда он узнал про прибор вычисления инопланетян?", "Может быть, я его не так понял? Тогда почему он не объяснил, что имел в виду?", "Вопросов становится только больше. Так еще я один теперь.", "Надо посмотреть, не разбилась ли фотография."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="out" type="Node" parent="skeleton/act_3/cutscene" node_paths=PackedStringArray("out")]
+script = ExtResource("7_a05x2")
+out = NodePath("../../../act_4")
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="act_4" type="Node" parent="skeleton"]
+script = ExtResource("4_a05x2")
+wait_for_player = true
+metadata/_custom_type_script = "uid://btby3cxfoj8lm"
+
+[node name="actor_speech_none_1" type="Node" parent="skeleton/act_4"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Что это? Моя шифровальная машина, доставшаяся мне от отца?", "А почему я ни разу не попробовал убрать этот листик?", "Вероятно, я боялся повредить фотографию, иначе этот затуп оправдать не смогу.", "Хотя почему затуп? Ну машина и машина.", "Про то, что она существует я знал: она стоит у меня на столе. Чего-то необычного я в ней не нахожу.", "Хм... А могут ли быть связаны слова с оборота фотографии с этой машинкой?", "Зачем бы они были написаны сзади иначе, логично? Звучит логично.", "Но как будто вводить полностью фразу целиком как-то не удобно.", "Не зря же не хватает только двух слов.", "Может попробовать ввести их в машинку?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="out" type="Node" parent="skeleton/act_4" node_paths=PackedStringArray("out")]
+script = ExtResource("7_a05x2")
+out = NodePath("../../act_5")
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="event_creator" type="Node" parent="skeleton/act_4" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../events/diary_note_4")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="act_5" type="Node" parent="skeleton"]
+script = ExtResource("4_a05x2")
+wait_for_player = true
+metadata/_custom_type_script = "uid://btby3cxfoj8lm"
+
+[node name="actor_speech_none_1" type="Node" parent="skeleton/act_5"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Новое послание? “Я УсиЩ. Прозрей фото с ГлазиЩем”. Что это может значить?", "УсиЩ, ГлазиЩ... Это же то, что я видел на фотографии.", "Их прозвища в детективном агентстве! Надо подумать...", "И что я должен увидеть на фото? Прозрей? Увидеть что-то новое?", "Увидеть… Улучшить зрение… Очки! Точно!", "У отца в кармашке очки! Они были и у меня. Он мне их оставил. Как я мог об этом забыть."])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="out" type="Node" parent="skeleton/act_5" node_paths=PackedStringArray("out")]
+script = ExtResource("7_a05x2")
+out = NodePath("../../act_6")
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="event_creator" type="Node" parent="skeleton/act_5" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../events/diary_note_5")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="act_6" type="Node" parent="skeleton"]
+script = ExtResource("4_a05x2")
+wait_for_player = true
+metadata/_custom_type_script = "uid://btby3cxfoj8lm"
+
+[node name="event_creator" type="Node" parent="skeleton/act_6" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../events/glasses")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="actor_speech_friend_1" type="Node" parent="skeleton/act_6"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Я пришел извиниться…"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_none_1" type="Node" parent="skeleton/act_6"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Это Женя что ли? Очки дали мне возможность увидеть его истинное лицо?"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="actor_speech_hero_1" type="Node" parent="skeleton/act_6"]
+script = ExtResource("6_a05x2")
+speech = Array[String](["Так ты на самом деле пришелец?!"])
+metadata/_custom_type_script = "uid://br57gpcvgtf12"
+
+[node name="game_over" type="Node" parent="skeleton/act_6" node_paths=PackedStringArray("events")]
+script = ExtResource("7_a05x2")
+events = [NodePath("../../../events/game_over")]
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="events" type="Node" parent="."]
+
+[node name="friend_has_come" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Друг пришел"
+key = "friend_has_come"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="friend_has_left" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Друг ушел"
+key = "friend_has_left"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="diary_note_1" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Запись в дневнике"
+key = "diary_note"
+value = "Попробовать воспроизвести волну \"Щ\" на осциллографе"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="diary_note_2" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Запись в дневнике"
+key = "diary_note"
+value = "Изучить со всех сторон фотографию отца с его другом"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="diary_note_3" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Запись в дневнике"
+key = "diary_note"
+value = "Попробовать расшифровать послание с  помощью Азбуки Морзе"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="diary_note_4" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Запись в дневнике"
+key = "diary_note"
+value = "Ввести в шифровальную машину слова \"маскируются\" и \"улучшай\""
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="diary_note_5" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Запись в дневнике"
+key = "diary_note"
+value = "Надеть очки, лежащие на полке"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="diary_updated" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "Уведомлениие о том что дневник обновлен"
+key = "diary_updated"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="back_to_room" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "возвращение в нетыкаемую комнатту"
+key = "back_to_room"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="friend_angry" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "спрайт менять на злой"
+key = "friend_angry"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="friend_normal" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "спрайт меняется на нейтральный"
+key = "friend_normal"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="glasses" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "вид от первого лица"
+key = "glasses"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
+
+[node name="game_over" type="Node" parent="events"]
+script = ExtResource("8_67p4d")
+description = "конец игры"
+key = "game_over"
+metadata/_custom_type_script = "uid://cheg3kobk3jjy"
