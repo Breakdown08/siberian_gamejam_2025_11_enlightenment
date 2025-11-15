@@ -112,6 +112,16 @@ offset_right = 0.0
 offset_bottom = 0.0
 interactive_item = 3
 
+[node name="oscilloscope" parent="room/interactive_items" instance=ExtResource("28_alk2l")]
+layout_mode = 1
+anchor_left = 0.1515625
+anchor_top = 0.275
+anchor_right = 0.2453125
+anchor_bottom = 0.36296296
+offset_right = 0.0
+offset_bottom = 0.0
+interactive_item = 5
+
 [node name="computer" parent="room/interactive_items" node_paths=PackedStringArray("oscilloscope") instance=ExtResource("25_657kl")]
 layout_mode = 1
 anchor_left = 0.29270834
@@ -132,23 +142,15 @@ offset_right = 0.0
 offset_bottom = 0.0
 interactive_item = 2
 
-[node name="diary" parent="room/interactive_items" instance=ExtResource("26_lwjy1")]
+[node name="diary" parent="room/interactive_items" node_paths=PackedStringArray("oscilloscope", "computer") instance=ExtResource("26_lwjy1")]
 layout_mode = 1
 anchor_left = 0.45208332
 anchor_top = 0.32037038
 anchor_right = 0.57447916
 anchor_bottom = 0.39906943
+oscilloscope = NodePath("../oscilloscope")
+computer = NodePath("../computer")
 interactive_item = 1
-
-[node name="oscilloscope" parent="room/interactive_items" instance=ExtResource("28_alk2l")]
-layout_mode = 1
-anchor_left = 0.1515625
-anchor_top = 0.275
-anchor_right = 0.2453125
-anchor_bottom = 0.36296296
-offset_right = 0.0
-offset_bottom = 0.0
-interactive_item = 5
 
 [node name="friend" parent="room" instance=ExtResource("13_che8u")]
 position = Vector2(1246, 502)

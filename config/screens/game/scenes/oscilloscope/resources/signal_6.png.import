@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxxmrmhqrm2by"
-<<<<<<< HEAD
+uid="uid://dkgkk3f8uqfo5"
 path="res://.godot/imported/signal_6.png-2fa2fdf8e91574cfbbd51178ea825a8a.ctex"
-=======
-path="res://.godot/imported/Signal_6.png-262ef1c14c8d05a578b33071bd30f9d6.ctex"
->>>>>>> f10ff07 (Правки по мини-игре)
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://config/screens/game/scenes/oscilloscope/resources/Signal_6.png"
-dest_files=["res://.godot/imported/Signal_6.png-262ef1c14c8d05a578b33071bd30f9d6.ctex"]
+source_file="res://config/screens/game/scenes/oscilloscope/resources/signal_6.png"
+dest_files=["res://.godot/imported/signal_6.png-2fa2fdf8e91574cfbbd51178ea825a8a.ctex"]
 
 [params]
 

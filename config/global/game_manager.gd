@@ -37,7 +37,8 @@ func on_scenario_event(key:String, value:String = ""):
 	match key:
 		"diary_updated":
 			var notify_text:String = Scenario.database.get_key(key)
-			game.on_notification(notify_text)
+			if game:
+				game.on_notification(notify_text)
 
 
 func _input(event:InputEvent) -> void:

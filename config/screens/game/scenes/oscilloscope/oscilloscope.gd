@@ -2,18 +2,19 @@ extends Control
 
 @onready var room:Button = $system_panel/margin/room
 @onready var pot_1:TextureRect = $controls/potentiometer_1
+@onready var write_params_button:Button = $write_params
 
 @onready var signals = [
-	$display/Curves/signal_1,
-	$display/Curves/signal_2,
-	$display/Curves/signal_3,
-	$display/Curves/signal_4,
-	$display/Curves/signal_5,
-	$display/Curves/signal_6,
-	$display/Curves/signal_7,
-	$display/Curves/signal_8,
-	$display/Curves/signal_9,
-	$display/Curves/signal_10
+	$display/curves/signal_1,
+	$display/curves/signal_2,
+	$display/curves/signal_3,
+	$display/curves/signal_4,
+	$display/curves/signal_5,
+	$display/curves/signal_6,
+	$display/curves/signal_7,
+	$display/curves/signal_8,
+	$display/curves/signal_9,
+	$display/curves/signal_10
 ]
 
 @onready var sounds = [
@@ -25,25 +26,29 @@ extends Control
 	$controls/encoder_8
 ]
 
-
 var pot_1_focused:bool = false
-
 var signal_pos = 0
-var success:bool = false
-var game_end:bool = false
+var selected_curve:TextureRect = null
+var interactive_item:OscilloscopeInteractiveItem
 
 
 func _ready() -> void:
+	if GameManager.game:
+		interactive_item = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.OSCILLOSCOPE)
 	room.pressed.connect(func(): GameManager.back_to_room.emit())
+	write_params_button.pressed.connect(_write_params)
+	if interactive_item and interactive_item.params:
+		for curve in signals:
+			hide()
+		interactive_item.params.show()
+		selected_curve = interactive_item.params
+	else:
+		selected_curve = signals[0]
 
 
-func update_diary():
-	pass
-	#EventBus.notification.emit(Scenario.NOTIFICATION_UPDATE_DIARY)
-
-
-func write_params():
-	Scenario.oscilloscope_write_params.emit(str([1, 2, 3, 4]))
+func _write_params():
+	if interactive_item:
+		interactive_item.update_params(selected_curve)
 
 
 func _on_potentiometer_1_mouse_entered() -> void:
@@ -55,35 +60,20 @@ func _on_potentiometer_1_mouse_exited() -> void:
 
 
 func _input(event:InputEvent) -> void:
-	if !game_end:
-		if event is InputEventMouseButton and event.pressed and pot_1_focused:
-			sounds[randi_range(0,5)].play()
-			signals[signal_pos].visible = false
-			if event.button_index in [MOUSE_BUTTON_WHEEL_UP]:
-				if signal_pos > 0:
-					signal_pos -= 1
-					pot_1.rotation_degrees -= 10
-				else:
-					signal_pos = 9
-
-			elif event.button_index in [MOUSE_BUTTON_WHEEL_DOWN]:
-				if signal_pos < 9:
-					signal_pos += 1
-					pot_1.rotation_degrees += 10
-				else:
-					signal_pos = 0
-			signals[signal_pos].visible = true
-			
-			if signals[7].visible:
-				success = true
+	if event is InputEventMouseButton and event.pressed and pot_1_focused:
+		sounds[randi_range(0,5)].play()
+		signals[signal_pos].visible = false
+		if event.button_index in [MOUSE_BUTTON_WHEEL_UP]:
+			if signal_pos > 0:
+				signal_pos -= 1
+				pot_1.rotation_degrees -= 10
 			else:
-				success = false
-
-
-func _on_write_params_pressed() -> void:
-	if success:
-		#Мы выиграли. Повесить event
-		Scenario.oscilloscope_success.emit()
-		game_end = true
-	#Scenario.oscilloscope_write_params.emit(str(Vector2(round_to_tenth(curve.scale.x), round_to_tenth(curve.scale.y))))
-	EventBus.notification.emit(Scenario.NOTIFICATION_UPDATE_DIARY)
+				signal_pos = 9
+		elif event.button_index in [MOUSE_BUTTON_WHEEL_DOWN]:
+			if signal_pos < 9:
+				signal_pos += 1
+				pot_1.rotation_degrees += 10
+			else:
+				signal_pos = 0
+		signals[signal_pos].visible = true
+		selected_curve = signals[signal_pos]

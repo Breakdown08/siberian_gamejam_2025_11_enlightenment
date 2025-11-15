@@ -31,10 +31,10 @@ metadata/_custom_type_script = "uid://ddd52y723d56s"
 [node name="database" type="Node" parent="."]
 script = ExtResource("2_p3jsh")
 scenario_keys = Dictionary[String, String]({
+"diary_updated": "Запись в дневнике обновлена...",
 "encryption_machine_answer": "Я УсиЩ, ПРОЗРЕЙ фото с ГлазиЩем",
 "encryption_machine_password": "МАСКИРУЮТСЯ_УЛУЧШАЙ",
 "not_interesting": "Мне это сейчас не нужно...",
-"notification_update_diary": "Запись в дневнике обновлена...",
 "oscilloscope_correct_params": "(1.0, 1.0)",
 "radio_response_empty": "... превышено ожидание ответа ...",
 "radio_response_success": "−−− −• •• −− •− ••• −•− •• •−• ••− ••−− − ••• •−•− •−−• −−− −•• −• •− ••• •−•−•− ••− •−•• ••− −−−• −−−− •− •−−− ••• •−− −−− •• −−• •−•• •− −−•• •−"
