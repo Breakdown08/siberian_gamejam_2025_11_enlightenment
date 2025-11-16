@@ -37,11 +37,11 @@ func _ready() -> void:
 		interactive_item = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.OSCILLOSCOPE)
 	room.pressed.connect(func(): GameManager.back_to_room.emit())
 	write_params_button.pressed.connect(_write_params)
-	if interactive_item and interactive_item.params:
+	if interactive_item and !interactive_item.last_selected_curve_path.is_empty():
 		for curve in signals:
-			hide()
-		interactive_item.params.show()
-		selected_curve = interactive_item.params
+			curve.hide()
+		selected_curve = get_node(interactive_item.last_selected_curve_path)
+		selected_curve.show()
 	else:
 		selected_curve = signals[0]
 

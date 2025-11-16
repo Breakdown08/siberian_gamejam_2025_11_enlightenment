@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func _execute():
 	prints("		[SCENARIO] executing actor %s speech" % name)
+	Scenario.log_history("[РЕЧЬ]: '%s'" % actor.actor_name)
 	if Scenario.skeleton.cursor != null:
 		if Scenario.skeleton.cursor == self and Scenario.is_reading_finished:
 			phrase()
@@ -22,5 +23,6 @@ func phrase():
 	if speech_id == -1:
 		executed.emit()
 		return
+	Scenario.log_history("	- %s" % speech[speech_id])
 	Scenario.reading_started.emit()
 	Scenario.speech.emit(actor, speech[speech_id])

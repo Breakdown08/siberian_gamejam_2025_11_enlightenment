@@ -7,7 +7,6 @@ var is_cutscene:bool = false
 var is_speech_finished = false
 
 signal game_started(game_instance:Game)
-signal scenario_next
 signal interactive_item_opened(target:Game.INTERACTIVE_ITEM)
 signal back_to_room
 signal items_availability_changed
@@ -22,11 +21,6 @@ func _init() -> void:
 	Scenario.speech_started.connect(func(): is_speech_finished = false)
 	Scenario.speech_finished.connect(func(): is_speech_finished = true)
 	game_started.connect(func(game_instance): start(game_instance))
-	scenario_next.connect(func():
-		var cursor:ScenarioSkeletonAction = Scenario.skeleton.cursor
-		cursor.wait_for_player = false
-		Scenario.skeleton._on_next_action(cursor)
-	)
 	Scenario.event.connect(on_scenario_event)
 
 

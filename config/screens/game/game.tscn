@@ -169,6 +169,13 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "МЕНЮ"
 
+[node name="dialog_history" parent="system_panel/margin" index="1" instance=ExtResource("12_che8u")]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "ИСТОРИЯ"
+
 [node name="scene" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15

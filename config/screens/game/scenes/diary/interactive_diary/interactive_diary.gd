@@ -19,8 +19,8 @@ func _on_scenario_event(key:String, value:String):
 		notes.append(value)
 
 
-func _on_oscilloscope_params_updated(new_params:TextureRect):
-	oscilloscope_params = str(new_params.name.hash())
+func _on_oscilloscope_params_updated(new_params:String):
+	oscilloscope_params = new_params
 
 
 func _on_radio_response_updated(new_radio_response:String):

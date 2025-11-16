@@ -5,6 +5,7 @@ const CONFIG:PackedScene = preload("res://scenario.tscn")
 var skeleton:ScenarioSkeleton
 var database:ScenarioDatabase
 var actors:Node
+var history:Array[String]
 
 signal event(key:String, value:String)
 
@@ -38,9 +39,10 @@ func _ready() -> void:
 	actors = config.get_node("actors")
 
 
-func create_event(scenario_event:ScenarioEvent):
+func create_event(scenario_event:ScenarioEvent): # TODO вынести это отсюда, не публичная функция
 	event.emit(scenario_event.key, scenario_event.value)
 	prints("		[SCENARIO] event: %s, description: %s" % [scenario_event.name, scenario_event.description])
+	Scenario.log_history("[СОБЫТИЕ]: %s" % scenario_event.description)
 
 
 func get_actor(actor:String) -> Actor:
@@ -49,3 +51,12 @@ func get_actor(actor:String) -> Actor:
 	else:
 		push_error("ScenarioActors get actor error '%s'" % actor)
 		return null
+
+
+func next():
+	skeleton.cursor.wait_for_player = false
+	skeleton.on_next_action(skeleton.cursor)
+
+
+func log_history(info:String):
+	history.append(info)
