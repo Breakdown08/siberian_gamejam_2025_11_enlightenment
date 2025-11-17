@@ -321,7 +321,7 @@ metadata/_custom_type_script = "uid://br57gpcvgtf12"
 
 [node name="event_creator_5" type="Node" parent="skeleton/act_2/cutscene" node_paths=PackedStringArray("events")]
 script = ExtResource("7_a05x2")
-events = [NodePath("../../../../events/diary_note_3")]
+events = [NodePath("../../../../events/diary_note_3"), NodePath("../../../../events/friend_has_left")]
 metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
 
 [node name="out" type="Node" parent="skeleton/act_2/cutscene" node_paths=PackedStringArray("events", "out")]

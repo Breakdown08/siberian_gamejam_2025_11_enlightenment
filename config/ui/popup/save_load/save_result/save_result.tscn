@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bmjjk3tmqlfh"]
 
-[ext_resource type="Script" uid="uid://gym2qhul7llg" path="res://config/ui/popup/saves/save_result/save_result.gd" id="1_uihih"]
+[ext_resource type="Script" uid="uid://gym2qhul7llg" path="res://config/ui/popup/save_load/save_result/save_result.gd" id="1_uihih"]
 
 [node name="save_result" type="Control"]
 layout_mode = 3

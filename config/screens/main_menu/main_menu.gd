@@ -35,6 +35,6 @@ func on_button_play_pressed():
 
 
 func on_button_load_pressed():
-	var saves:Saves = Main.SAVE_LOAD.instantiate()
-	saves.hide_save_button = true
-	add_child(saves)
+	var save_load = GameManager.SAVE_LOAD.instantiate()
+	save_load.mode = SaveLoad.MODE.LOAD
+	add_child(save_load)

@@ -1,5 +1,7 @@
 extends Node
 
+const SAVE_LOAD:PackedScene = preload("res://config/ui/popup/save_load/save_load.tscn")
+
 var saves:Array[Dictionary] = []
 
 var game:Game
@@ -14,8 +16,6 @@ signal back_to_room
 signal items_availability_changed
 signal items_info_changed
 signal item_info
-signal game_load_pressed
-signal game_save_pressed
 
 enum SAVE_KEYS {
 	TIMESTAMP,
@@ -70,13 +70,14 @@ func game_save():
 	if game:
 		var diary = game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY) as DiaryInteractiveItem
 		saves.append({
-			SAVE_KEYS.TIMESTAMP : Time.get_ticks_msec(),
+			SAVE_KEYS.TIMESTAMP : Time.get_time_string_from_system(),
 			SAVE_KEYS.ACT : act.get_node("game").get_path(),
 			SAVE_KEYS.DIARY_NOTE_OSCILLOSCOPE : diary.oscilloscope_params,
 			SAVE_KEYS.DIARY_NOTE_RADIO_RESPONSE : diary.radio_response,
 			SAVE_KEYS.DIARY_COMMON_NOTES : diary.notes,
 			SAVE_KEYS.DIALOG_HISTORY : Scenario.history
 		})
+		SaveLoad.push(saves)
 
 
 func game_load(id:int):
