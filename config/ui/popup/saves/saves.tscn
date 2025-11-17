@@ -1,0 +1,141 @@
+[gd_scene load_steps=4 format=3 uid="uid://tnqgguwc0vbd"]
+
+[ext_resource type="PackedScene" uid="uid://jeufa0iagnv6" path="res://config/ui/popup/saves/save/save.tscn" id="1_0j77t"]
+[ext_resource type="Script" uid="uid://byd2jyscua14d" path="res://config/ui/popup/saves/saves.gd" id="1_jw0lx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1scbf"]
+bg_color = Color(0.288518, 0.288518, 0.2885179, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="saves" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jw0lx")
+
+[node name="panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -360.0
+offset_right = 540.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1scbf")
+
+[node name="margin" type="MarginContainer" parent="panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="body" type="VBoxContainer" parent="panel/margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="new_save" type="HBoxContainer" parent="panel/margin/body"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="line_edit" type="LineEdit" parent="panel/margin/body/new_save"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+placeholder_text = "ВВЕДИТЕ НАЗВАНИЕ СОХРАНЕНИЯ"
+alignment = 1
+
+[node name="button" type="Button" parent="panel/margin/body/new_save"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "НОВОЕ СОХРАНЕНИЕ"
+
+[node name="saves" type="Control" parent="panel/margin/body"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="panel" type="Panel" parent="panel/margin/body/saves"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="scroll" type="ScrollContainer" parent="panel/margin/body/saves"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="margin" type="MarginContainer" parent="panel/margin/body/saves/scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="list" type="VBoxContainer" parent="panel/margin/body/saves/scroll/margin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="save" parent="panel/margin/body/saves/scroll/margin/list" instance=ExtResource("1_0j77t")]
+layout_mode = 2
+
+[node name="save_2" parent="panel/margin/body/saves/scroll/margin/list" instance=ExtResource("1_0j77t")]
+layout_mode = 2
+
+[node name="save_3" parent="panel/margin/body/saves/scroll/margin/list" instance=ExtResource("1_0j77t")]
+layout_mode = 2
+
+[node name="save_4" parent="panel/margin/body/saves/scroll/margin/list" instance=ExtResource("1_0j77t")]
+layout_mode = 2
+
+[node name="buttons" type="HBoxContainer" parent="panel/margin/body"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="exit" type="Button" parent="panel/margin/body/buttons"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "ВЫХОД"
+
+[node name="delete" type="Button" parent="panel/margin/body/buttons"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "УДАЛИТЬ"
+
+[node name="load" type="Button" parent="panel/margin/body/buttons"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "ЗАГРУЗИТЬ"

@@ -8,6 +8,8 @@ const COLOR_DEFAULT:Color = Color.BLACK
 
 signal selected(target:MorseCodeTextBookChar)
 
+var book:MorseCodeTextBook
+
 var is_selected:bool = false
 
 
@@ -38,4 +40,4 @@ func _on_mouse_exited():
 func _on_button_pressed():
 	selected.emit(self)
 	is_selected = true
-	GameManager.morse_book_code_selected = code.text
+	book.code_selected = code.text

@@ -3,6 +3,8 @@ class_name Main extends Control
 @onready var screen:Node = $screen
 @onready var audio:AudioStreamPlayer = $auido
 
+const SAVE_LOAD:PackedScene = preload("res://config/ui/popup/saves/saves.tscn")
+
 enum SCREEN {GAME, SETTINGS, MAIN_MENU}
 
 const SCREENS:Dictionary[SCREEN, PackedScene] = {
