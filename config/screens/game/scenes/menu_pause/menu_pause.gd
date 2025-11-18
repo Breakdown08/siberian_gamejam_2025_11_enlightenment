@@ -11,6 +11,7 @@ func _ready() -> void:
 	button_main_menu.pressed.connect(_on_button_main_menu_pressed)
 	button_save.pressed.connect(_on_button_save_pressed)
 	button_load.pressed.connect(_on_button_load_pressed)
+	GameManager.game_loaded.connect(queue_free)
 
 
 func _on_button_continue_pressed():

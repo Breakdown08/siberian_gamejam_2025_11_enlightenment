@@ -2,7 +2,8 @@ extends Node
 
 const SAVE_LOAD:PackedScene = preload("res://config/ui/popup/save_load/save_load.tscn")
 
-var saves:Array[Dictionary] = []
+var saves:Array = []
+var save_id:int = -1
 
 var game:Game
 var act:GameAct = null
@@ -16,6 +17,9 @@ signal back_to_room
 signal items_availability_changed
 signal items_info_changed
 signal item_info
+signal game_loaded
+signal game_saved
+signal game_deleted
 
 enum SAVE_KEYS {
 	TIMESTAMP,
@@ -38,12 +42,14 @@ func _init() -> void:
 
 
 func start(game_instance:Game):
+	_init_saves()
 	game = game_instance
 	act = null
 	current_actor = null
 	is_cutscene = false
 	is_speech_finished = false
 	Scenario.skeleton.start()
+	_game_load()
 
 
 func on_scenario_event(key:String, value:String = ""):
@@ -70,7 +76,7 @@ func game_save():
 	if game:
 		var diary = game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY) as DiaryInteractiveItem
 		saves.append({
-			SAVE_KEYS.TIMESTAMP : Time.get_time_string_from_system(),
+			SAVE_KEYS.TIMESTAMP : Time.get_unix_time_from_system(),
 			SAVE_KEYS.ACT : act.get_node("game").get_path(),
 			SAVE_KEYS.DIARY_NOTE_OSCILLOSCOPE : diary.oscilloscope_params,
 			SAVE_KEYS.DIARY_NOTE_RADIO_RESPONSE : diary.radio_response,
@@ -78,16 +84,42 @@ func game_save():
 			SAVE_KEYS.DIALOG_HISTORY : Scenario.history
 		})
 		SaveLoad.push(saves)
+		game_saved.emit()
 
 
 func game_load(id:int):
-	if game:
-		var data:Dictionary = saves[id]
-		var game_action:ScenarioSkeletonAction = get_node(data.get(SAVE_KEYS.ACT))
+	save_id = id
+	if game == null:
+		EventBus.screen_switched.emit(Main.SCREEN.GAME)
+	else:
+		start(game)
+	game_loaded.emit()
+
+
+func game_delete(id:int):
+	if id > -1 and id < saves.size():
+		saves.remove_at(id)
+		SaveLoad.push(saves)
+		game_deleted.emit()
+
+
+func _game_load():
+	if save_id > -1 and !saves.is_empty() and save_id < saves.size() :
+		var data:Dictionary = saves[save_id]
+		var game_action:ScenarioSkeletonAction = get_node(data.get(str(SAVE_KEYS.ACT)))
 		var diary = game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY) as DiaryInteractiveItem
 		act = game_action.get_parent()
 		Scenario.skeleton.cursor = game_action
-		diary.oscilloscope_params = data.get(SAVE_KEYS.DIARY_NOTE_OSCILLOSCOPE)
-		diary.radio_response = data.get(SAVE_KEYS.DIARY_NOTE_RADIO_RESPONSE)
-		diary.notes = data.get(SAVE_KEYS.DIARY_COMMON_NOTES)
-		Scenario.history = data.get(SAVE_KEYS.DIALOG_HISTORY)
+		diary.oscilloscope_params = data.get(str(SAVE_KEYS.DIARY_NOTE_OSCILLOSCOPE))
+		diary.radio_response = data.get(str(SAVE_KEYS.DIARY_NOTE_RADIO_RESPONSE))
+		diary.notes = data.get(str(SAVE_KEYS.DIARY_COMMON_NOTES)) as Array[String]
+		Scenario.history = data.get(str(SAVE_KEYS.DIALOG_HISTORY)) as Array[String]
+		save_id = -1
+		game_loaded.emit()
+
+
+func _init_saves():
+	var data:String = SaveLoad.pull()
+	if not data.is_empty():
+		var parsed_data:Array = JSON.parse_string(data)
+		saves = parsed_data

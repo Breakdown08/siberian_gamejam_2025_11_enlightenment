@@ -9,7 +9,8 @@ func start() -> void:
 	Scenario.reading_finished.connect(func():
 		on_next_action(cursor)
 	)
-	Scenario.next_action.connect(on_next_action)
+	if not Scenario.next_action.is_connected(on_next_action):
+		Scenario.next_action.connect(on_next_action)
 	_init_cursor()
 	on_next_action(cursor)
 

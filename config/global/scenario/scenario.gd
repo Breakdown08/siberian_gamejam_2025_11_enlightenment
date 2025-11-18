@@ -5,7 +5,7 @@ const CONFIG:PackedScene = preload("res://scenario.tscn")
 var skeleton:ScenarioSkeleton
 var database:ScenarioDatabase
 var actors:Node
-var history:Array[String]
+var history:Array
 
 signal event(key:String, value:String)
 

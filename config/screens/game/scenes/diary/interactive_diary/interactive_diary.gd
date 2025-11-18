@@ -5,7 +5,7 @@ class_name DiaryInteractiveItem extends InteractiveItem
 
 var oscilloscope_params:String = ""
 var radio_response:String = ""
-var notes:Array[String] = []
+var notes:Array = []
 
 
 func _ready() -> void:

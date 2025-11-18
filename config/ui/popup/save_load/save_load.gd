@@ -13,20 +13,18 @@ const SAVE:PackedScene = preload("res://config/ui/popup/save_load/save/save.tscn
 enum MODE{SAVE,LOAD}
 var mode:MODE = MODE.SAVE
 
+var selected_id:int = -1
+
 
 func _ready() -> void:
+	GameManager.game_saved.connect(_update_list)
+	GameManager.game_deleted.connect(_update_list)
 	button_exit.pressed.connect(queue_free)
 	button_save.pressed.connect(GameManager.game_save)
-	button_load.disabled = true
-	button_delete.disabled = true
+	button_load.pressed.connect(_on_button_load_pressed)
+	button_delete.pressed.connect(_on_button_delete_pressed)
 	_match_mode()
-	var data:String = pull()
-	if not data.is_empty():
-		var parsed_data:Array = JSON.parse_string(data)
-		for save_data in parsed_data:
-			var save:SaveLoadItem = SAVE.instantiate()
-			save.timestamp = save_data.get(str(GameManager.SAVE_KEYS.TIMESTAMP))
-			list.add_child(save)
+	_update_list()
 
 
 static func pull() -> String:
@@ -53,3 +51,38 @@ func _match_mode():
 		MODE.LOAD:
 			new_save.hide()
 			button_delete.hide()
+
+
+func _update_list():
+	for item in list.get_children():
+		item.free()
+	selected_id = -1
+	button_load.disabled = true
+	button_delete.disabled = true
+	var data:String = pull()
+	if not data.is_empty():
+		var parsed_data:Array = JSON.parse_string(data)
+		for save_data in parsed_data:
+			_create_save_item(save_data)
+
+
+func _create_save_item(save_data:Dictionary):
+	var save:SaveLoadItem = SAVE.instantiate()
+	save.timestamp = save_data.get(str(GameManager.SAVE_KEYS.TIMESTAMP))
+	save.selected.connect(_on_save_item_selected)
+	list.add_child(save)
+
+
+func _on_save_item_selected(id:int):
+	selected_id = id
+	button_load.disabled = false
+	button_delete.disabled = false
+
+
+func _on_button_load_pressed():
+	GameManager.game_load(selected_id)
+	queue_free()
+
+
+func _on_button_delete_pressed():
+	GameManager.game_delete(selected_id)
