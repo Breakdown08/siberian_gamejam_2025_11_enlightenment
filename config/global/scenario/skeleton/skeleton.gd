@@ -5,12 +5,14 @@ class_name ScenarioSkeleton extends Node
 var cursor:ScenarioSkeletonAction = null
 
 
-func start() -> void:
+func _ready() -> void:
 	Scenario.reading_finished.connect(func():
 		on_next_action(cursor)
 	)
-	if not Scenario.next_action.is_connected(on_next_action):
-		Scenario.next_action.connect(on_next_action)
+	Scenario.next_action.connect(on_next_action)
+
+
+func start() -> void:
 	_init_cursor()
 	on_next_action(cursor)
 

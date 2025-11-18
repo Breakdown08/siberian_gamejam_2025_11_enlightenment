@@ -2,6 +2,8 @@ class_name DiaryInteractiveItem extends InteractiveItem
 
 @export var oscilloscope:OscilloscopeInteractiveItem
 @export var computer:ComputerInteractiveItem
+@export var photo:PhotoInteractiveItem
+@export var morse_code_textbook:MorseCodeTextbookInteractiveItem
 
 var oscilloscope_params:String = ""
 var radio_response:String = ""

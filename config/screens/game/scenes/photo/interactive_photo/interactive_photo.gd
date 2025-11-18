@@ -1,1 +1,1 @@
-extends InteractiveItem
+class_name PhotoInteractiveItem extends InteractiveItem

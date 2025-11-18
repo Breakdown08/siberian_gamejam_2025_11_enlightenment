@@ -1,1 +1,1 @@
-extends InteractiveItem
+class_name MorseCodeTextbookInteractiveItem extends InteractiveItem

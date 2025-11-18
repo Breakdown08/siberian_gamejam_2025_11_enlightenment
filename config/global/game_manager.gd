@@ -117,6 +117,7 @@ func _game_load() -> bool:
 		Scenario.skeleton.cursor = game_action
 		diary.oscilloscope.last_selected_curve_path = data.get(str(SAVE_KEYS.OSCILLOSCOPE_CURVE))
 		diary.oscilloscope_params = data.get(str(SAVE_KEYS.DIARY_NOTE_OSCILLOSCOPE))
+		diary.oscilloscope.params = diary.oscilloscope_params
 		diary.radio_response = data.get(str(SAVE_KEYS.DIARY_NOTE_RADIO_RESPONSE))
 		diary.notes = data.get(str(SAVE_KEYS.DIARY_COMMON_NOTES)) as Array[String]
 		Scenario.history = data.get(str(SAVE_KEYS.DIALOG_HISTORY)) as Array[String]
