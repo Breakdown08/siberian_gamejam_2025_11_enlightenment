@@ -5,7 +5,9 @@ class_name GameAct extends Act
 
 
 func _ready() -> void:
-	executed.connect(func():
-		GameManager.items_availability_changed.emit(items_availability)
-		GameManager.items_info_changed.emit(items_info)
-	)
+	executed.connect(apply_act)
+
+
+func apply_act():
+	GameManager.items_availability_changed.emit(items_availability)
+	GameManager.items_info_changed.emit(items_info)

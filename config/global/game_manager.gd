@@ -23,10 +23,11 @@ signal game_deleted
 
 enum SAVE_KEYS {
 	TIMESTAMP,
-	ACT, 
-	DIARY_NOTE_OSCILLOSCOPE, 
+	ACT,
+	OSCILLOSCOPE_CURVE,
+	DIARY_NOTE_OSCILLOSCOPE,
 	DIARY_NOTE_RADIO_RESPONSE,
-	DIARY_COMMON_NOTES, 
+	DIARY_COMMON_NOTES,
 	DIALOG_HISTORY
 }
 
@@ -48,8 +49,9 @@ func start(game_instance:Game):
 	current_actor = null
 	is_cutscene = false
 	is_speech_finished = false
-	Scenario.skeleton.start()
-	_game_load()
+	var is_loaded:bool = _game_load()
+	if not is_loaded:
+		Scenario.skeleton.start()
 
 
 func on_scenario_event(key:String, value:String = ""):
@@ -78,6 +80,7 @@ func game_save():
 		saves.append({
 			SAVE_KEYS.TIMESTAMP : Time.get_unix_time_from_system(),
 			SAVE_KEYS.ACT : act.get_node("game").get_path(),
+			SAVE_KEYS.OSCILLOSCOPE_CURVE : diary.oscilloscope.last_selected_curve_path,
 			SAVE_KEYS.DIARY_NOTE_OSCILLOSCOPE : diary.oscilloscope_params,
 			SAVE_KEYS.DIARY_NOTE_RADIO_RESPONSE : diary.radio_response,
 			SAVE_KEYS.DIARY_COMMON_NOTES : diary.notes,
@@ -103,19 +106,24 @@ func game_delete(id:int):
 		game_deleted.emit()
 
 
-func _game_load():
+func _game_load() -> bool:
+	var result:bool = false
 	if save_id > -1 and !saves.is_empty() and save_id < saves.size() :
 		var data:Dictionary = saves[save_id]
 		var game_action:ScenarioSkeletonAction = get_node(data.get(str(SAVE_KEYS.ACT)))
 		var diary = game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY) as DiaryInteractiveItem
 		act = game_action.get_parent()
+		act.apply_act()
 		Scenario.skeleton.cursor = game_action
+		diary.oscilloscope.last_selected_curve_path = data.get(str(SAVE_KEYS.OSCILLOSCOPE_CURVE))
 		diary.oscilloscope_params = data.get(str(SAVE_KEYS.DIARY_NOTE_OSCILLOSCOPE))
 		diary.radio_response = data.get(str(SAVE_KEYS.DIARY_NOTE_RADIO_RESPONSE))
 		diary.notes = data.get(str(SAVE_KEYS.DIARY_COMMON_NOTES)) as Array[String]
 		Scenario.history = data.get(str(SAVE_KEYS.DIALOG_HISTORY)) as Array[String]
 		save_id = -1
+		result = true
 		game_loaded.emit()
+	return result
 
 
 func _init_saves():

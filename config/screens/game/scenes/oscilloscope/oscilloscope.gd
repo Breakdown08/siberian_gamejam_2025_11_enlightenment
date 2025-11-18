@@ -41,6 +41,7 @@ func _ready() -> void:
 		for curve in signals:
 			curve.hide()
 		selected_curve = get_node(interactive_item.last_selected_curve_path)
+		signal_pos = selected_curve.get_index()
 		selected_curve.show()
 	else:
 		selected_curve = signals[0]

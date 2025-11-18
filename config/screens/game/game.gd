@@ -12,12 +12,12 @@ const MENU_PAUSE:PackedScene = preload("res://config/screens/game/scenes/menu_pa
 const DIALOG_HISTORY:PackedScene = preload("res://config/ui/popup/dialog_history/dialog_history.tscn")
 
 enum INTERACTIVE_ITEM {
-	COMPUTER, 
-	DIARY, 
-	ENCRYPTION_MACHINE, 
-	GLASSES, 
-	MORSE_CODE_TEXTBOOK, 
-	OSCILLOSCOPE, 
+	COMPUTER,
+	DIARY,
+	ENCRYPTION_MACHINE,
+	GLASSES,
+	MORSE_CODE_TEXTBOOK,
+	OSCILLOSCOPE,
 	PHOTO
 }
 
