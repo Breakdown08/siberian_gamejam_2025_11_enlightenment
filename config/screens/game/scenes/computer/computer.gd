@@ -8,21 +8,13 @@ extends Control
 func _ready():
 	room.pressed.connect(func(): GameManager.back_to_room.emit())
 	send_signal.pressed.connect(_on_send_signal_pressed)
-	#Scenario.cutscene_on.connect(
-		#func():
-			#send_signal.disabled = true
-	#)
-	#Scenario.cutscene_off.connect(
-		#func():
-			#send_signal.disabled = false
-	#)
 
 
 func success():
 	var response_text:String = Scenario.database.get_key("radio_response_success")
 	update_radio_response(response_text)
 	if GameManager.act and GameManager.act.name == "act_1":
-		GameManager.scenario_next.emit()
+		Scenario.next()
 		send_signal.hide()
 
 
@@ -34,7 +26,7 @@ func empty_response():
 
 func _on_send_signal_pressed() -> void:
 	var oscilloscope:OscilloscopeInteractiveItem = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.OSCILLOSCOPE)
-	if oscilloscope.params_text == Scenario.database.get_key("oscilloscope_correct_params"):
+	if oscilloscope.params == Scenario.database.get_key("oscilloscope_correct_params"):
 		success()
 	else:
 		empty_response()

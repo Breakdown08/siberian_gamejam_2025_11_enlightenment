@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://jeufa0iagnv6"]
+
+[ext_resource type="Script" uid="uid://dd4wuu7i8hdjc" path="res://config/ui/popup/save_load/save/save.gd" id="1_wd2ly"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_up55t"]
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wd2ly"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.34033927, 0.34033936, 0.34033903, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gia2u"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="save" type="Control"]
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 900.0
+offset_bottom = 150.0
+script = ExtResource("1_wd2ly")
+
+[node name="margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="body" type="HBoxContainer" parent="margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="title" type="Label" parent="margin/body"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 35
+text = "01.11.2025 - 17:35"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="scene" type="Label" parent="margin/body"]
+visible = false
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Сцена"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="focus" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_up55t")
+
+[node name="button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_wd2ly")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gia2u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wd2ly")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wd2ly")
+theme_override_styles/focus = SubResource("StyleBoxFlat_gia2u")

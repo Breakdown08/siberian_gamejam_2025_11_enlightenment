@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://028rainbi6d"]
+
+[ext_resource type="Script" uid="uid://bvru5i4dyio6e" path="res://config/ui/popup/dialog_history/dialog_history.gd" id="1_8hii4"]
+[ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_beee8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hii4"]
+bg_color = Color(0.4900248, 0.63550246, 0.6144462, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="dialog_history" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8hii4")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.62352943)
+
+[node name="panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1080, 720)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8hii4")
+
+[node name="margin" type="MarginContainer" parent="panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="scroll" type="ScrollContainer" parent="panel/margin"]
+layout_mode = 2
+
+[node name="box" type="VBoxContainer" parent="panel/margin/scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="system_panel" parent="." instance=ExtResource("2_beee8")]
+layout_mode = 1
+
+[node name="room" type="Button" parent="system_panel/margin" index="0"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "В КОМНАТУ"
+
+[editable path="system_panel"]

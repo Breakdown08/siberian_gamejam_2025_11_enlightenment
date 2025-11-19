@@ -11,12 +11,18 @@ const ANIMATION_DURATION:float = 0.3
 
 
 func _ready() -> void:
-	if GameManager.is_photo_opened and GameManager.scenario_id < 198:
-		front_without_label.show()
-		front.hide()
-		GameManager.scenario_next.emit()
-		#$button.hide()
-	room.pressed.connect(func(): GameManager.back_to_room.emit())
+	if GameManager.game:
+		var diary:DiaryInteractiveItem = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY)
+		back_side = diary.photo.is_back_side
+		_animation_flip_side()
+		match GameManager.act.name:
+			"act_2":
+				front_without_label.hide()
+				front.show()
+			"act_3":
+				front_without_label.show()
+				front.hide()
+	room.pressed.connect(GameManager.back_to_room.emit)
 	back.modulate = Color.TRANSPARENT
 	#if GameManager.is_photo_turned:
 		#front_without_label.hide()
@@ -24,10 +30,12 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
-	if !GameManager.is_photo_turned:
-		Scenario.photo_back_side_checked.emit()
-		#EventBus.notification.emit(Scenario.NOTIFICATION_UPDATE_DIARY)
 	back_side = !back_side
+	_animation_flip_side()
+	_on_side_changed()
+
+
+func _animation_flip_side():
 	var tween:Tween = Utils.tween(self).set_parallel(true)
 	if back_side:
 		tween.tween_property(front, "modulate", Color.TRANSPARENT, ANIMATION_DURATION)
@@ -35,3 +43,14 @@ func _on_button_pressed() -> void:
 	else:
 		tween.tween_property(front, "modulate", Color.WHITE, ANIMATION_DURATION)
 		tween.tween_property(back, "modulate", Color.TRANSPARENT, ANIMATION_DURATION)
+
+
+func _on_side_changed():
+	if GameManager.game:
+		var diary:DiaryInteractiveItem = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY)
+		diary.photo.is_back_side = back_side
+		match GameManager.act.name:
+			"act_2":
+				if back_side == true:
+					diary.photo.is_checked = true
+					diary.check_act_2_conditions()

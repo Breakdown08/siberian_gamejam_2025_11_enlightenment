@@ -142,7 +142,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 interactive_item = 2
 
-[node name="diary" parent="room/interactive_items" node_paths=PackedStringArray("oscilloscope", "computer") instance=ExtResource("26_lwjy1")]
+[node name="diary" parent="room/interactive_items" node_paths=PackedStringArray("oscilloscope", "computer", "photo", "morse_code_textbook") instance=ExtResource("26_lwjy1")]
 layout_mode = 1
 anchor_left = 0.45208332
 anchor_top = 0.32037038
@@ -150,6 +150,9 @@ anchor_right = 0.57447916
 anchor_bottom = 0.39906943
 oscilloscope = NodePath("../oscilloscope")
 computer = NodePath("../computer")
+photo = NodePath("../photo")
+morse_code_textbook = NodePath("../morse_code_textbook")
+color_focused = Color(0, 1, 1, 1)
 interactive_item = 1
 
 [node name="friend" parent="room" instance=ExtResource("13_che8u")]
@@ -168,6 +171,13 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "МЕНЮ"
+
+[node name="dialog_history" parent="system_panel/margin" index="1" instance=ExtResource("12_che8u")]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "ИСТОРИЯ"
 
 [node name="scene" type="Control" parent="."]
 layout_mode = 1

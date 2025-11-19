@@ -2,10 +2,12 @@ class_name DiaryInteractiveItem extends InteractiveItem
 
 @export var oscilloscope:OscilloscopeInteractiveItem
 @export var computer:ComputerInteractiveItem
+@export var photo:PhotoInteractiveItem
+@export var morse_code_textbook:MorseCodeTextbookInteractiveItem
 
 var oscilloscope_params:String = ""
 var radio_response:String = ""
-var notes:Array[String] = []
+var notes:Array = []
 
 
 func _ready() -> void:
@@ -19,9 +21,15 @@ func _on_scenario_event(key:String, value:String):
 		notes.append(value)
 
 
-func _on_oscilloscope_params_updated(new_params:TextureRect):
-	oscilloscope_params = str(new_params.name.hash())
+func _on_oscilloscope_params_updated(new_params:String):
+	oscilloscope_params = new_params
 
 
 func _on_radio_response_updated(new_radio_response:String):
 	radio_response = new_radio_response
+
+
+func check_act_2_conditions():
+	if photo.is_checked and morse_code_textbook.is_translated:
+		if GameManager.act and GameManager.act.name == "act_2":
+			Scenario.next()

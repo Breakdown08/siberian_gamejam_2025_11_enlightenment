@@ -2,20 +2,22 @@ class_name Game extends Node
 
 @onready var system_panel:Panel = $system_panel
 @onready var button_menu:Button = $system_panel/margin/menu
+@onready var button_dialog_history:Button = $system_panel/margin/dialog_history
 @onready var scene:Node = $scene
 @onready var notifications:Control = $notifications
 @onready var game_over:TextureRect = $game_over
 
 const NOTIFICATION:PackedScene = preload("res://config/ui/popup/notification/notification.tscn")
 const MENU_PAUSE:PackedScene = preload("res://config/screens/game/scenes/menu_pause/menu_pause.tscn")
+const DIALOG_HISTORY:PackedScene = preload("res://config/ui/popup/dialog_history/dialog_history.tscn")
 
 enum INTERACTIVE_ITEM {
-	COMPUTER, 
-	DIARY, 
-	ENCRYPTION_MACHINE, 
-	GLASSES, 
-	MORSE_CODE_TEXTBOOK, 
-	OSCILLOSCOPE, 
+	COMPUTER,
+	DIARY,
+	ENCRYPTION_MACHINE,
+	GLASSES,
+	MORSE_CODE_TEXTBOOK,
+	OSCILLOSCOPE,
 	PHOTO
 }
 
@@ -34,6 +36,7 @@ const INTERACTIVE_ITEMS:Dictionary[INTERACTIVE_ITEM, PackedScene] = {
 
 func _ready() -> void:
 	button_menu.pressed.connect(func(): add_child(MENU_PAUSE.instantiate()))
+	button_dialog_history.pressed.connect(func(): add_child(DIALOG_HISTORY.instantiate()))
 	GameManager.interactive_item_opened.connect(on_interactive_item_opened)
 	#Scenario.game_over.connect(on_game_over)
 	GameManager.game_started.emit(self)

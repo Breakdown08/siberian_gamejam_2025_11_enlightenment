@@ -5,13 +5,16 @@ class_name ScenarioSkeleton extends Node
 var cursor:ScenarioSkeletonAction = null
 
 
-func start() -> void:
+func _ready() -> void:
 	Scenario.reading_finished.connect(func():
-		_on_next_action(cursor)
+		on_next_action(cursor)
 	)
-	Scenario.next_action.connect(_on_next_action)
+	Scenario.next_action.connect(on_next_action)
+
+
+func start() -> void:
 	_init_cursor()
-	_on_next_action(cursor)
+	on_next_action(cursor)
 
 
 func _init_cursor():
@@ -23,7 +26,7 @@ func _init_cursor():
 	cursor = get_children()[0] as ScenarioSkeletonAction if get_child_count() > 0 else null
 
 
-func _on_next_action(next_cursor:ScenarioSkeletonAction):
+func on_next_action(next_cursor:ScenarioSkeletonAction):
 	if next_cursor != null:
 		cursor = next_cursor
 		if cursor.wait_for_player:

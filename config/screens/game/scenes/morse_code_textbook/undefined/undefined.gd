@@ -8,6 +8,8 @@ const ANIMATION_DURATION:float = 0.3
 
 signal unsecret
 
+var book:MorseCodeTextBook
+
 
 func _ready() -> void:
 	button.pressed.connect(on_button_pressed)
@@ -17,7 +19,7 @@ func _ready() -> void:
 
 
 func on_button_pressed():
-	if str(GameManager.morse_book_code_selected) == str(code_node.text):
+	if str(book.code_selected) == str(code_node.text):
 		var result = MorseCodeTextBook.find_symbol_by_code(code_node.text)
 		if result != "none":
 			char_node.text = result
