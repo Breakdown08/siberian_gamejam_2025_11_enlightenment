@@ -12,6 +12,9 @@ const ANIMATION_DURATION:float = 0.3
 
 func _ready() -> void:
 	if GameManager.game:
+		var diary:DiaryInteractiveItem = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY)
+		back_side = diary.photo.is_back_side
+		_animation_flip_side()
 		match GameManager.act.name:
 			"act_2":
 				front_without_label.hide()

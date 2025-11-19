@@ -64,6 +64,7 @@ func _ready() -> void:
 		if diary.morse_code_textbook.is_translated:
 			for undefined in password.get_children():
 				undefined.char_node.text = find_symbol_by_code(undefined.code_node.text)
+				undefined.code_node.hide()
 
 
 func init_chars():

@@ -70,6 +70,7 @@ func _create_save_item(save_data:Dictionary):
 	var save:SaveLoadItem = SAVE.instantiate()
 	save.timestamp = save_data.get(str(GameManager.SAVE_KEYS.TIMESTAMP))
 	save.selected.connect(_on_save_item_selected)
+	save.action = str(save_data.get(str(GameManager.SAVE_KEYS.ACT))).to_int()
 	list.add_child(save)
 
 
