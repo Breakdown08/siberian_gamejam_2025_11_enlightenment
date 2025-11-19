@@ -327,7 +327,13 @@ metadata/_custom_type_script = "uid://br57gpcvgtf12"
 [node name="out" type="Node" parent="skeleton/act_2/cutscene" node_paths=PackedStringArray("events", "out")]
 script = ExtResource("7_a05x2")
 events = [null]
-out = NodePath("../../../act_3")
+out = NodePath("../../game")
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="game" type="Node" parent="skeleton/act_2" node_paths=PackedStringArray("out")]
+script = ExtResource("7_a05x2")
+out = NodePath("../../act_3")
+wait_for_player = true
 metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
 
 [node name="act_3" type="Node" parent="skeleton"]
@@ -449,7 +455,13 @@ metadata/_custom_type_script = "uid://br57gpcvgtf12"
 
 [node name="out" type="Node" parent="skeleton/act_3/cutscene" node_paths=PackedStringArray("out")]
 script = ExtResource("7_a05x2")
-out = NodePath("../../../act_4")
+out = NodePath("../../game")
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="game" type="Node" parent="skeleton/act_3" node_paths=PackedStringArray("out")]
+script = ExtResource("7_a05x2")
+out = NodePath("../../act_4")
+wait_for_player = true
 metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
 
 [node name="act_4" type="Node" parent="skeleton"]

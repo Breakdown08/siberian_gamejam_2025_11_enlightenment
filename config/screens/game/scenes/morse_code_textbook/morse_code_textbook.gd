@@ -59,6 +59,11 @@ func _ready() -> void:
 	unique_response = Utils.get_unique_array(response)
 	init_chars()
 	init_secret()
+	if GameManager.game:
+		var diary:DiaryInteractiveItem = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY)
+		if diary.morse_code_textbook.is_translated:
+			for undefined in password.get_children():
+				undefined.char_node.text = find_symbol_by_code(undefined.code_node.text)
 
 
 func init_chars():
@@ -98,10 +103,10 @@ static func find_symbol_by_code(code:String) -> String:
 
 
 func on_unsecret():
-	pass
-	#if !GameManager.is_morse_translated:
-		#secret_id += 1
-		#if secret_id == password.get_child_count():
-			##Scenario.morse_translated.emit()
-			#GameManager.scenario_next.emit()
-		
+	if GameManager.game:
+		var diary:DiaryInteractiveItem = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY)
+		if not diary.morse_code_textbook.is_translated:
+			secret_id += 1
+			if secret_id == password.get_child_count():
+				diary.morse_code_textbook.is_translated = true
+				diary.check_act_2_conditions()

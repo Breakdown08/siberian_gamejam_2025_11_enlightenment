@@ -27,3 +27,9 @@ func _on_oscilloscope_params_updated(new_params:String):
 
 func _on_radio_response_updated(new_radio_response:String):
 	radio_response = new_radio_response
+
+
+func check_act_2_conditions():
+	if photo.is_checked and morse_code_textbook.is_translated:
+		if GameManager.act and GameManager.act.name == "act_2":
+			Scenario.next()
