@@ -18,12 +18,12 @@ extends Control
 ]
 
 @onready var sounds = [
-	$controls/encoder_3,
-	$controls/encoder_4,
-	$controls/encoder_5,
-	$controls/encoder_6,
-	$controls/encoder_7,
-	$controls/encoder_8
+	"res://sound_fx/minigame1/encoder_3.mp3",
+	"res://sound_fx/minigame1/encoder_4.mp3",
+	"res://sound_fx/minigame1/encoder_5.mp3",
+	"res://sound_fx/minigame1/encoder_6.mp3",
+	"res://sound_fx/minigame1/encoder_7.mp3",
+	"res://sound_fx/minigame1/encoder_8.mp3"
 ]
 
 var pot_1_focused:bool = false
@@ -62,7 +62,7 @@ func _on_potentiometer_1_mouse_exited() -> void:
 
 func _input(event:InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and pot_1_focused:
-		sounds[randi_range(0,5)].play()
+		SoundManager.play_sfx(load(sounds[randi_range(0,5)]))
 		signals[signal_pos].visible = false
 		if event.button_index in [MOUSE_BUTTON_WHEEL_UP]:
 			if signal_pos > 0:
