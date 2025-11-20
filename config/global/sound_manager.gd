@@ -16,7 +16,6 @@ func play_music():
 	)
 
 func play_sfx(stream:AudioStream):
-	print("Got stream: ", stream, " type: ", stream.get_class())
 	sfx_player.stream = stream
 	sfx_player.volume_db = linear_to_db(sfx_volume / multiplier)
 	sfx_player.play()

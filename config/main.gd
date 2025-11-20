@@ -1,7 +1,6 @@
 class_name Main extends Control
 
 @onready var screen:Node = $screen
-#@onready var audio:AudioStreamPlayer = $auido
 
 enum SCREEN {GAME, SETTINGS, MAIN_MENU}
 

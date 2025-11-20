@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var door_open:AudioStreamPlayer = $door_open
-@onready var door_close:AudioStreamPlayer = $door_close
+@onready var door_open = "res://sound_fx/door/fx_1.mp3"
+@onready var door_close = "res://sound_fx/door/fx_2.mp3"
 @onready var normal_state:Sprite2D = $normal
 @onready var angry_state:Sprite2D = $angry
 
@@ -16,14 +16,14 @@ func _ready() -> void:
 
 
 func on_friend_has_come():
-	door_open.play()
+	SoundManager.play_sfx(load(door_open))
 	show()
 	var tween:Tween = Utils.tween(self)
 	tween.tween_property(self, "modulate", Color.WHITE, ANIMATION_DURATION)
 
 
 func on_friend_has_left():
-	door_close.play()
+	SoundManager.play_sfx(load(door_close))
 	var tween:Tween = Utils.tween(self)
 	tween.tween_property(self, "modulate", Color.TRANSPARENT, ANIMATION_DURATION)
 	tween.tween_callback(func():

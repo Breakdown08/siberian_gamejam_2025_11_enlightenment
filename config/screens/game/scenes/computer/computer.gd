@@ -4,6 +4,8 @@ extends Control
 @onready var send_signal:Button = $send_signal
 @onready var response:Label = $output/margin/response
 
+@onready var sfx_element = "res://sound_fx/radio/white_noise.mp3"
+
 
 func _ready():
 	room.pressed.connect(func(): GameManager.back_to_room.emit())
@@ -27,6 +29,7 @@ func empty_response():
 func _on_send_signal_pressed() -> void:
 	var oscilloscope:OscilloscopeInteractiveItem = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.OSCILLOSCOPE)
 	if oscilloscope.params == Scenario.database.get_key("oscilloscope_correct_params"):
+		SoundManager.play_sfx(load(sfx_element))
 		success()
 	else:
 		empty_response()

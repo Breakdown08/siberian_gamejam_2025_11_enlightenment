@@ -29,7 +29,7 @@ func _on_mouse_entered() -> void:
 	if GameManager.is_cutscene:
 		return
 	modulate = color_focused
-	audio_focused.play()
+	SoundManager.play_sfx(load(audio_focused.stream.resource_path))
 
 
 func _on_mouse_exited() -> void:
@@ -39,7 +39,7 @@ func _on_mouse_exited() -> void:
 
 func _on_pressed() -> void:
 	if not GameManager.is_cutscene:
-		audio_pressed.play()
+		SoundManager.play_sfx(load(audio_pressed.stream.resource_path))
 		think_about()
 		if thought_id == -1 and is_locked == false:
 			GameManager.interactive_item_opened.emit(interactive_item)
