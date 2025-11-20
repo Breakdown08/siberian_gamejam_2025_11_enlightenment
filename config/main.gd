@@ -20,10 +20,6 @@ func _ready() -> void:
 	SoundManager.sfx_player = $sfx
 	
 	SoundManager.play_music()
-	#audio.play()
-	#audio.finished.connect(func():
-		#audio.play()
-	#)
 
 
 func on_screen_switched(next_screen:SCREEN):

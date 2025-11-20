@@ -38,4 +38,6 @@ func on_button_load_pressed():
 
 
 func on_button_settings_pressed():
-	EventBus.screen_switched.emit(Main.SCREEN.SETTINGS)
+	$panel.visible = false
+	var settings = GameManager.SETTINGS.instantiate()
+	add_child(settings)

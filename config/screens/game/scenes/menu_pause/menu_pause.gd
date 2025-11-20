@@ -37,5 +37,6 @@ func _on_button_load_pressed():
 
 
 func _on_button_settings_pressed():
+	$panel.visible = false
 	var settings = GameManager.SETTINGS.instantiate()
 	add_child(settings)
