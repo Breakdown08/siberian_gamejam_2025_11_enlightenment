@@ -1,7 +1,6 @@
 class_name Main extends Control
 
 @onready var screen:Node = $screen
-@onready var audio:AudioStreamPlayer = $auido
 
 enum SCREEN {GAME, SETTINGS, MAIN_MENU}
 
@@ -15,10 +14,11 @@ const SCREENS:Dictionary[SCREEN, PackedScene] = {
 func _ready() -> void:
 	EventBus.screen_switched.connect(on_screen_switched)
 	EventBus.screen_switched.emit(SCREEN.MAIN_MENU)
-	audio.play()
-	audio.finished.connect(func():
-		audio.play()
-	)
+	
+	SoundManager.music_player = $music
+	SoundManager.sfx_player = $sfx
+	
+	SoundManager.play_music()
 
 
 func on_screen_switched(next_screen:SCREEN):

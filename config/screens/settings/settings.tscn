@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlbubft2r17hl"]
+[gd_scene load_steps=4 format=3 uid="uid://dlbubft2r17hl"]
 
 [ext_resource type="Script" uid="uid://bqfb56mkd1y2d" path="res://config/screens/settings/settings.gd" id="1_aem54"]
+[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="4_nt0uh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4omx"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="settings" type="Control"]
 layout_mode = 3
@@ -10,3 +14,57 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aem54")
+
+[node name="panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(351, 221)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.5
+offset_top = 221.0
+offset_right = 175.5
+offset_bottom = 442.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e4omx")
+
+[node name="margin" type="MarginContainer" parent="panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="list" type="VBoxContainer" parent="panel/margin"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="lbl_music" type="Label" parent="panel/margin/list"]
+layout_mode = 2
+text = "Громкость музыки"
+horizontal_alignment = 1
+
+[node name="slider_music" type="HSlider" parent="panel/margin/list"]
+layout_mode = 2
+
+[node name="lbl_sound_fx" type="Label" parent="panel/margin/list"]
+layout_mode = 2
+text = "Громкость окружения"
+horizontal_alignment = 1
+
+[node name="slider_sfx" type="HSlider" parent="panel/margin/list"]
+layout_mode = 2
+
+[node name="back_menu" parent="panel/margin/list" instance=ExtResource("4_nt0uh")]
+layout_mode = 2
+text = "НАЗАД"
+
+[connection signal="value_changed" from="panel/margin/list/slider_music" to="." method="_on_sld_music_value_changed"]
+[connection signal="value_changed" from="panel/margin/list/slider_sfx" to="." method="_on_slider_sfx_value_changed"]

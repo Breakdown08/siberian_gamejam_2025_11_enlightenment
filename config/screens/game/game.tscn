@@ -227,4 +227,8 @@ mouse_filter = 0
 texture = ExtResource("18_bjmkh")
 metadata/_edit_use_anchors_ = true
 
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+
 [editable path="system_panel"]

@@ -68,7 +68,6 @@ layout_mode = 2
 text = "ЗАГРУЗИТЬ"
 
 [node name="settings" parent="panel/margin/list" instance=ExtResource("2_ybaix")]
-visible = false
 layout_mode = 2
 text = "НАСТРОЙКИ"
 
