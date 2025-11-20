@@ -37,4 +37,5 @@ func _on_button_load_pressed():
 
 
 func _on_button_settings_pressed():
-	EventBus.screen_switched.emit(Main.SCREEN.SETTINGS)
+	var settings = GameManager.SETTINGS.instantiate()
+	add_child(settings)

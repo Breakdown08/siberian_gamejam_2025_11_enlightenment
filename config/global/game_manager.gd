@@ -1,9 +1,11 @@
 extends Node
 
 const SAVE_LOAD:PackedScene = preload("res://config/ui/popup/save_load/save_load.tscn")
+const SETTINGS:PackedScene = preload("res://config/screens/settings/settings.tscn")
 
 var saves:Array = []
 var save_id:int = -1
+
 
 var game:Game
 var act:GameAct = null
