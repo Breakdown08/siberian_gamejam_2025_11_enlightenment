@@ -1,8 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://cf8akmyd0msei"]
+[gd_scene load_steps=23 format=3 uid="uid://cf8akmyd0msei"]
 
 [ext_resource type="Script" uid="uid://dhk2u4falvg5h" path="res://config/screens/game/scenes/oscilloscope/oscilloscope.gd" id="1_6tim8"]
-[ext_resource type="Texture2D" uid="uid://bd1n2nqfg7a3l" path="res://config/screens/game/scenes/oscilloscope/resources/oscilloscope.png" id="2_b0816"]
-[ext_resource type="Texture2D" uid="uid://ig1r2dd0lo0l" path="res://config/screens/game/scenes/oscilloscope/resources/reference_oscilloscope.png" id="3_g1i1e"]
+[ext_resource type="Texture2D" uid="uid://gi8afy6oa075" path="res://config/screens/game/scenes/oscilloscope/resources/oscilloscope.png" id="2_b0816"]
 [ext_resource type="Texture2D" uid="uid://dkbm7pk3abwhn" path="res://config/screens/game/scenes/oscilloscope/resources/potentiometer.png" id="4_kgl6y"]
 [ext_resource type="AudioStream" uid="uid://60lt5dlx04sn" path="res://sound_fx/minigame1/encoder_3.mp3" id="5_hs066"]
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="5_mkgrp"]
@@ -41,17 +40,6 @@ offset_right = -1880.0
 offset_bottom = -1040.0
 texture = ExtResource("2_b0816")
 metadata/_edit_use_anchors_ = true
-
-[node name="reference" type="TextureRect" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.21568628)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_g1i1e")
 
 [node name="controls" type="Control" parent="."]
 layout_mode = 1
