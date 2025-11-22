@@ -61,7 +61,13 @@ func _on_potentiometer_1_mouse_exited() -> void:
 
 
 func _input(event:InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed and pot_1_focused:
+	var clicked
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				clicked = event.pressed
+	
+	if (event is InputEventMouseButton and event.pressed and pot_1_focused) or (clicked and pot_1_focused):
 		SoundManager.play_sfx(load(sounds[randi_range(0,5)]))
 		signals[signal_pos].visible = false
 		if event.button_index in [MOUSE_BUTTON_WHEEL_UP]:
@@ -70,7 +76,7 @@ func _input(event:InputEvent) -> void:
 				pot_1.rotation_degrees -= 10
 			else:
 				signal_pos = 9
-		elif event.button_index in [MOUSE_BUTTON_WHEEL_DOWN]:
+		elif event.button_index in [MOUSE_BUTTON_WHEEL_DOWN] or clicked:
 			if signal_pos < 9:
 				signal_pos += 1
 				pot_1.rotation_degrees += 10
