@@ -4,6 +4,7 @@ extends Control
 @onready var front:TextureRect = $front/front
 @onready var back:TextureRect = $back
 @onready var front_without_label:TextureRect = $front/front_without_label
+@onready var button_flip_photo:Button = $button
 
 var back_side:bool = false
 
@@ -23,6 +24,7 @@ func _ready() -> void:
 				front_without_label.show()
 				front.hide()
 				Scenario.next()
+				button_flip_photo.hide()
 		_animation_flip_side()
 	room.pressed.connect(GameManager.back_to_room.emit)
 	back.modulate = Color.TRANSPARENT

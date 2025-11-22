@@ -33,4 +33,4 @@ func on_next_action(next_cursor:ScenarioSkeletonAction):
 			Scenario.cutscene_finished.emit()
 		cursor.play()
 	else:
-		push_error("Scenario is locked")
+		push_warning("Scenario is locked")

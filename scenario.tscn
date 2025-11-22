@@ -492,19 +492,30 @@ items_info = Dictionary[int, Array]({
 })
 metadata/_custom_type_script = "uid://btby3cxfoj8lm"
 
-[node name="actor_speech_none_1" type="Node" parent="skeleton/act_4"]
+[node name="cutscene" type="Node" parent="skeleton/act_4"]
+script = ExtResource("5_6dm4g")
+metadata/_custom_type_script = "uid://cb7slha3ncqxn"
+
+[node name="actor_speech_none_1" type="Node" parent="skeleton/act_4/cutscene" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/none")
 speech = Array[String](["Что это? Моя шифровальная машина, доставшаяся мне от отца?", "А почему я ни разу не попробовал убрать этот листик?", "Вероятно, я боялся повредить фотографию, иначе этот затуп оправдать не смогу.", "Хотя почему затуп? Ну машина и машина.", "Про то, что она существует я знал: она стоит у меня на столе. Чего-то необычного я в ней не нахожу.", "Хм... А могут ли быть связаны слова с оборота фотографии с этой машинкой?", "Зачем бы они были написаны сзади иначе, логично? Звучит логично.", "Но как будто вводить полностью фразу целиком как-то не удобно.", "Не зря же не хватает только двух слов.", "Может попробовать ввести их в машинку?"])
 metadata/_custom_type_script = "uid://br57gpcvgtf12"
 
-[node name="out" type="Node" parent="skeleton/act_4" node_paths=PackedStringArray("out")]
+[node name="event_creator" type="Node" parent="skeleton/act_4/cutscene" node_paths=PackedStringArray("events")]
 script = ExtResource("7_a05x2")
-out = NodePath("../../act_5")
+events = [NodePath("../../../../events/diary_note_4")]
 metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
 
-[node name="event_creator" type="Node" parent="skeleton/act_4" node_paths=PackedStringArray("events")]
+[node name="out" type="Node" parent="skeleton/act_4/cutscene" node_paths=PackedStringArray("out")]
 script = ExtResource("7_a05x2")
-events = [NodePath("../../../events/diary_note_4")]
+out = NodePath("../../game")
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="game" type="Node" parent="skeleton/act_4" node_paths=PackedStringArray("out")]
+script = ExtResource("7_a05x2")
+out = NodePath("../../act_5")
+wait_for_player = true
 metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
 
 [node name="act_5" type="Node" parent="skeleton"]
@@ -516,27 +527,36 @@ items_availability = Dictionary[int, bool]({
 items_info = Dictionary[int, Array]({
 1: ["Я помню, что очки лежат в футляре на полке. Надо проверить там."]
 })
-wait_for_player = true
 metadata/_custom_type_script = "uid://btby3cxfoj8lm"
 
-[node name="actor_speech_none_1" type="Node" parent="skeleton/act_5"]
+[node name="cutscene" type="Node" parent="skeleton/act_5"]
+script = ExtResource("5_6dm4g")
+metadata/_custom_type_script = "uid://cb7slha3ncqxn"
+
+[node name="actor_speech_none_1" type="Node" parent="skeleton/act_5/cutscene" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_a05x2")
+actor = NodePath("../../../../actors/none")
 speech = Array[String](["Новое послание? “Я УсиЩ. Прозрей фото с ГлазиЩем”. Что это может значить?", "УсиЩ, ГлазиЩ... Это же то, что я видел на фотографии.", "Их прозвища в детективном агентстве! Надо подумать...", "И что я должен увидеть на фото? Прозрей? Увидеть что-то новое?", "Увидеть… Улучшить зрение… Очки! Точно!", "У отца в кармашке очки! Они были и у меня. Он мне их оставил. Как я мог об этом забыть."])
 metadata/_custom_type_script = "uid://br57gpcvgtf12"
 
-[node name="out" type="Node" parent="skeleton/act_5" node_paths=PackedStringArray("out")]
+[node name="event_creator" type="Node" parent="skeleton/act_5/cutscene" node_paths=PackedStringArray("events")]
 script = ExtResource("7_a05x2")
-out = NodePath("../../act_6")
+events = [NodePath("../../../../events/diary_note_5")]
 metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
 
-[node name="event_creator" type="Node" parent="skeleton/act_5" node_paths=PackedStringArray("events")]
+[node name="out" type="Node" parent="skeleton/act_5/cutscene" node_paths=PackedStringArray("out")]
 script = ExtResource("7_a05x2")
-events = [NodePath("../../../events/diary_note_5")]
+out = NodePath("../../game")
+metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
+
+[node name="game" type="Node" parent="skeleton/act_5" node_paths=PackedStringArray("out")]
+script = ExtResource("7_a05x2")
+out = NodePath("../../act_6")
+wait_for_player = true
 metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
 
 [node name="act_6" type="Node" parent="skeleton"]
 script = ExtResource("4_a05x2")
-wait_for_player = true
 metadata/_custom_type_script = "uid://btby3cxfoj8lm"
 
 [node name="event_creator" type="Node" parent="skeleton/act_6" node_paths=PackedStringArray("events")]
@@ -544,18 +564,21 @@ script = ExtResource("7_a05x2")
 events = [NodePath("../../../events/glasses")]
 metadata/_custom_type_script = "uid://bndaqlbrpvuf2"
 
-[node name="actor_speech_friend_1" type="Node" parent="skeleton/act_6"]
+[node name="actor_speech_friend_1" type="Node" parent="skeleton/act_6" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_a05x2")
+actor = NodePath("../../../actors/friend")
 speech = Array[String](["Я пришел извиниться…"])
 metadata/_custom_type_script = "uid://br57gpcvgtf12"
 
-[node name="actor_speech_none_1" type="Node" parent="skeleton/act_6"]
+[node name="actor_speech_none_1" type="Node" parent="skeleton/act_6" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_a05x2")
+actor = NodePath("../../../actors/none")
 speech = Array[String](["Это Женя что ли? Очки дали мне возможность увидеть его истинное лицо?"])
 metadata/_custom_type_script = "uid://br57gpcvgtf12"
 
-[node name="actor_speech_hero_1" type="Node" parent="skeleton/act_6"]
+[node name="actor_speech_hero_1" type="Node" parent="skeleton/act_6" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_a05x2")
+actor = NodePath("../../../actors/friend")
 speech = Array[String](["Так ты на самом деле пришелец?!"])
 metadata/_custom_type_script = "uid://br57gpcvgtf12"
 
