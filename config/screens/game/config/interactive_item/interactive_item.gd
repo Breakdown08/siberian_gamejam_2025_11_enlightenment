@@ -40,7 +40,10 @@ func _on_mouse_exited() -> void:
 func _on_pressed() -> void:
 	if not GameManager.is_cutscene:
 		SoundManager.play_sfx(load(audio_pressed.stream.resource_path))
-		think_about()
+		if thoughts.size() == 1 and thoughts[0] == "":
+			thought_id = -1
+		else:
+			think_about()
 		if thought_id == -1 and is_locked == false:
 			GameManager.interactive_item_opened.emit(interactive_item)
 

@@ -14,14 +14,16 @@ func _ready() -> void:
 	if GameManager.game:
 		var diary:DiaryInteractiveItem = GameManager.game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY)
 		back_side = diary.photo.is_back_side
-		_animation_flip_side()
 		match GameManager.act.name:
 			"act_2":
 				front_without_label.hide()
 				front.show()
 			"act_3":
+				back_side = false
 				front_without_label.show()
 				front.hide()
+				Scenario.next()
+		_animation_flip_side()
 	room.pressed.connect(GameManager.back_to_room.emit)
 	back.modulate = Color.TRANSPARENT
 	#if GameManager.is_photo_turned:
