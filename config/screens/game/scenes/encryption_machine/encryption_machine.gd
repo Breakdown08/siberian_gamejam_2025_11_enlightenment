@@ -9,23 +9,20 @@ class_name EncryptionMachine extends Control
 
 
 func _ready() -> void:
-	Scenario.encryption_machine_try_code_breaking.connect(on_encryption_machine_try_code_breaking)
 	room.pressed.connect(GameManager.back_to_room.emit)
 	reset.pressed.connect(input.on_reset)
-	accept.pressed.connect(input.on_accept)
+	accept.pressed.connect(on_accept)
 	for item in switches:
 		var switch = item as EncryptionMachineSwitch
 		switch.switched.connect(display.on_switch_switched)
 		switch.switched.connect(input.on_switch_switched)
 		reset.pressed.connect(switch._ready)
-	room.pressed.connect(func(): GameManager.back_to_room.emit())
 
 
-func on_encryption_machine_try_code_breaking(key:String):
-	if !GameManager.is_encryption_success:
-		if key.to_upper() == Scenario.ENCRYPTION_MACHINE_PASSWORD.to_upper():
-			var result = Scenario.ENCRYPTION_MACHINE_ANSWER
-			display.animation_result(result, Utils.get_visible_ratio_time(result) * 5)
-			display.animation_success_color()
-			Scenario.encryption_machine_success.emit()
-			GameManager.scenario_next.emit()
+func on_accept(key:String = input.display.text):
+	if key.to_upper() == Scenario.database.get_key("encryption_machine_password").to_upper():
+		var result = Scenario.database.get_key("encryption_machine_answer")
+		display.animation_result(result, Utils.get_visible_ratio_time(result) * 5)
+		display.animation_success_color()
+		if GameManager.game:
+			Scenario.next()

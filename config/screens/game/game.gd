@@ -38,17 +38,8 @@ func _ready() -> void:
 	button_menu.pressed.connect(func(): add_child(MENU_PAUSE.instantiate()))
 	button_dialog_history.pressed.connect(func(): add_child(DIALOG_HISTORY.instantiate()))
 	GameManager.interactive_item_opened.connect(on_interactive_item_opened)
-	#Scenario.game_over.connect(on_game_over)
 	GameManager.game_started.emit(self)
 	GameManager.back_to_room.connect(on_back_to_room)
-	#Scenario.final_scene.connect(func():
-		#$final.show()
-		#$static_background.hide()
-		#$hero.hide()
-		#$friend.hide()
-		#$interactive_items.hide()
-		#$window.hide()
-	#)
 
 
 func on_back_to_room():
@@ -69,11 +60,20 @@ func on_notification(message:String):
 	instance.message.text = message
 
 
-func on_game_over():
+func get_interactive_item(interactive_item:INTERACTIVE_ITEM) -> InteractiveItem:
+	return interactive_items[interactive_item]
+
+
+func to_final_scene():
+	get_node("room/final").show()
+	get_node("room/static_background").hide()
+	get_node("room/hero").hide()
+	get_node("room/friend").hide()
+	get_node("room/interactive_items").hide()
+	get_node("room/window").hide()
+
+
+func to_game_over():
 	game_over.show()
 	var tween:Tween = Utils.tween(self)
 	tween.tween_property(game_over, "modulate", Color.WHITE, 2.0)
-
-
-func get_interactive_item(interactive_item:INTERACTIVE_ITEM) -> InteractiveItem:
-	return interactive_items[interactive_item]
