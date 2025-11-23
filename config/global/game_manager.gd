@@ -60,14 +60,18 @@ func start(game_instance:Game):
 
 
 func on_scenario_event(key:String, value:String = ""):
-	match key:
-		"diary_updated":
-			var notify_text:String = Scenario.database.get_key(key)
-			if game:
+	if game:
+		match key:
+			"diary_updated":
+				var notify_text:String = Scenario.database.get_key(key)
 				game.on_notification(notify_text)
-		"back_to_room":
-			if game:
+			"back_to_room":
 				back_to_room.emit()
+			"glasses":
+				game.to_final_scene()
+				back_to_room.emit()
+			"game_over":
+				game.to_game_over()
 
 
 func _input(event:InputEvent) -> void:
