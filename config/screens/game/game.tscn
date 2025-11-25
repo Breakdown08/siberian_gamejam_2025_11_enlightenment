@@ -212,7 +212,6 @@ texture = ExtResource("16_mwajf")
 
 [node name="game_over" type="TextureRect" parent="."]
 visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -221,6 +220,68 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 texture = ExtResource("18_bjmkh")
+
+[node name="exit" parent="game_over" instance=ExtResource("12_che8u")]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -184.0
+offset_right = 148.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "ВЫЙТИ В МЕНЮ"
+
+[node name="credits" type="Panel" parent="game_over"]
+layout_mode = 0
+offset_left = 1192.0
+offset_top = 608.0
+offset_right = 1846.0
+offset_bottom = 960.0
+
+[node name="margin" type="MarginContainer" parent="game_over/credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="list" type="VBoxContainer" parent="game_over/credits/margin"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="eva" type="Label" parent="game_over/credits/margin/list"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Сценарий: Ева @Tagueules"
+
+[node name="kringless" type="Label" parent="game_over/credits/margin/list"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Арт: Анастасия @Notbachok"
+
+[node name="denick" type="Label" parent="game_over/credits/margin/list"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Звук/Разработка: Денис @DeN1ck"
+
+[node name="breakdown" type="Label" parent="game_over/credits/margin/list"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Разработка: Кирилл @breakdown0898"
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 

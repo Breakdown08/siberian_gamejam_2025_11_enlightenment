@@ -11,7 +11,8 @@ var game:Game
 var act:GameAct = null
 var current_actor:Actor = null
 var is_cutscene:bool = false
-var is_speech_finished = false
+var is_speech_finished:bool = false
+var is_game_over:bool = false
 
 signal game_started(game_instance:Game)
 signal interactive_item_opened(target:Game.INTERACTIVE_ITEM)
@@ -48,6 +49,7 @@ func _init() -> void:
 
 
 func start(game_instance:Game):
+	is_game_over = false
 	_init_saves()
 	game = game_instance
 	act = null
@@ -72,15 +74,17 @@ func on_scenario_event(key:String, value:String = ""):
 				back_to_room.emit()
 			"game_over":
 				game.to_game_over()
+				is_game_over = true
 
 
 func _input(event:InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if is_cutscene and is_speech_finished and Scenario.skeleton.cursor != null:
-				Scenario.reading_finished.emit()
-			elif event.double_click and is_cutscene and Scenario.skeleton.cursor != null:
-				Scenario.reading_finished.emit()
+	if !is_game_over:
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+				if is_cutscene and is_speech_finished and Scenario.skeleton.cursor != null:
+					Scenario.reading_finished.emit()
+				elif event.double_click and is_cutscene and Scenario.skeleton.cursor != null:
+					Scenario.reading_finished.emit()
 
 
 func game_save():
