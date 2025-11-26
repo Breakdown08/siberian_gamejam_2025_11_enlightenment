@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlbubft2r17hl"]
 
 [ext_resource type="Script" uid="uid://bqfb56mkd1y2d" path="res://config/screens/settings/settings.gd" id="1_aem54"]
-[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="4_nt0uh"]
+[ext_resource type="PackedScene" uid="uid://dxo6oyfgmyk2d" path="res://config/ui/button/button.tscn" id="3_l2b3h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4omx"]
 bg_color = Color(0, 0, 0, 1)
@@ -62,9 +62,6 @@ horizontal_alignment = 1
 [node name="slider_sfx" type="HSlider" parent="panel/margin/list"]
 layout_mode = 2
 
-[node name="back_menu" parent="panel/margin/list" instance=ExtResource("4_nt0uh")]
+[node name="back_to_menu" parent="panel/margin/list" instance=ExtResource("3_l2b3h")]
 layout_mode = 2
 text = "НАЗАД"
-
-[connection signal="value_changed" from="panel/margin/list/slider_music" to="." method="_on_sld_music_value_changed"]
-[connection signal="value_changed" from="panel/margin/list/slider_sfx" to="." method="_on_slider_sfx_value_changed"]

@@ -6,6 +6,8 @@ class_name Game extends Node
 @onready var scene:Node = $scene
 @onready var notifications:Control = $notifications
 @onready var game_over:TextureRect = $game_over
+@onready var game_over_exit:Btn = $game_over/exit
+@onready var game_over_credits:Panel = $game_over/credits
 
 const NOTIFICATION:PackedScene = preload("res://config/ui/popup/notification/notification.tscn")
 const MENU_PAUSE:PackedScene = preload("res://config/screens/game/scenes/menu_pause/menu_pause.tscn")
@@ -35,6 +37,7 @@ const INTERACTIVE_ITEMS:Dictionary[INTERACTIVE_ITEM, PackedScene] = {
 
 
 func _ready() -> void:
+	game_over_exit.pressed.connect(func(): EventBus.screen_switched.emit(Main.SCREEN.MAIN_MENU))
 	button_menu.pressed.connect(func(): add_child(MENU_PAUSE.instantiate()))
 	button_dialog_history.pressed.connect(func(): add_child(DIALOG_HISTORY.instantiate()))
 	GameManager.interactive_item_opened.connect(on_interactive_item_opened)
@@ -74,6 +77,15 @@ func to_final_scene():
 
 
 func to_game_over():
+	game_over.modulate = Color.TRANSPARENT
+	game_over_credits.modulate = Color.TRANSPARENT
+	game_over_exit.modulate = Color.TRANSPARENT
+	game_over_exit.disabled = true
 	game_over.show()
 	var tween:Tween = Utils.tween(self)
 	tween.tween_property(game_over, "modulate", Color.WHITE, 2.0)
+	tween.tween_property(game_over_credits, "modulate", Color.WHITE, 2.0)
+	tween.tween_property(game_over_exit, "modulate", Color.WHITE, 1.0)
+	tween.tween_callback(func():
+		game_over_exit.disabled = false
+	)

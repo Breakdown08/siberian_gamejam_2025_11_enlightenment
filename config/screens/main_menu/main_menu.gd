@@ -1,9 +1,9 @@
 extends Control
 
-@onready var button_exit:Button = $panel/margin/list/exit
-@onready var button_play:Button = $panel/margin/list/play
-@onready var button_load:Button = $panel/margin/list/load
-@onready var button_settings:Button = $panel/margin/list/settings
+@onready var button_exit:Btn = $panel/margin/list/exit
+@onready var button_play:Btn = $panel/margin/list/play
+@onready var button_load:Btn = $panel/margin/list/load
+@onready var button_settings:Btn = $panel/margin/list/settings
 @onready var screen = $Screen_2
 
 

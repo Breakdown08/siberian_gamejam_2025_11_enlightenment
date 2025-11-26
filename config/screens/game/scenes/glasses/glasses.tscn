@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://djgs4l15galmo" path="res://config/screens/game/scenes/glasses/glasses.gd" id="1_bf501"]
 [ext_resource type="Texture2D" uid="uid://c50ebxyl0t170" path="res://config/screens/game/scenes/glasses/resources/glasses.png" id="2_m1quy"]
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_y7bg1"]
-[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="3_m1quy"]
+[ext_resource type="PackedScene" uid="uid://dxo6oyfgmyk2d" path="res://config/ui/button/button.tscn" id="3_m1quy"]
 
 [node name="glasses" type="Control"]
 layout_mode = 3

@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://60lt5dlx04sn" path="res://sound_fx/minigame1/encoder_3.mp3" id="5_hs066"]
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="5_mkgrp"]
 [ext_resource type="AudioStream" uid="uid://csrfxbaxv6kq0" path="res://sound_fx/minigame1/encoder_4.mp3" id="6_2sbwp"]
-[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="6_hvpvx"]
+[ext_resource type="PackedScene" uid="uid://dxo6oyfgmyk2d" path="res://config/ui/button/button.tscn" id="6_hvpvx"]
 [ext_resource type="AudioStream" uid="uid://pb0uah5meuyr" path="res://sound_fx/minigame1/encoder_5.mp3" id="7_0lhr5"]
 [ext_resource type="Texture2D" uid="uid://dh31xk22wo5h1" path="res://config/screens/game/scenes/oscilloscope/resources/signal_1.png" id="8_5pgya"]
 [ext_resource type="AudioStream" uid="uid://hd7bbjhbn1va" path="res://sound_fx/minigame1/encoder_6.mp3" id="8_dp0xa"]

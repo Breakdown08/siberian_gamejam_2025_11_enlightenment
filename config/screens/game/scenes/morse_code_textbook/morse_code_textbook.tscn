@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://qrfb463lls7k" path="res://config/screens/game/scenes/morse_code_textbook/morse_code_textbook.gd" id="1_2nsya"]
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_6857g"]
 [ext_resource type="Texture2D" uid="uid://dg8fsvc83d4lb" path="res://config/screens/game/scenes/morse_code_textbook/resources/morse_code_textbook.png" id="2_qkqkb"]
-[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="3_qkqkb"]
+[ext_resource type="PackedScene" uid="uid://dxo6oyfgmyk2d" path="res://config/ui/button/button.tscn" id="3_qkqkb"]
 
 [node name="morse_code_textbook" type="Control"]
 layout_mode = 3
