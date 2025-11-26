@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://fbupj5u7t7od"]
+[gd_scene load_steps=22 format=3 uid="uid://fbupj5u7t7od"]
 
 [ext_resource type="Script" uid="uid://d3556b3fldogt" path="res://config/screens/game/game.gd" id="1_rm2kr"]
 [ext_resource type="Texture2D" uid="uid://br0npawvifefd" path="res://config/resources/static_background.png" id="2_4xw68"]
@@ -6,12 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://cgyox8l1wd4nb" path="res://config/screens/game/scenes/window/window.tscn" id="3_kl8j2"]
 [ext_resource type="Texture2D" uid="uid://b2p2156wtjxiy" path="res://config/resources/final.png" id="3_mwajf"]
 [ext_resource type="PackedScene" uid="uid://b34hevgxbyfql" path="res://config/screens/game/scenes/morse_code_textbook/interactive_morse_code_textbook/interactive_morse_code_textbook.tscn" id="10_kl8j2"]
-[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="12_che8u"]
+[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/btn/btn.tscn" id="12_che8u"]
 [ext_resource type="PackedScene" uid="uid://cr4j1dhnjms4f" path="res://config/ui/actor_speech_panel/actor_speech_panel.tscn" id="12_v58cl"]
 [ext_resource type="PackedScene" uid="uid://bve1ca5g20od6" path="res://config/screens/game/actors/friend/friend.tscn" id="13_che8u"]
 [ext_resource type="PackedScene" uid="uid://n2la2f336s84" path="res://config/screens/game/actors/hero/hero.tscn" id="15_mwajf"]
+[ext_resource type="PackedScene" uid="uid://dxo6oyfgmyk2d" path="res://config/ui/button/button.tscn" id="16_g7kpl"]
 [ext_resource type="Texture2D" uid="uid://dupbapb23iudf" path="res://config/resources/room.png" id="16_mwajf"]
 [ext_resource type="Texture2D" uid="uid://bctwsrqhta6ka" path="res://config/resources/game_over.png" id="18_bjmkh"]
+[ext_resource type="Texture2D" uid="uid://bqg1lcpf73uil" path="res://config/ui/btn/resources/exit_2.png" id="20_u4puu"]
+[ext_resource type="Texture2D" uid="uid://c4afcg50o08wp" path="res://config/ui/btn/resources/exit.png" id="21_p46bx"]
 [ext_resource type="PackedScene" uid="uid://did6276qugi8o" path="res://config/screens/game/scenes/computer/interactive_computer/interactive_computer.tscn" id="25_657kl"]
 [ext_resource type="PackedScene" uid="uid://cy305tkklbguq" path="res://config/screens/game/scenes/diary/interactive_diary/interactive_diary.tscn" id="26_lwjy1"]
 [ext_resource type="PackedScene" uid="uid://bnffu67hk4hwy" path="res://config/screens/game/scenes/glasses/interactive_glasses/interactive_glasses.tscn" id="27_8ekm0"]
@@ -163,19 +166,19 @@ scale = Vector2(0.665, 0.665)
 [node name="system_panel" parent="." instance=ExtResource("3_bea4q")]
 layout_mode = 1
 
-[node name="menu" parent="system_panel/margin" index="0" instance=ExtResource("12_che8u")]
+[node name="menu" parent="system_panel/margin" index="0" instance=ExtResource("16_g7kpl")]
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-text = "МЕНЮ"
+text = "В КОМНАТУ"
 
-[node name="dialog_history" parent="system_panel/margin" index="1" instance=ExtResource("12_che8u")]
+[node name="dialog_history" parent="system_panel/margin" index="1" instance=ExtResource("16_g7kpl")]
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "ИСТОРИЯ"
+text = "ИСТОРИЯ "
 
 [node name="scene" type="Control" parent="."]
 layout_mode = 1
@@ -222,23 +225,24 @@ mouse_filter = 0
 texture = ExtResource("18_bjmkh")
 
 [node name="exit" parent="game_over" instance=ExtResource("12_che8u")]
-custom_minimum_size = Vector2(300, 60)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -152.0
-offset_top = -184.0
-offset_right = 148.0
+offset_left = -100.0
+offset_top = -160.0
+offset_right = 100.0
 offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 32
-text = "ВЫЙТИ В МЕНЮ"
+texture_normal = ExtResource("20_u4puu")
+texture_pressed = ExtResource("21_p46bx")
+texture_hover = ExtResource("21_p46bx")
+texture_disabled = ExtResource("20_u4puu")
+texture_focused = ExtResource("21_p46bx")
+text = "ВЫХОД"
 
 [node name="credits" type="Panel" parent="game_over"]
 layout_mode = 0

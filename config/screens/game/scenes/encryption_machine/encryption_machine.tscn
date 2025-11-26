@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://caenkvel5vpvf" path="res://config/screens/game/scenes/encryption_machine/resources/encryption_machine.png" id="2_n1fy3"]
 [ext_resource type="PackedScene" uid="uid://gj2jowl3ih7p" path="res://config/screens/game/scenes/encryption_machine/display/display.tscn" id="4_dvm5s"]
 [ext_resource type="PackedScene" uid="uid://clmlheau8koda" path="res://config/screens/game/scenes/encryption_machine/switch/switch.tscn" id="4_k4nx7"]
-[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="6_weqib"]
+[ext_resource type="PackedScene" uid="uid://dxo6oyfgmyk2d" path="res://config/ui/button/button.tscn" id="6_weqib"]
 [ext_resource type="PackedScene" uid="uid://br3wx4hh16v08" path="res://config/screens/game/scenes/encryption_machine/input/input.tscn" id="7_wp4pw"]
 
 [sub_resource type="Gradient" id="Gradient_k4nx7"]

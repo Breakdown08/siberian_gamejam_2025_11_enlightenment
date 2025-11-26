@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_erndg"]
 [ext_resource type="Texture2D" uid="uid://oa54mfklhahj" path="res://config/screens/game/scenes/photo/resources/photo_hide (1).png" id="2_hu5v2"]
 [ext_resource type="Texture2D" uid="uid://bvdmqf0xtejx6" path="res://config/screens/game/scenes/photo/resources/photo_back.png" id="3_dlc32"]
-[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="3_i3sf4"]
+[ext_resource type="PackedScene" uid="uid://dxo6oyfgmyk2d" path="res://config/ui/button/button.tscn" id="3_i3sf4"]
 [ext_resource type="Texture2D" uid="uid://dogxwsb3dps4c" path="res://config/screens/game/scenes/photo/resources/photo (1).png" id="3_i7e2s"]
 
 [node name="photo" type="Control"]

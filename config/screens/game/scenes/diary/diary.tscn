@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://djr4rnct1ah17" path="res://config/screens/game/scenes/diary/diary.gd" id="1_5oupm"]
 [ext_resource type="Texture2D" uid="uid://dqu3u0njjvwt1" path="res://config/screens/game/scenes/diary/resources/diary.png" id="2_6dj4t"]
 [ext_resource type="PackedScene" uid="uid://bc2saquoootea" path="res://config/ui/system_panel/system_panel.tscn" id="2_i7wao"]
-[ext_resource type="PackedScene" uid="uid://cnvmp02nje6cj" path="res://config/ui/button/button.tscn" id="3_6dj4t"]
+[ext_resource type="PackedScene" uid="uid://dxo6oyfgmyk2d" path="res://config/ui/button/button.tscn" id="3_6dj4t"]
 [ext_resource type="PackedScene" uid="uid://kh2oi1kk1yj6" path="res://config/screens/game/scenes/diary/note/note.tscn" id="5_m4cta"]
 
 [node name="diary" type="Control"]

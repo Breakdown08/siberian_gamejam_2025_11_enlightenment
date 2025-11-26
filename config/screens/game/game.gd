@@ -6,7 +6,7 @@ class_name Game extends Node
 @onready var scene:Node = $scene
 @onready var notifications:Control = $notifications
 @onready var game_over:TextureRect = $game_over
-@onready var game_over_exit:Button = $game_over/exit
+@onready var game_over_exit:Btn = $game_over/exit
 @onready var game_over_credits:Panel = $game_over/credits
 
 const NOTIFICATION:PackedScene = preload("res://config/ui/popup/notification/notification.tscn")

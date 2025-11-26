@@ -1,10 +1,10 @@
 extends Control
 
-@onready var button_main_menu:Button = $panel/margin/list/main_menu
-@onready var button_continue:Button = $panel/margin/list/continue
-@onready var button_save:Button = $panel/margin/list/save
-@onready var button_load:Button = $panel/margin/list/load
-@onready var button_settings:Button = $panel/margin/list/settings
+@onready var button_main_menu:Btn = $panel/margin/list/main_menu
+@onready var button_continue:Btn = $panel/margin/list/continue
+@onready var button_save:Btn = $panel/margin/list/save
+@onready var button_load:Btn = $panel/margin/list/load
+@onready var button_settings:Btn = $panel/margin/list/settings
 
 
 func _ready() -> void:
