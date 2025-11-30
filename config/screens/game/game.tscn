@@ -171,7 +171,7 @@ custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-text = "В КОМНАТУ"
+text = "ГЛАВНОЕ МЕНЮ"
 
 [node name="dialog_history" parent="system_panel/margin" index="1" instance=ExtResource("16_g7kpl")]
 custom_minimum_size = Vector2(150, 60)
