@@ -96,11 +96,11 @@ func game_save():
 			SAVE_KEYS.OSCILLOSCOPE_CURVE : diary.oscilloscope.last_selected_curve_path,
 			SAVE_KEYS.DIARY_NOTE_OSCILLOSCOPE : diary.oscilloscope_params,
 			SAVE_KEYS.DIARY_NOTE_RADIO_RESPONSE : diary.radio_response,
-			SAVE_KEYS.DIARY_COMMON_NOTES : diary.notes,
+			SAVE_KEYS.DIARY_COMMON_NOTES : diary.notes.duplicate_deep(),
 			SAVE_KEYS.PHOTO_IS_BACK_SIDE : diary.photo.is_back_side,
 			SAVE_KEYS.PHOTO_IS_CHECKED : diary.photo.is_checked,
 			SAVE_KEYS.MORSE_CODE_TEXTBOOK_IS_TRANSLATED : diary.morse_code_textbook.is_translated,
-			SAVE_KEYS.DIALOG_HISTORY : Scenario.history
+			SAVE_KEYS.DIALOG_HISTORY : Scenario.history.duplicate_deep()
 		})
 		SaveLoad.push(saves)
 		game_saved.emit()
@@ -108,10 +108,7 @@ func game_save():
 
 func game_load(id:int):
 	save_id = id
-	if game == null:
-		EventBus.screen_switched.emit(Main.SCREEN.GAME)
-	else:
-		start(game)
+	EventBus.screen_switched.emit(Main.SCREEN.GAME)
 	game_loaded.emit()
 
 
@@ -125,7 +122,7 @@ func game_delete(id:int):
 func _game_load() -> bool:
 	var result:bool = false
 	if save_id > -1 and !saves.is_empty() and save_id < saves.size() :
-		var data:Dictionary = saves[save_id]
+		var data:Dictionary = saves[save_id] as Dictionary
 		var game_action:ScenarioSkeletonAction = get_node(data.get(str(SAVE_KEYS.ACT)))
 		var diary = game.get_interactive_item(Game.INTERACTIVE_ITEM.DIARY) as DiaryInteractiveItem
 		act = game_action.get_parent()
@@ -135,11 +132,11 @@ func _game_load() -> bool:
 		diary.oscilloscope_params = data.get(str(SAVE_KEYS.DIARY_NOTE_OSCILLOSCOPE))
 		diary.oscilloscope.params = diary.oscilloscope_params
 		diary.radio_response = data.get(str(SAVE_KEYS.DIARY_NOTE_RADIO_RESPONSE))
-		diary.notes = data.get(str(SAVE_KEYS.DIARY_COMMON_NOTES)) as Array[String]
+		diary.notes = data.get(str(SAVE_KEYS.DIARY_COMMON_NOTES)) as Array[String].duplicate_deep()
 		diary.photo.is_back_side = data.get(str(SAVE_KEYS.PHOTO_IS_BACK_SIDE))
 		diary.photo.is_checked = data.get(str(SAVE_KEYS.PHOTO_IS_CHECKED))
 		diary.morse_code_textbook.is_translated = data.get(str(SAVE_KEYS.MORSE_CODE_TEXTBOOK_IS_TRANSLATED))
-		Scenario.history = data.get(str(SAVE_KEYS.DIALOG_HISTORY)) as Array[String]
+		Scenario.history = data.get(str(SAVE_KEYS.DIALOG_HISTORY)) as Array[String].duplicate_deep()
 		save_id = -1
 		result = true
 		game_loaded.emit()
@@ -147,6 +144,7 @@ func _game_load() -> bool:
 
 
 func _init_saves():
+	saves = []
 	var data:String = SaveLoad.pull()
 	if not data.is_empty():
 		var parsed_data:Array = JSON.parse_string(data)

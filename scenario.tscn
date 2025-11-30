@@ -638,7 +638,7 @@ metadata/_custom_type_script = "uid://cheg3kobk3jjy"
 script = ExtResource("8_67p4d")
 description = "Запись в дневнике"
 key = "diary_note"
-value = "Расшифровка Азбуки Морзе: \"Они маскируются под нас, улучшая глаза\""
+value = "Расшифровка Азбуки Морзе: \"Они маскируются под нас, улучшай глаза\""
 metadata/_custom_type_script = "uid://cheg3kobk3jjy"
 
 [node name="diary_note_6" type="Node" parent="events"]
